@@ -1,0 +1,22 @@
+{
+  "presets": [
+    "es2015"
+  ],
+  "plugins": [
+    "syntax-jsx",
+    [
+      "transform-react-jsx",
+      {
+        "pragma": "html"
+      }
+    ],
+    "transform-object-rest-spread"
+  ],
+  "env": {
+    "ci": {
+      "plugins": [
+        "istanbul"
+      ]
+    }
+  }
+}
