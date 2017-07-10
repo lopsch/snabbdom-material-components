@@ -6,7 +6,8 @@ import {
   FormField,
   Card,
   LinearProgress,
-  Radio
+  Radio,
+  Icon
 } from './components'
 
 export {
@@ -17,5 +18,6 @@ export {
   FormField,
   Card,
   LinearProgress,
-  Radio
+  Radio,
+  Icon
 }

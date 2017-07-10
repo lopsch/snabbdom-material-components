@@ -14,4 +14,6 @@ export const STYLE_SWITCHES_FAB = {
 
 export const BTN_CLASS = 'mdc-button'
 
-export const FAB_CLASS = ['mdc-fab', 'material-icons']
+export const FAB_CLASS = 'mdc-fab'
+
+export const ICON_CLASS = 'mdc-fab__icon'

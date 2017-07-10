@@ -55,6 +55,7 @@
     "@material/button": "*",
     "@material/card": "*",
     "@material/checkbox": "*",
+    "@material/dialog": "*",
     "@material/fab": "*",
     "@material/form-field": "*",
     "@material/linear-progress": "*",
