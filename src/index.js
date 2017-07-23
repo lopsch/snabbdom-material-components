@@ -7,7 +7,8 @@ import {
   Card,
   LinearProgress,
   Radio,
-  Icon
+  Icon,
+  Dialog
 } from './components'
 
 export {
@@ -19,5 +20,6 @@ export {
   Card,
   LinearProgress,
   Radio,
-  Icon
+  Icon,
+  Dialog
 }

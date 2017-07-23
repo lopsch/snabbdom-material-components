@@ -6,11 +6,15 @@ import { ACTION_CLASS } from './styles'
 import AbstractButton from '../button/AbstractButton'
 
 export default class Action extends AbstractButton {
+  constructor (_props, _children) {
+    super({ ..._props, compact: true }, _children, STYLE_SWITCHES)
+  }
+
   render () {
     return (
       <button
         {...this.selector}
-        classNames={[BTN_CLASS, STYLE_SWITCHES['compact'], ACTION_CLASS]}
+        classNames={[BTN_CLASS, ACTION_CLASS]}
         class={this.classes}
         hook={this.hooks}
         on={this.ons}

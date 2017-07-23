@@ -5,6 +5,7 @@ import { FormField } from './form-field'
 import Card from './card'
 import LinearProgress from './linear-progress'
 import Radio from './radio'
+import Dialog from './dialog'
 
 export {
   Checkbox,
@@ -15,5 +16,6 @@ export {
   Card,
   LinearProgress,
   Radio,
-  Icon
+  Icon,
+  Dialog
 }
