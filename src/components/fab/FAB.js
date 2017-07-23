@@ -20,7 +20,7 @@ export default class FAB extends AbstractButton {
         classNames={FAB_CLASS}
         class={this.classes}
         hook={this.hooks}
-        on={this.onClick}
+        on={this.ons}
         {...this.name}
         attrs={{ ...this.ariaLabel }}
         {...this.props}>

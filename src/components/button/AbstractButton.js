@@ -8,7 +8,8 @@ export default class AbstractButton extends MaterialComponent {
     const { name, onClick, ...otherProps } = this.props
     this.name = this.utils.makeKeyValue('name', name)
     this.hooks = this.utils.makeHooks(ButtonAdapter)
-    this.onClick = typeof onClick === 'function' ? { click: onClick } : {}
+    this.ons = {}
+    if (typeof onClick === 'function') this.ons['click'] = onClick
     this.props = otherProps
   }
 }

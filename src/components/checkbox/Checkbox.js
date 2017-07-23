@@ -17,11 +17,13 @@ export default class Checkbox extends MaterialComponent {
   constructor (_props, _children) {
     super(_props, _children, STYLE_SWITCHES)
 
-    const { name, value, onChange, ...otherProps } = this.props
+    const { name, value, onChange, onClick, ...otherProps } = this.props
     this.name = this.utils.makeKeyValue('name', name)
     this.value = this.utils.makeKeyValue('value', value)
     this.hooks = this.utils.makeHooks(CheckboxAdapter)
-    this.onChange = typeof onChange === 'function' ? { change: onChange } : {}
+    this.ons = {}
+    if (typeof onChange === 'function') this.ons['change'] = onChange
+    if (typeof onClick === 'function') this.ons['click'] = onClick
     this.props = otherProps
   }
 
@@ -35,7 +37,7 @@ export default class Checkbox extends MaterialComponent {
         <input
           {...this.selector}
           classNames={CB_NC_CLASS}
-          on={this.onChange}
+          on={this.ons}
           type='checkbox'
           {...this.value}
           {...this.name}

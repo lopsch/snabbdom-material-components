@@ -20,7 +20,7 @@ export default class LinkButton extends AbstractButton {
         classNames={BTN_CLASS}
         class={this.classes}
         hook={this.hooks}
-        on={this.onClick}
+        on={this.ons}
         {...this.name}
         {...this.href}
         {...this.props}>
