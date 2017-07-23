@@ -1,19 +1,16 @@
 /* eslint-disable no-unused-vars */
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
-import { STYLE_SWITCHES, BTN_CLASS } from './styles'
-import AbstractButton from './AbstractButton'
+import { BTN_CLASS, STYLE_SWITCHES } from '../button/styles'
+import { ACTION_CLASS } from './styles'
+import AbstractButton from '../button/AbstractButton'
 
-export default class Button extends AbstractButton {
-  constructor (_props, _children) {
-    super(_props, _children, STYLE_SWITCHES)
-  }
-
+export default class Action extends AbstractButton {
   render () {
     return (
       <button
         {...this.selector}
-        classNames={BTN_CLASS}
+        classNames={[BTN_CLASS, STYLE_SWITCHES['compact'], ACTION_CLASS]}
         class={this.classes}
         hook={this.hooks}
         on={this.onClick}

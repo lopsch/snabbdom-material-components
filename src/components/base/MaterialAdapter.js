@@ -1,7 +1,7 @@
 export default class MaterialAdapter {
-  constructor (sel, component) {
-    this.sel = sel
-    this.component = component
+  constructor (_sel, _component) {
+    this.sel = _sel
+    this.component = _component
 
     if (process.env.NODE_ENV !== 'production') {
       console.info(this.sel, '-> init()')

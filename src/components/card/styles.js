@@ -27,3 +27,5 @@ export const ST_CLASS = 'mdc-card__supporting-text'
 export const TITLE_CLASS = 'mdc-card__title'
 
 export const ACTIONS_CLASS = 'mdc-card__actions'
+
+export const ACTION_CLASS = 'mdc-card__action'

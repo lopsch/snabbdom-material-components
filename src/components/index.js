@@ -1,5 +1,6 @@
 import Checkbox from './checkbox'
-import { Button, LinkButton, FloatingActionButton, Icon } from './button'
+import { Button, LinkButton } from './button'
+import { FAB, Icon } from './fab'
 import { FormField } from './form-field'
 import Card from './card'
 import LinearProgress from './linear-progress'
@@ -9,7 +10,7 @@ export {
   Checkbox,
   Button,
   LinkButton,
-  FloatingActionButton,
+  FAB,
   FormField,
   Card,
   LinearProgress,

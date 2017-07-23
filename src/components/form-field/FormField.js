@@ -10,7 +10,7 @@ export default class FormField extends MaterialComponent {
 
     const { forId, label, ...otherProps } = this.props
     this.forId = this.utils.makeKeyValue('for', forId)
-    this.label = label && label !== '' ? ` ${label}` : ''
+    this.label = label ? ` ${label}` : ''
     this.props = otherProps
   }
 

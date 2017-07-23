@@ -75,29 +75,26 @@ export function makeHooks (Adapter) {
 }
 
 export function makeSelector (id) {
-  return id && id !== '' ? { selector: `#${id}` } : {}
+  return id ? { selector: `#${id}` } : {}
 }
 
 export function makeKeyValue (key, value) {
-  return value && value !== '' ? { [key]: value } : {}
+  return value ? { [key]: value } : {}
 }
 
 export class PropsNormalizer {
-  constructor (props, switches) {
-    props = props || {}
-    switches = switches || {}
+  constructor (_props, _switches) {
+    const props = _props || {}
+    const switches = _switches || {}
 
-    const fromClassNames =
-      props && props['classNames']
-        ? this._classes(this._fromClassNames([props['classNames']]))
-        : {}
-    const fromStyle =
-      props && props['style']
-        ? this._classes(this._fromClassNames([css(props['style'])]))
-        : {}
-    const fromProps = props && props['class'] ? props['class'] : {}
-    const fromSwitches =
-      switches && props ? this._fromSwitches(switches, props) : {}
+    const fromClassNames = props['classNames']
+      ? this._classes(this._fromClassNames([props['classNames']]))
+      : {}
+    const fromStyle = props['style']
+      ? this._classes(this._fromClassNames([css(props['style'])]))
+      : {}
+    const fromProps = props['class'] ? props['class'] : {}
+    const fromSwitches = this._fromSwitches(switches, props)
 
     const _allClasses = [fromClassNames, fromStyle, fromProps, fromSwitches]
     this.extractedClasses = {}

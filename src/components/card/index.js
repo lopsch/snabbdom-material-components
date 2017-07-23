@@ -1,5 +1,6 @@
 import _Card from './Card'
 import Actions from './Actions'
+import Action from './Action'
 import SupportingText from './SupportingText'
 import Primary from './Primary'
 import HorizontalBlock from './HorizontalBlock'
@@ -15,6 +16,7 @@ const Card = {
   Subtitle: Subtitle,
   Title: Title,
   Actions: Actions,
+  Action: Action,
   HorizontalBlock: HorizontalBlock,
   Media: Media,
   MediaItem: MediaItem
