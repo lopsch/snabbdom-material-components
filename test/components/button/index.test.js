@@ -13,7 +13,9 @@ import propsModule from 'snabbdom/modules/props'
 import attrsModule from 'snabbdom/modules/attributes'
 import styleModule from 'snabbdom/modules/style'
 import datasetModule from 'snabbdom/modules/dataset'
+import eventlistenersModule from 'snabbdom/modules/eventlisteners'
 import { Button, LinkButton } from '../../../src'
+console.info = function () {}
 
 chai.use(assertarrays)
 chai.use(asserttype)
@@ -23,13 +25,11 @@ const modules = [
   propsModule,
   attrsModule,
   styleModule,
-  datasetModule
+  datasetModule,
+  eventlistenersModule
 ]
 
 const patch = init(modules)
-
-// mdc-ripple-upgraded
-// html-looks-like
 
 beforeEach(() => {
   const dom = new JSDOM(`
@@ -61,9 +61,11 @@ afterEach(() => {
 
 describe('Button()', () => {
   it("should build an 'mdc-button'", () => {
+    const fn = function () {}
     const props = {
       key: 'button',
       id: 'id',
+      name: 'name',
       raised: true,
       dense: true,
       compact: true,
@@ -72,7 +74,8 @@ describe('Button()', () => {
       disabled: true,
       style: { 'margin-top': '50px' },
       classNames: ['class1', ['class2'], 'class3 class4'],
-      class: { red: true }
+      class: { red: true },
+      onClick: fn
     }
     const _props = {
       class: {
@@ -94,7 +97,11 @@ describe('Button()', () => {
         compact: true,
         primary: true,
         accent: true,
-        disabled: true
+        disabled: true,
+        name: 'name'
+      },
+      on: {
+        click: fn
       }
     }
 
@@ -106,10 +113,35 @@ describe('Button()', () => {
     expect(vnode.children[0]).to.deep.equal({ text: 'button' })
     expect(vnode.data.props).to.deep.equal(_props.props)
     expect(vnode.data.class).to.deep.equal(_props.class)
+    expect(vnode.data.on).to.deep.equal(_props.on)
     expect(vnode.data.hook.insert).to.be.function()
+    expect(vnode.data.hook.destroy).to.be.function()
+    expect(vnode.data.hook.postpatch).to.be.function()
 
     const container = document.getElementById('container')
     patch(container, vnode)
+    let button = document.getElementById('id')
+    let text = button.textContent || button.innerText
+    let classList = button.classList
+    let classes = [
+      'class1',
+      'class2',
+      'class3',
+      'class4',
+      'mdc-button--raised',
+      'mdc-button--dense',
+      'mdc-button--compact',
+      'mdc-button--primary',
+      'mdc-button--accent',
+      'red',
+      'mdc-button',
+      'f1cotxbe'
+    ]
+    classes.forEach(clazz => expect(classList.contains(clazz)).to.equal(true))
+    expect(button.id).to.equal('id')
+    expect(button.name).to.equal('name')
+    expect(button.disabled).to.equal(true)
+    expect(text).to.equal('button')
 
     const updatedProps = {
       ...props,
@@ -119,6 +151,27 @@ describe('Button()', () => {
     const updatedChild = 'button updated'
     const updatedVnode = new Button(updatedProps, updatedChild).render()
     patch(vnode, updatedVnode)
+    button = document.getElementById('id')
+    text = button.textContent || button.innerText
+    classList = button.classList
+    classes = [
+      'class1',
+      'class2',
+      'class3',
+      'class4',
+      'mdc-button--raised',
+      'mdc-button--dense',
+      'mdc-button--compact',
+      'mdc-button--primary',
+      'red',
+      'mdc-button',
+      'f1cotxbe'
+    ]
+    classes.forEach(clazz => expect(classList.contains(clazz)).to.equal(true))
+    expect(button.id).to.equal('id')
+    expect(button.name).to.equal('name')
+    expect(button.disabled).to.equal(false)
+    expect(text).to.equal('button updated')
 
     const emptyVnode = {
       sel: undefined,
@@ -127,6 +180,21 @@ describe('Button()', () => {
       text: undefined
     }
     patch(vnode, emptyVnode)
+    button = document.getElementById('id')
+    expect(button).to.equal(null)
+  })
+
+  it('should handle click events', done => {
+    const fn = function () {
+      done()
+    }
+    const props = { id: 'id', onClick: fn }
+    const child = 'button'
+    const vnode = new Button(props, child).render()
+    const container = document.getElementById('container')
+    patch(container, vnode)
+    const button = document.getElementById('id')
+    button.click()
   })
 })
 

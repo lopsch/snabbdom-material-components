@@ -86,7 +86,7 @@ describe('uuid()', () => {
   })
 })
 
-describe('makeInsertHook()', () => {
+describe('makeHooks()', () => {
   it("should make hook 'object'", () => {
     const MyAdapter = class MyAdapter extends MaterialAdapter {
       constructor ({ sel }) {
