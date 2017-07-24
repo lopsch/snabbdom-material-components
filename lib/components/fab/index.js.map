@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/components/fab/index.js"],"names":["FAB","Icon"],"mappings":";;;;;;;AAAA;;;;AACA;;;;;;QAESA,G;QAAKC,I","file":"index.js","sourcesContent":["import FAB from './FAB'\nimport Icon from './Icon'\n\nexport { FAB, Icon }\n"]}

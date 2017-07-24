@@ -70,7 +70,6 @@ describe('Button()', () => {
       primary: true,
       accent: true,
       disabled: true,
-      action: true,
       style: { 'margin-top': '50px' },
       classNames: ['class1', ['class2'], 'class3 class4'],
       class: { red: true }
@@ -86,7 +85,6 @@ describe('Button()', () => {
         'mdc-button--compact': true,
         'mdc-button--primary': true,
         'mdc-button--accent': true,
-        'mdc-card__action': true,
         red: true,
         f1cotxbe: true // first typestyle id
       },
@@ -96,8 +94,7 @@ describe('Button()', () => {
         compact: true,
         primary: true,
         accent: true,
-        disabled: true,
-        action: true
+        disabled: true
       }
     }
 
@@ -144,7 +141,6 @@ describe('LinkButton()', () => {
       compact: true,
       primary: true,
       accent: true,
-      action: true,
       style: { 'margin-top': '50px' },
       classNames: ['class1', ['class2'], 'class3 class4'],
       class: { red: true }
@@ -160,7 +156,6 @@ describe('LinkButton()', () => {
         'mdc-button--compact': true,
         'mdc-button--primary': true,
         'mdc-button--accent': true,
-        'mdc-card__action': true,
         red: true,
         f1cotxbe: true // first typestyle id
       },
@@ -170,7 +165,6 @@ describe('LinkButton()', () => {
         compact: true,
         primary: true,
         accent: true,
-        action: true,
         href: 'http://www.google.de'
       }
     }
