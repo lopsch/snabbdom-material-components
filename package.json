@@ -1,6 +1,6 @@
 {
   "name": "snabbdom-material-components",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Daniel Lopes <lopsch@googlemail.com>",
   "description": "Material Components for the web for Snabbdom Virtual DOM",
   "main": "lib/index.js",
