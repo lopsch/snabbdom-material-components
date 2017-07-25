@@ -1,4 +1,4 @@
-import ButtonAdapter from './ButtonAdapter'
+import RippleDecorator from '../ripple'
 import { MaterialComponent } from '../base'
 
 export default class AbstractButton extends MaterialComponent {
@@ -7,7 +7,7 @@ export default class AbstractButton extends MaterialComponent {
 
     const { name, onClick, ...otherProps } = this.props
     this.name = this.utils.makeKeyValue('name', name)
-    this.hooks = this.utils.makeHooks(ButtonAdapter)
+    this.hooks = this.utils.makeHooks(RippleDecorator)
     this.ons = {}
     if (typeof onClick === 'function') this.ons['click'] = onClick
     this.props = otherProps

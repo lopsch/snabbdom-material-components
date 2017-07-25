@@ -60,6 +60,7 @@
     "@material/form-field": "*",
     "@material/linear-progress": "*",
     "@material/radio": "*",
+    "@material/switch": "*",
     "snabbdom-jsx-pragma": "*",
     "typestyle": "*"
   },
