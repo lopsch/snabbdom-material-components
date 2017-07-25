@@ -10,20 +10,15 @@ import {
   RADIO_INNER
 } from './styles'
 import RadioAdapter from './RadioAdapter'
-import { MaterialComponent } from '../base'
+import InputComponent from '../input/InputComponent'
 
-export default class Radio extends MaterialComponent {
+export default class Radio extends InputComponent {
   constructor (_props, _children) {
     super(_props, _children, STYLE_SWITCHES)
+  }
 
-    const { name, value, onChange, onClick, ...otherProps } = this.props
-    this.name = this.utils.makeKeyValue('name', name)
-    this.value = this.utils.makeKeyValue('value', value)
-    this.hooks = this.utils.makeHooks(RadioAdapter)
-    this.ons = {}
-    if (typeof onChange === 'function') this.ons['change'] = onChange
-    if (typeof onClick === 'function') this.ons['click'] = onClick
-    this.props = otherProps
+  _makeHooks () {
+    return this.utils.makeHooks(RadioAdapter)
   }
 
   render () {

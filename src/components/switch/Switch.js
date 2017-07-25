@@ -9,22 +9,20 @@ import {
   SW_KNOB_CLASS,
   SW_LABEL_CLASS
 } from './styles'
-import { MaterialComponent } from '../base'
+import InputComponent from '../input/InputComponent'
 
-export default class Switch extends MaterialComponent {
+export default class Switch extends InputComponent {
   constructor (_props, _children) {
     super(_props, _children, STYLE_SWITCHES)
 
-    const { name, value, label, onChange, onClick, ...otherProps } = this.props
-    this.name = this.utils.makeKeyValue('name', name)
-    this.value = this.utils.makeKeyValue('value', value)
-    this.hooks = {}
-    this.ons = {}
-    if (typeof onChange === 'function') this.ons['change'] = onChange
-    if (typeof onClick === 'function') this.ons['click'] = onClick
+    const { label, ...otherProps } = this.props
     this.forId = this.utils.makeKeyValue('for', this.id)
     this.label = label ? ` ${label}` : ''
     this.props = otherProps
+  }
+
+  _makeHooks () {
+    return {}
   }
 
   render () {

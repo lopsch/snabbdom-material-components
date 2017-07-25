@@ -11,20 +11,15 @@ import {
   CB_CMP_CLASS
 } from './styles'
 import CheckboxAdapter from './CheckboxAdapter'
-import { MaterialComponent } from '../base'
+import InputComponent from '../input/InputComponent'
 
-export default class Checkbox extends MaterialComponent {
+export default class Checkbox extends InputComponent {
   constructor (_props, _children) {
     super(_props, _children, STYLE_SWITCHES)
+  }
 
-    const { name, value, onChange, onClick, ...otherProps } = this.props
-    this.name = this.utils.makeKeyValue('name', name)
-    this.value = this.utils.makeKeyValue('value', value)
-    this.hooks = this.utils.makeHooks(CheckboxAdapter)
-    this.ons = {}
-    if (typeof onChange === 'function') this.ons['change'] = onChange
-    if (typeof onClick === 'function') this.ons['click'] = onClick
-    this.props = otherProps
+  _makeHooks () {
+    return this.utils.makeHooks(CheckboxAdapter)
   }
 
   render () {
