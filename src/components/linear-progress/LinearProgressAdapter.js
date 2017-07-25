@@ -1,4 +1,4 @@
-import { MDCLinearProgress } from '@material/linear-progress/dist/mdc.linearProgress'
+import { MDCLinearProgress } from '@material/linear-progress/dist/mdc.linearProgress.min'
 import { MaterialAdapter } from '../base'
 
 export default class LinearProgressAdapter extends MaterialAdapter {

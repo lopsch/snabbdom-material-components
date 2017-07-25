@@ -1,4 +1,4 @@
-import { MDCRipple } from '@material/ripple/dist/mdc.ripple'
+import { MDCRipple } from '@material/ripple/dist/mdc.ripple.min'
 import { delayInit } from '../../utils'
 import { MaterialAdapter } from '../base'
 

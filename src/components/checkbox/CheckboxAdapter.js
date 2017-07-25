@@ -1,4 +1,4 @@
-import { MDCCheckbox } from '@material/checkbox/dist/mdc.checkbox'
+import { MDCCheckbox } from '@material/checkbox/dist/mdc.checkbox.min'
 import { FormFieldDecorator } from '../form-field'
 
 export default class CheckboxAdapter extends FormFieldDecorator {

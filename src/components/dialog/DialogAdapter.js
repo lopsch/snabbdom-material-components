@@ -1,4 +1,4 @@
-import { MDCDialog } from '@material/dialog/dist/mdc.dialog'
+import { MDCDialog } from '@material/dialog/dist/mdc.dialog.min'
 import { MaterialAdapter } from '../base'
 
 export default class DialogAdapter extends MaterialAdapter {

@@ -1,4 +1,4 @@
-import { MDCFormField } from '@material/form-field/dist/mdc.formField'
+import { MDCFormField } from '@material/form-field/dist/mdc.formField.min'
 import { FF_CLASS } from './styles'
 import { MaterialAdapter } from '../base'
 

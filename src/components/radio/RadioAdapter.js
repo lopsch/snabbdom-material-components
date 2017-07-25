@@ -1,4 +1,4 @@
-import { MDCRadio } from '@material/radio/dist/mdc.radio'
+import { MDCRadio } from '@material/radio/dist/mdc.radio.min'
 import { FormFieldDecorator } from '../form-field'
 
 export default class RadioAdapter extends FormFieldDecorator {
