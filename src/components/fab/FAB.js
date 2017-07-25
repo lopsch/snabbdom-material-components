@@ -1,31 +1,20 @@
-/* eslint-disable no-unused-vars */
-import html from 'snabbdom-jsx-pragma'
-/* eslint-enable no-unused-vars */
 import { STYLE_SWITCHES, FAB_CLASS } from './styles'
-import AbstractButton from '../button/AbstractButton'
+import ButtonComponent from '../button/ButtonComponent'
 
-export default class FAB extends AbstractButton {
+export default class FAB extends ButtonComponent {
   constructor (_props, _children) {
     super(_props, _children, STYLE_SWITCHES)
-
-    const { ariaLabel, ...otherProps } = this.props
-    this.ariaLabel = this.utils.makeKeyValue('aria-label', ariaLabel)
-    this.props = otherProps
   }
 
-  render () {
-    return (
-      <button
-        {...this.selector}
-        classNames={FAB_CLASS}
-        class={this.classes}
-        hook={this.hooks}
-        on={this.ons}
-        {...this.name}
-        attrs={{ ...this.ariaLabel }}
-        {...this.props}>
-        {this.children}
-      </button>
-    )
+  _makeClassNames () {
+    return FAB_CLASS
+  }
+
+  _makeAttrs (props) {
+    const { ariaLabel, ...remainingProps } = props
+    return {
+      attrs: this.utils.makeKeyValue('aria-label', ariaLabel),
+      remainingProps
+    }
   }
 }

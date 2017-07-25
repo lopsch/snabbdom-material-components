@@ -13,6 +13,7 @@ export default class MaterialComponent extends SnabbdomComponent {
       this.switches
     ).normalized
 
+    this.id = id
     this.props = props
     this.classes = classes
     this.selector = this.utils.makeSelector(id)

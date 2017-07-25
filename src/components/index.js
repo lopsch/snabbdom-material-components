@@ -6,6 +6,7 @@ import Card from './card'
 import LinearProgress from './linear-progress'
 import Radio from './radio'
 import Dialog from './dialog'
+import Switch from './switch'
 
 export {
   Checkbox,
@@ -17,5 +18,6 @@ export {
   LinearProgress,
   Radio,
   Icon,
-  Dialog
+  Dialog,
+  Switch
 }
