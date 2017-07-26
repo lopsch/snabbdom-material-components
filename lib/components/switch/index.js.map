@@ -1,1 +1,1 @@
-{"version":3,"sources":["../../../src/components/switch/index.js"],"names":[],"mappings":";;;;;;AAAA","file":"index.js","sourcesContent":["import Switch from './Switch'\n\nexport default Switch\n"]}
+{"version":3,"sources":["../../../src/components/switch/index.js"],"names":[],"mappings":"oEAAA,yE","file":"index.js","sourcesContent":["import Switch from './Switch'\n\nexport default Switch\n"]}
