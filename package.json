@@ -63,7 +63,7 @@
     "@material/linear-progress": "0.1.5",
     "@material/radio": "0.2.8",
     "@material/switch": "0.1.10",
-    "snabbdom-jsx-pragma": "*",
+    "snabbdom-jsx-pragma": "0.1.3",
     "typestyle": "1.3.7"
   },
   "scripts": {
