@@ -7,6 +7,7 @@ import LinearProgress from './linear-progress'
 import Radio from './radio'
 import Dialog from './dialog'
 import Switch from './switch'
+import Slider from './slider'
 
 export {
   Checkbox,
@@ -19,5 +20,6 @@ export {
   Radio,
   Icon,
   Dialog,
-  Switch
+  Switch,
+  Slider
 }

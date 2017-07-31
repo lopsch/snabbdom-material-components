@@ -11,9 +11,9 @@ export default class FAB extends ButtonComponent {
   }
 
   _makeAttrs (props) {
-    const { ariaLabel, ...remainingProps } = props
+    const { label, ...remainingProps } = props
     return {
-      attrs: this.utils.makeKeyValue('aria-label', ariaLabel),
+      attrs: this.utils.makeKeyValue('aria-label', label),
       remainingProps
     }
   }

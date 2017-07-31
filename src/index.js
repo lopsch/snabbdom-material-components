@@ -9,7 +9,8 @@ import {
   Radio,
   Icon,
   Dialog,
-  Switch
+  Switch,
+  Slider
 } from './components'
 
 export {
@@ -23,5 +24,6 @@ export {
   Radio,
   Icon,
   Dialog,
-  Switch
+  Switch,
+  Slider
 }

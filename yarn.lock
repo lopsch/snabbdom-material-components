@@ -104,6 +104,15 @@
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/@material/rtl/-/rtl-0.1.7.tgz#b38b771af183bcf34d643f600f17fc433698535a"
 
+"@material/slider@0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@material/slider/-/slider-0.2.1.tgz#c7dc6e5a88f4366bbed41ba45e555c7d07903f63"
+  dependencies:
+    "@material/animation" "^0.3.0"
+    "@material/base" "^0.2.3"
+    "@material/rtl" "^0.1.7"
+    "@material/theme" "^0.1.6"
+
 "@material/switch@0.1.10":
   version "0.1.10"
   resolved "https://registry.yarnpkg.com/@material/switch/-/switch-0.1.10.tgz#1d61520bf1c839c7a554433e57420ca5b2d5b03a"
