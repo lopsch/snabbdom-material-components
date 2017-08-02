@@ -2,27 +2,26 @@
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import {
-  STYLE_SWITCHES,
   SW_CLASS,
   SW_NC_CLASS,
   SW_BG_CLASS,
   SW_KNOB_CLASS,
   SW_LABEL_CLASS
 } from './styles'
-import InputComponent from '../input/InputComponent'
+import SwitchAdapter from './SwitchAdapter'
+import InputComponent from '../input'
 
 export default class Switch extends InputComponent {
-  constructor (_props, _children) {
-    super(_props, _children, STYLE_SWITCHES)
+  constructor (props_, children_) {
+    super(props_, children_)
 
+    this.hooks = this.utils.makeHooks(SwitchAdapter)
+    this.classNames = SW_NC_CLASS
+    this.type = 'checkbox'
     const { label, ...otherProps } = this.props
-    this.forId = this.utils.makeKeyValue('for', this.id)
     this.label = label ? ` ${label}` : ''
+    this.attrs = this.utils.makeKeyValue('for', this.id)
     this.props = otherProps
-  }
-
-  _makeHooks () {
-    return {}
   }
 
   render () {
@@ -33,20 +32,12 @@ export default class Switch extends InputComponent {
           class={this.classes}
           hook={this.hooks}
           {...this.props}>
-          <input
-            {...this.selector}
-            classNames={SW_NC_CLASS}
-            on={this.ons}
-            type='checkbox'
-            {...this.value}
-            {...this.name}
-            disabled={!!this.props.disabled}
-            checked={!!this.props.checked} />
+          {this.input}
           <div classNames={SW_BG_CLASS}>
             <div classNames={SW_KNOB_CLASS} />
           </div>
         </div>
-        <label classNames={SW_LABEL_CLASS} attrs={{ ...this.forId }}>
+        <label classNames={SW_LABEL_CLASS} attrs={this.attrs}>
           {this.label}
         </label>
       </div>

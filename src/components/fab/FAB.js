@@ -1,20 +1,14 @@
 import { STYLE_SWITCHES, FAB_CLASS } from './styles'
-import ButtonComponent from '../button/ButtonComponent'
+import { ButtonAdapter, ButtonComponent } from '../button'
 
 export default class FAB extends ButtonComponent {
-  constructor (_props, _children) {
-    super(_props, _children, STYLE_SWITCHES)
-  }
+  constructor (props_, children_) {
+    super(props_, children_, STYLE_SWITCHES)
 
-  _makeClassNames () {
-    return FAB_CLASS
-  }
-
-  _makeAttrs (props) {
-    const { label, ...remainingProps } = props
-    return {
-      attrs: this.utils.makeKeyValue('aria-label', label),
-      remainingProps
-    }
+    const { label, ...otherProps } = this.props
+    this.hooks = this.utils.makeHooks(ButtonAdapter)
+    this.classNames = FAB_CLASS
+    this.attrs = this.utils.makeKeyValue('aria-label', label)
+    this.props = otherProps
   }
 }

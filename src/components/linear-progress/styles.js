@@ -1,8 +1,4 @@
-export const STYLE_SWITCHES = {
-  indeterminate: 'mdc-linear-progress--indeterminate',
-  reversed: 'mdc-linear-progress--reversed',
-  accent: 'mdc-linear-progress--accent'
-}
+export const STYLE_SWITCHES = { accent: 'mdc-linear-progress--accent' }
 
 export const LP_CLASS = 'mdc-linear-progress'
 

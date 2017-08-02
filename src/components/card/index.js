@@ -1,4 +1,4 @@
-import _Card from './Card'
+import Card_ from './Card'
 import Actions from './Actions'
 import Action from './Action'
 import SupportingText from './SupportingText'
@@ -10,7 +10,7 @@ import Subtitle from './Subtitle'
 import Title from './Title'
 
 const Card = {
-  Card: _Card,
+  Card: Card_,
   SupportingText: SupportingText,
   Primary: Primary,
   Subtitle: Subtitle,

@@ -6,34 +6,21 @@ export default class DialogAdapter extends MaterialAdapter {
     super(sel, new MDCDialog(elm))
     this.dialog = this.component
 
-    this._update = (oldVnode, vnode) => {
-      this._updateProps(vnode.data.props)
+    this.update_ = (oldVnode, vnode) => {
+      this.updateProps_(vnode.data.props)
     }
 
-    this._updateShow = props => {
-      this._callUpdate(props, 'show')
-    }
+    this.updateProps_ = props => {
+      const show = props && typeof props.show === 'boolean' && props.show
+      const open = this.dialog.open
 
-    this._updateHide = props => {
-      this._callUpdate(props, 'close')
-    }
-
-    this._updateProps = props => {
-      this._updateShow(props)
-      this._updateHide(props)
-    }
-
-    this._callUpdate = (props, prop) => {
-      if (
-        props &&
-        props[prop] &&
-        typeof props[prop] === 'boolean' &&
-        typeof this.dialog[prop] === 'function'
-      ) {
-        this.dialog[prop]()
+      if (show && !open) {
+        this.dialog.show()
+      } else if (!show && open) {
+        this.dialog.close()
       }
     }
 
-    this._updateProps(data.props)
+    this.updateProps_(data.props)
   }
 }

@@ -1,7 +1,7 @@
 export default class MaterialAdapter {
-  constructor (_sel, _component) {
-    this.sel = _sel
-    this.component = _component
+  constructor (sel_, component_) {
+    this.sel = sel_
+    this.component = component_
 
     if (process.env.NODE_ENV !== 'production') {
       console.info(this.sel, '-> init()')
@@ -22,9 +22,9 @@ export default class MaterialAdapter {
         console.info(this.sel, '-> update()')
       }
 
-      this._update(oldVnode, vnode)
+      this.update_(oldVnode, vnode)
     }
 
-    this._update = (oldVnode, vnode) => {}
+    this.update_ = (oldVnode, vnode) => {}
   }
 }

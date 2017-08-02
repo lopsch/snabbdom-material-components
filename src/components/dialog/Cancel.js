@@ -1,7 +1,7 @@
 import Action from './Action'
 
 export default class Cancel extends Action {
-  constructor (_props, _children) {
-    super({ ..._props, cancel: true }, _children)
+  constructor (props_, children_) {
+    super({ ...props_, cancel: true }, children_)
   }
 }

@@ -5,8 +5,8 @@ import { STLYE_SWITCHES_ACTIONS, ACTIONS_CLASS } from './styles'
 import { MaterialComponent } from '../base'
 
 export default class Actions extends MaterialComponent {
-  constructor (_props, _children) {
-    super(_props, _children, STLYE_SWITCHES_ACTIONS)
+  constructor (props_, children_) {
+    super(props_, children_, STLYE_SWITCHES_ACTIONS)
   }
 
   render () {

@@ -1,5 +1,3 @@
-export const STYLE_SWITCHES = { disabled: 'mdc-checkbox--disabled' }
-
 export const CB_CLASS = 'mdc-checkbox'
 
 export const CB_NC_CLASS = 'mdc-checkbox__native-control'

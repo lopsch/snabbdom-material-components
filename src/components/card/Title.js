@@ -5,8 +5,8 @@ import { STYLE_SWITCHES_TITLE, TITLE_CLASS } from './styles'
 import { MaterialComponent } from '../base'
 
 export default class Title extends MaterialComponent {
-  constructor (_props, _children) {
-    super(_props, _children, STYLE_SWITCHES_TITLE)
+  constructor (props_, children_) {
+    super(props_, children_, STYLE_SWITCHES_TITLE)
   }
 
   render () {

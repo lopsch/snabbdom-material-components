@@ -6,13 +6,16 @@ import DialogAdapter from './DialogAdapter'
 import { MaterialComponent } from '../base'
 
 export default class Dialog extends MaterialComponent {
-  constructor (_props, _children) {
-    super(_props, _children)
+  constructor (props_, children_) {
+    super(props_, children_)
 
     const { labeledBy, describedBy, ...otherProps } = this.props
     this.hooks = this.utils.makeHooks(DialogAdapter)
-    this.labeledBy = this.utils.makeKeyValue('aria-labelledby', labeledBy)
-    this.describedBy = this.utils.makeKeyValue('aria-describedby', describedBy)
+    this.attrs = {
+      role: 'alertdialog',
+      ...this.utils.makeKeyValue('aria-labelledby', labeledBy),
+      ...this.utils.makeKeyValue('aria-describedby', describedBy)
+    }
     this.props = otherProps
   }
 
@@ -23,7 +26,7 @@ export default class Dialog extends MaterialComponent {
         classNames={DIALOG_CLASS}
         class={this.classes}
         hook={this.hooks}
-        attrs={{ role: 'alertdialog', ...this.labeledBy, ...this.describedBy }}
+        attrs={this.attrs}
         {...this.props}>
         <div classNames={SURFACE_CLASS}>
           {this.children}

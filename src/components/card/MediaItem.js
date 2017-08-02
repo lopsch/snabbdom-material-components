@@ -5,8 +5,8 @@ import { MEDIA_ITEM_CLASS, STYLE_SWITCHES_MEDIA_ITEM } from './styles'
 import { MaterialComponent } from '../base'
 
 export default class MediaItem extends MaterialComponent {
-  constructor (_props, _children) {
-    super(_props, _children, STYLE_SWITCHES_MEDIA_ITEM)
+  constructor (props_, children_) {
+    super(props_, children_, STYLE_SWITCHES_MEDIA_ITEM)
 
     const { src, ...otherProps } = this.props
     this.src = this.utils.makeKeyValue('src', src)

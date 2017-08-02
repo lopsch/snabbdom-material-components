@@ -1,4 +1,4 @@
-import _Dialog from './Dialog'
+import Dialog_ from './Dialog'
 import Accept from './Accept'
 import Body from './Body'
 import Cancel from './Cancel'
@@ -7,7 +7,7 @@ import Header from './Header'
 import Title from './Title'
 
 const Dialog = {
-  Dialog: _Dialog,
+  Dialog: Dialog_,
   Accept: Accept,
   Body: Body,
   Cancel: Cancel,

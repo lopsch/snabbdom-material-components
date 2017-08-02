@@ -1,4 +1,4 @@
-export const STYLE_SWITCHES = { disabled: 'mdc-switch--disabled' }
+export const SW_DISABLED = 'mdc-switch--disabled'
 
 export const SW_CLASS = 'mdc-switch'
 

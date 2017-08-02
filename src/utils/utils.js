@@ -21,11 +21,11 @@ export function delayInit (elm, callback, delay = 100) {
 }
 
 export function uuid () {
-  return _uuid()
+  return uuid_()
 }
 
 /* eslint-disable operator-linebreak */
-function _uuid (
+function uuid_ (
   a // placeholder
 ) {
   return a // if the placeholder was passed, return
@@ -44,7 +44,7 @@ function _uuid (
       .replace(
         // replacing
         /[018]/g, // zeroes, ones, and eights with
-        _uuid // random hex digits
+        uuid_ // random hex digits
       )
 }
 
@@ -83,27 +83,27 @@ export function makeKeyValue (key, value) {
 }
 
 export class PropsNormalizer {
-  constructor (_props, _switches) {
-    const props = _props || {}
-    const switches = _switches || {}
+  constructor (props_, switches_) {
+    const props = props_ || {}
+    const switches = switches_ || {}
 
     const fromClassNames = props['classNames']
-      ? this._classes(this._fromClassNames([props['classNames']]))
+      ? this.classes_(this.fromClassNames_([props['classNames']]))
       : {}
     const fromStyle = props['style']
-      ? this._classes(this._fromClassNames([css(props['style'])]))
+      ? this.classes_(this.fromClassNames_([css(props['style'])]))
       : {}
     const fromProps = props['class'] ? props['class'] : {}
-    const fromSwitches = this._fromSwitches(switches, props)
+    const fromSwitches = this.fromSwitches_(switches, props)
 
-    const _allClasses = [fromClassNames, fromStyle, fromProps, fromSwitches]
+    const allClasses_ = [fromClassNames, fromStyle, fromProps, fromSwitches]
     this.extractedClasses = {}
 
-    for (let i = 0; i < _allClasses.length; i++) {
-      const _classes = _allClasses[i]
+    for (let i = 0; i < allClasses_.length; i++) {
+      const classes_ = allClasses_[i]
 
-      for (let _class in _classes) {
-        this.extractedClasses[_class] = _classes[_class]
+      for (let class_ in classes_) {
+        this.extractedClasses[class_] = classes_[class_]
       }
     }
 
@@ -117,17 +117,17 @@ export class PropsNormalizer {
     return { classes: this.extractedClasses, props: this.normalizedProps }
   }
 
-  _fromSwitches (switches, props) {
+  fromSwitches_ (switches, props) {
     const map = {}
 
-    for (let _switch in switches) {
-      map[switches[_switch]] = !!props[_switch]
+    for (let switch_ in switches) {
+      map[switches[switch_]] = !!props[switch_]
     }
 
     return map
   }
 
-  _classes (classes) {
+  classes_ (classes) {
     const map = {}
 
     for (let i = 0; i < classes.length; i++) {
@@ -137,7 +137,7 @@ export class PropsNormalizer {
     return map
   }
 
-  _fromClassNames (classNames) {
+  fromClassNames_ (classNames) {
     return tryFlatten(
       tryFlatten(classNames).map(className =>
         className.replace(/\s+/g, '_§§§_').split('_§§§_')

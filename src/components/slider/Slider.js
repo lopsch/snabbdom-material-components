@@ -17,26 +17,14 @@ import SliderAdapter from './SliderAdapter'
 import { MaterialComponent } from '../base'
 
 export default class Slider extends MaterialComponent {
-  constructor (_props, _children) {
-    super({ ..._props, tabindex: '0' }, _children, STYLE_SWITCHES)
+  constructor (props_, children_) {
+    super({ ...props_, tabindex: '0' }, children_, STYLE_SWITCHES)
 
-    const {
-      valueMin,
-      valueMax,
-      valueNow,
-      label,
-      step,
-      ...otherProps
-    } = this.props
+    const { label, ...otherProps } = this.props
     this.attrs = {
       role: 'slider',
-      ...this.utils.makeKeyValue('aria-label', label),
-      ...this.utils.makeKeyValue('aria-valuemin', label),
-      ...this.utils.makeKeyValue('aria-valuemax', label),
-      ...this.utils.makeKeyValue('aria-valuenow', label),
-      ...this.utils.makeKeyValue('aria-disabled', label)
+      ...this.utils.makeKeyValue('aria-labelledby', label)
     }
-    this.dataset = { ...this.utils.makeKeyValue('step', step) }
     this.hooks = this.utils.makeHooks(SliderAdapter)
     this.props = otherProps
   }
@@ -49,19 +37,12 @@ export default class Slider extends MaterialComponent {
         class={this.classes}
         hook={this.hooks}
         attrs={this.attrs}
-        dataset={this.dataset}
-        {...this.props}
-        aria-valuemin='0'
-        aria-valuemax='100'
-        aria-valuenow='0'
-        aria-label='Select Value'
-        aria-disabled='true'
-        data-step='2'>
+        {...this.props}>
         <div classNames={TRACK_CNT_CLASS}>
           <div classNames={TRACK_CLASS} />
-          {!!this.props.markers &&
-            !!this.props.discrete &&
-            <div classNames={TRACK_MARKER_CLASS} />}
+          {!!this.props.markers && !!this.props.discrete
+            ? <div classNames={TRACK_MARKER_CLASS} />
+            : []}
         </div>
         <div classNames={THUMB_CNT_CLASS}>
           <div classNames={PIN_CLASS}>

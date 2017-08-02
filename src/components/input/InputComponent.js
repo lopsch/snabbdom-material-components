@@ -1,20 +1,29 @@
+/* eslint-disable no-unused-vars */
+import html from 'snabbdom-jsx-pragma'
+/* eslint-enable no-unused-vars */
 import { MaterialComponent } from '../base'
 
 export default class InputComponent extends MaterialComponent {
-  constructor (_props, _children, _switches) {
-    super(_props, _children, _switches)
+  constructor (props_, children_, switches_) {
+    super(props_, children_, switches_)
 
-    const { name, value, onChange, onClick, ...otherProps } = this.props
+    const { name, onChange, onClick, ...otherProps } = this.props
     this.name = this.utils.makeKeyValue('name', name)
-    this.value = this.utils.makeKeyValue('value', value)
-    this.hooks = this._makeHooks()
+    this.hooks = {}
     this.ons = {}
-    if (typeof onChange === 'function') this.ons['change'] = onChange
-    if (typeof onClick === 'function') this.ons['click'] = onClick
+    if (typeof onChange === 'function') this.ons.change = onChange
+    if (typeof onClick === 'function') this.ons.click = onClick
     this.props = otherProps
   }
 
-  _makeHooks () {
-    return {}
+  get input () {
+    return (
+      <input
+        {...this.selector}
+        classNames={this.classNames}
+        on={this.ons}
+        type={this.type}
+        {...this.name} />
+    )
   }
 }

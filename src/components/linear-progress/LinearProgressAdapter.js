@@ -6,30 +6,51 @@ export default class LinearProgressAdapter extends MaterialAdapter {
     super(sel, new MDCLinearProgress(elm))
     this.linearProgress = this.component
 
-    this._update = (oldVnode, vnode) => {
-      this._updateProps(vnode.data.props)
+    this.update_ = (oldVnode, vnode) => {
+      this.updateProps_(vnode.data.props)
     }
 
-    this._updateBuffer = props => {
-      this._callUpdate(props, 'buffer')
+    this.updateBuffer_ = props => {
+      this.updateNumber_(props, 'buffer')
     }
 
-    this._updateProgress = props => {
-      this._callUpdate(props, 'progress')
+    this.updateProgress_ = props => {
+      this.updateNumber_(props, 'progress')
     }
 
-    this._updateProps = props => {
-      this._updateBuffer(props)
-      this._updateProgress(props)
+    this.updateReverse_ = props => {
+      this.updateBoolean_(props, 'reverse')
     }
 
-    this._callUpdate = (props, prop) => {
-      if (props && typeof props[prop] === 'number') {
-        this[prop] = props[prop]
-        this.linearProgress[prop] = this[prop]
+    this.updateDeterminate_ = props => {
+      this.updateBoolean_(props, 'determinate')
+    }
+
+    this.updateBoolean_ = (props, prop) => {
+      const wanted = props && typeof props[prop] === 'boolean' && props[prop]
+      const active = this.linearProgress.foundation_[`${prop}_`]
+      if (wanted !== active) {
+        this.linearProgress[prop] = wanted
       }
     }
 
-    this._updateProps(data.props)
+    this.updateNumber_ = (props, prop) => {
+      if (
+        props &&
+        typeof props[prop] === 'number' &&
+        props[prop] !== this.linearProgress[prop]
+      ) {
+        this.linearProgress[prop] = props[prop]
+      }
+    }
+
+    this.updateProps_ = props => {
+      this.updateBuffer_(props)
+      this.updateProgress_(props)
+      this.updateReverse_(props)
+      this.updateDeterminate_(props)
+    }
+
+    this.updateProps_(data.props)
   }
 }

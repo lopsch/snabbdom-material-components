@@ -5,12 +5,12 @@ import { FF_CLASS } from './styles'
 import { MaterialComponent } from '../base'
 
 export default class FormField extends MaterialComponent {
-  constructor (_props, _children) {
-    super(_props, _children)
+  constructor (props_, children_) {
+    super(props_, children_)
 
     const { forId, label, ...otherProps } = this.props
-    this.forId = this.utils.makeKeyValue('for', forId)
     this.label = label ? ` ${label}` : ''
+    this.attrs = this.utils.makeKeyValue('for', forId)
     this.props = otherProps
   }
 
@@ -22,7 +22,7 @@ export default class FormField extends MaterialComponent {
         class={this.classes}
         {...this.props}>
         {this.children}
-        <label attrs={{ ...this.forId }}>
+        <label attrs={this.attrs}>
           {this.label}
         </label>
       </div>

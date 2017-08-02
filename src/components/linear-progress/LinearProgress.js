@@ -15,17 +15,18 @@ import { MaterialComponent } from '../base'
 import LinearProgressAdapter from './LinearProgressAdapter'
 
 export default class LinearProgress extends MaterialComponent {
-  constructor (_props, _children) {
-    super(_props, _children, STYLE_SWITCHES)
+  constructor (props_, children_) {
+    super(props_, children_, STYLE_SWITCHES)
 
     this.hooks = this.utils.makeHooks(LinearProgressAdapter)
+    this.attrs = { role: 'progressbar' }
   }
 
   render () {
     return (
       <div
         {...this.selector}
-        attrs={{ role: 'progressbar' }}
+        attrs={this.attrs}
         classNames={LP_CLASS}
         class={this.classes}
         hook={this.hooks}

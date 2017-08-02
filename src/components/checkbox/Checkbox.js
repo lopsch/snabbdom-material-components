@@ -2,7 +2,6 @@
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import {
-  STYLE_SWITCHES,
   CB_CLASS,
   CB_NC_CLASS,
   CB_BG_CLASS,
@@ -11,15 +10,15 @@ import {
   CB_CMP_CLASS
 } from './styles'
 import CheckboxAdapter from './CheckboxAdapter'
-import InputComponent from '../input/InputComponent'
+import InputComponent from '../input'
 
 export default class Checkbox extends InputComponent {
-  constructor (_props, _children) {
-    super(_props, _children, STYLE_SWITCHES)
-  }
+  constructor (props_, children_) {
+    super(props_, children_)
 
-  _makeHooks () {
-    return this.utils.makeHooks(CheckboxAdapter)
+    this.hooks = this.utils.makeHooks(CheckboxAdapter)
+    this.classNames = CB_NC_CLASS
+    this.type = 'checkbox'
   }
 
   render () {
@@ -29,16 +28,7 @@ export default class Checkbox extends InputComponent {
         class={this.classes}
         hook={this.hooks}
         {...this.props}>
-        <input
-          {...this.selector}
-          classNames={CB_NC_CLASS}
-          on={this.ons}
-          type='checkbox'
-          {...this.value}
-          {...this.name}
-          disabled={!!this.props.disabled}
-          checked={!!this.props.checked}
-          indeterminate={!!this.props.indeterminate} />
+        {this.input}
         <div classNames={CB_BG_CLASS}>
           <svg classNames={CB_CM_CLASS} viewBox='0 0 24 24'>
             <path

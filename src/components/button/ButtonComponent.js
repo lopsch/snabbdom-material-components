@@ -1,35 +1,20 @@
 /* eslint-disable no-unused-vars */
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
-import RippleDecorator from '../ripple'
 import { MaterialComponent } from '../base'
-import { BTN_CLASS } from './styles'
 
 export default class ButtonComponent extends MaterialComponent {
-  constructor (_props, _children, _switches) {
-    super(_props, _children, _switches)
+  constructor (props_, children_, switches_) {
+    super(props_, children_, switches_)
 
     const { name, onClick, ...otherProps } = this.props
     this.name = this.utils.makeKeyValue('name', name)
-    this.hooks = this._makeHooks()
+    this.hooks = {}
+    this.attrs = {}
+    this.classNames = []
     this.ons = {}
-    if (typeof onClick === 'function') this.ons['click'] = onClick
-    this.classNames = this._makeClassNames()
-    const { attrs, remainingProps } = this._makeAttrs(otherProps)
-    this.attrs = attrs
-    this.props = remainingProps
-  }
-
-  _makeHooks () {
-    return this.utils.makeHooks(RippleDecorator)
-  }
-
-  _makeClassNames () {
-    return BTN_CLASS
-  }
-
-  _makeAttrs (props) {
-    return { attrs: {}, remainingProps: props }
+    if (typeof onClick === 'function') this.ons.click = onClick
+    this.props = otherProps
   }
 
   render () {

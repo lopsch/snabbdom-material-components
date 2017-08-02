@@ -5,8 +5,8 @@ import { STYLE_SWITCHES_BODY, BODY_CLASS } from './styles'
 import { MaterialComponent } from '../base'
 
 export default class Body extends MaterialComponent {
-  constructor (_props, _children) {
-    super(_props, _children, STYLE_SWITCHES_BODY)
+  constructor (props_, children_) {
+    super(props_, children_, STYLE_SWITCHES_BODY)
   }
 
   render () {
