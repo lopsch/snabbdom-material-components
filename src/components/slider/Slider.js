@@ -18,15 +18,19 @@ import { MaterialComponent } from '../base'
 
 export default class Slider extends MaterialComponent {
   constructor (props_, children_) {
-    super({ ...props_, tabindex: '0' }, children_, STYLE_SWITCHES)
+    super(props_, children_, STYLE_SWITCHES)
 
-    const { label, ...otherProps } = this.props
+    const { label, onChange, onInput, ...otherProps } = this.props
     this.attrs = {
       role: 'slider',
+      tabindex: '0',
       ...this.utils.makeKeyValue('aria-labelledby', label)
     }
     this.hooks = this.utils.makeHooks(SliderAdapter)
     this.props = otherProps
+    this.ons = {}
+    if (typeof onChange === 'function') this.ons['MDCSlider:change'] = onChange
+    if (typeof onInput === 'function') this.ons['MDCSlider:input'] = onInput
   }
 
   render () {
@@ -36,6 +40,7 @@ export default class Slider extends MaterialComponent {
         classNames={SLIDER_CLASS}
         class={this.classes}
         hook={this.hooks}
+        on={this.ons}
         attrs={this.attrs}
         {...this.props}>
         <div classNames={TRACK_CNT_CLASS}>

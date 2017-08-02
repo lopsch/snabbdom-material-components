@@ -41,9 +41,9 @@ export default class SliderAdapter extends MaterialAdapter {
     }
 
     this.updateBoolean_ = (props, prop) => {
-      const wanted = props && typeof props[prop] === 'boolean' && props[prop]
+      const wanted = props && props[prop]
       const active = this.slider[prop]
-      if (wanted !== active) {
+      if (typeof wanted === 'boolean' && wanted !== active) {
         this.slider[prop] = wanted
       }
     }
@@ -67,5 +67,8 @@ export default class SliderAdapter extends MaterialAdapter {
     }
 
     this.updateProps_(data.props)
+    window.setTimeout(() => {
+      this.slider.layout()
+    }, 0)
   }
 }

@@ -30,9 +30,9 @@ export default class RadioAdapter extends MaterialAdapter {
     }
 
     this.updateBoolean_ = (props, prop) => {
-      const wanted = props && typeof props[prop] === 'boolean' && props[prop]
+      const wanted = props && props[prop]
       const active = this.radio[prop]
-      if (wanted !== active) {
+      if (typeof wanted === 'boolean' && wanted !== active) {
         this.radio[prop] = wanted
       }
     }

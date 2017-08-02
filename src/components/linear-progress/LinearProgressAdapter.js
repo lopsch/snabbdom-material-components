@@ -27,9 +27,9 @@ export default class LinearProgressAdapter extends MaterialAdapter {
     }
 
     this.updateBoolean_ = (props, prop) => {
-      const wanted = props && typeof props[prop] === 'boolean' && props[prop]
+      const wanted = props && props[prop]
       const active = this.linearProgress.foundation_[`${prop}_`]
-      if (wanted !== active) {
+      if (typeof wanted === 'boolean' && wanted !== active) {
         this.linearProgress[prop] = wanted
       }
     }

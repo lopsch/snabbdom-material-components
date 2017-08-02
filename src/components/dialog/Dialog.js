@@ -9,8 +9,17 @@ export default class Dialog extends MaterialComponent {
   constructor (props_, children_) {
     super(props_, children_)
 
-    const { labeledBy, describedBy, ...otherProps } = this.props
+    const {
+      labeledBy,
+      describedBy,
+      onAccept,
+      onCancel,
+      ...otherProps
+    } = this.props
     this.hooks = this.utils.makeHooks(DialogAdapter)
+    this.ons = {}
+    if (typeof onAccept === 'function') this.ons['MDCDialog:accept'] = onAccept
+    if (typeof onCancel === 'function') this.ons['MDCDialog:cancel'] = onCancel
     this.attrs = {
       role: 'alertdialog',
       ...this.utils.makeKeyValue('aria-labelledby', labeledBy),
@@ -26,6 +35,7 @@ export default class Dialog extends MaterialComponent {
         classNames={DIALOG_CLASS}
         class={this.classes}
         hook={this.hooks}
+        on={this.ons}
         attrs={this.attrs}
         {...this.props}>
         <div classNames={SURFACE_CLASS}>

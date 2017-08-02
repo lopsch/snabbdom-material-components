@@ -34,9 +34,9 @@ export default class CheckboxAdapter extends MaterialAdapter {
     }
 
     this.updateBoolean_ = (props, prop) => {
-      const wanted = props && typeof props[prop] === 'boolean' && props[prop]
+      const wanted = props && props[prop]
       const active = this.checkbox[prop]
-      if (wanted !== active) {
+      if (typeof wanted === 'boolean' && wanted !== active) {
         this.checkbox[prop] = wanted
       }
     }

@@ -28,9 +28,9 @@ export default class SwitchAdapter extends MaterialAdapter {
     }
 
     this.updateBoolean_ = (props, prop) => {
-      const wanted = props && typeof props[prop] === 'boolean' && props[prop]
+      const wanted = props && props[prop]
       const active = this.switch[prop]
-      if (wanted !== active) {
+      if (typeof wanted === 'boolean' && wanted !== active) {
         this.switch[prop] = wanted
       }
     }
