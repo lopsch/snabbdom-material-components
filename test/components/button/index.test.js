@@ -200,10 +200,11 @@ describe('Button()', () => {
 
 describe('LinkButton()', () => {
   it("should build an 'mdc-button'", () => {
+    const fn = function () {}
     const props = {
       key: 'linkbutton',
       id: 'id',
-      href: 'http://www.google.de',
+      href: 'http://www.google.de/',
       raised: true,
       dense: true,
       compact: true,
@@ -211,7 +212,8 @@ describe('LinkButton()', () => {
       accent: true,
       style: { 'margin-top': '50px' },
       classNames: ['class1', ['class2'], 'class3 class4'],
-      class: { red: true }
+      class: { red: true },
+      onClick: fn
     }
     const _props = {
       class: {
@@ -233,30 +235,76 @@ describe('LinkButton()', () => {
         compact: true,
         primary: true,
         accent: true,
-        href: 'http://www.google.de'
+        href: 'http://www.google.de/'
+      },
+      on: {
+        click: fn
       }
     }
-    const child = 'http://www.google.de'
+    const child = 'http://www.google.de/'
     const vnode = new LinkButton(props, child).render()
 
     expect(vnode.key).to.equal('linkbutton')
     expect(vnode.sel).to.equal('a#id.mdc-button')
-    expect(vnode.children[0]).to.deep.equal({ text: 'http://www.google.de' })
+    expect(vnode.children[0]).to.deep.equal({ text: 'http://www.google.de/' })
     expect(vnode.data.props).to.deep.equal(_props.props)
     expect(vnode.data.class).to.deep.equal(_props.class)
     expect(vnode.data.hook.insert).to.be.function()
+    expect(vnode.data.hook.destroy).to.be.function()
+    expect(vnode.data.hook.postpatch).to.be.function()
 
     const container = document.getElementById('container')
     patch(container, vnode)
+    let button = document.getElementById('id')
+    let text = button.textContent || button.innerText
+    let classList = button.classList
+    let classes = [
+      'class1',
+      'class2',
+      'class3',
+      'class4',
+      'mdc-button--raised',
+      'mdc-button--dense',
+      'mdc-button--compact',
+      'mdc-button--primary',
+      'mdc-button--accent',
+      'red',
+      'mdc-button',
+      'f1cotxbe'
+    ]
+    classes.forEach(clazz => expect(classList.contains(clazz)).to.equal(true))
+    expect(button.id).to.equal('id')
+    expect(button.href).to.equal('http://www.google.de/')
+    expect(text).to.equal('http://www.google.de/')
 
     const updatedProps = {
       ...props,
-      accent: false
-      // href: 'http://www.google.com'
+      accent: false,
+      href: 'http://www.google.com/'
     }
-    const updatedChild = 'http://www.google.com'
+    const updatedChild = 'http://www.google.com/'
     const updatedVnode = new LinkButton(updatedProps, updatedChild).render()
     patch(vnode, updatedVnode)
+    button = document.getElementById('id')
+    text = button.textContent || button.innerText
+    classList = button.classList
+    classes = [
+      'class1',
+      'class2',
+      'class3',
+      'class4',
+      'mdc-button--raised',
+      'mdc-button--dense',
+      'mdc-button--compact',
+      'mdc-button--primary',
+      'red',
+      'mdc-button',
+      'f1cotxbe'
+    ]
+    classes.forEach(clazz => expect(classList.contains(clazz)).to.equal(true))
+    expect(button.id).to.equal('id')
+    expect(button.href).to.equal('http://www.google.com/')
+    expect(text).to.equal('http://www.google.com/')
 
     const emptyVnode = {
       sel: undefined,
@@ -265,5 +313,20 @@ describe('LinkButton()', () => {
       text: undefined
     }
     patch(vnode, emptyVnode)
+    button = document.getElementById('id')
+    expect(button).to.equal(null)
+  })
+
+  it('should handle click events', done => {
+    const fn = function () {
+      done()
+    }
+    const props = { id: 'id', onClick: fn }
+    const child = 'http://www.google.de/'
+    const vnode = new LinkButton(props, child).render()
+    const container = document.getElementById('container')
+    patch(container, vnode)
+    const button = document.getElementById('id')
+    button.click()
   })
 })

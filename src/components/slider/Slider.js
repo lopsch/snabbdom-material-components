@@ -20,11 +20,11 @@ export default class Slider extends MaterialComponent {
   constructor (props_, children_) {
     super(props_, children_, STYLE_SWITCHES)
 
-    const { label, onChange, onInput, ...otherProps } = this.props
+    const { labelBy, onChange, tabIndex, onInput, ...otherProps } = this.props
     this.attrs = {
       role: 'slider',
-      tabindex: '0',
-      ...this.utils.makeKeyValue('aria-labelledby', label)
+      ...this.utils.makeKeyValue('tabindex', tabIndex),
+      ...this.utils.makeKeyValue('aria-labelledby', labelBy)
     }
     this.hooks = this.utils.makeHooks(SliderAdapter)
     this.props = otherProps

@@ -23,7 +23,12 @@ export default class LinearProgressAdapter extends MaterialAdapter {
     }
 
     this.updateDeterminate_ = props => {
-      this.updateBoolean_(props, 'determinate')
+      const wanted = props && props.determinate
+      if (wanted === undefined || (typeof wanted === 'boolean' && !wanted)) {
+        this.linearProgress.determinate = false
+      } else {
+        this.updateBoolean_(props, 'determinate')
+      }
     }
 
     this.updateBoolean_ = (props, prop) => {
