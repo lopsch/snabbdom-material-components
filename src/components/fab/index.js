@@ -1,4 +1,11 @@
-import FAB from './FAB'
-import Icon from './Icon'
+import FAB_ from './FAB'
+import MaterialIcon from './MaterialIcon'
+import FontAwesomeIcon from './FontAwesomeIcon'
 
-export { FAB, Icon }
+const FAB = {
+  FAB: FAB_,
+  MaterialIcon: MaterialIcon,
+  FontAwesomeIcon: FontAwesomeIcon
+}
+
+export default FAB

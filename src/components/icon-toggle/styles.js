@@ -3,6 +3,8 @@ export const STYLE_SWITCHES = {
   accent: 'mdc-icon-toggle--accent'
 }
 
-export const MAT_ICON_CLASS = ['mdc-icon-toggle', 'material-icons']
+export const ICON_CLASS = 'mdc-icon-toggle'
 
-export const OTHER_ICON_CLASS = 'mdc-icon-toggle'
+export const MAT_ICON_CLASS = [ICON_CLASS, 'material-icons']
+
+export const FA_CLASS = 'fa'

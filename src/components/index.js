@@ -1,6 +1,6 @@
 import Checkbox from './checkbox'
 import { Button, LinkButton } from './button'
-import { FAB, Icon } from './fab'
+import FAB from './fab'
 import { FormField } from './form-field'
 import Card from './card'
 import LinearProgress from './linear-progress'
@@ -19,7 +19,6 @@ export {
   Card,
   LinearProgress,
   Radio,
-  Icon,
   Dialog,
   Switch,
   Slider,
