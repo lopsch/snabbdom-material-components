@@ -76,6 +76,24 @@
     "@material/theme" "^0.1.6"
     "@material/typography" "^0.2.3"
 
+"@material/grid-list@0.2.7":
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/@material/grid-list/-/grid-list-0.2.7.tgz#73da8f84de735bf48640d455299407d3c99f0548"
+  dependencies:
+    "@material/base" "^0.2.3"
+    "@material/rtl" "^0.1.7"
+    "@material/theme" "^0.1.6"
+    "@material/typography" "^0.2.3"
+
+"@material/icon-toggle@0.1.15":
+  version "0.1.15"
+  resolved "https://registry.yarnpkg.com/@material/icon-toggle/-/icon-toggle-0.1.15.tgz#99673aa89916e9acdad68bfe75e79b81664ca097"
+  dependencies:
+    "@material/animation" "^0.3.0"
+    "@material/base" "^0.2.3"
+    "@material/ripple" "^0.8.1"
+    "@material/theme" "^0.1.6"
+
 "@material/linear-progress@0.1.5":
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/@material/linear-progress/-/linear-progress-0.1.5.tgz#5356f000dacc384bdaac0db46edf2f5a37e49c58"

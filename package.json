@@ -60,6 +60,8 @@
     "@material/dialog": "0.3.4",
     "@material/fab": "0.3.12",
     "@material/form-field": "0.2.10",
+    "@material/grid-list": "0.2.7",
+    "@material/icon-toggle": "0.1.15",
     "@material/linear-progress": "0.1.5",
     "@material/radio": "0.2.8",
     "@material/slider": "0.2.1",

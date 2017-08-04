@@ -8,6 +8,7 @@ import Radio from './radio'
 import Dialog from './dialog'
 import Switch from './switch'
 import Slider from './slider'
+import IconToggle from './icon-toggle'
 
 export {
   Checkbox,
@@ -21,5 +22,6 @@ export {
   Icon,
   Dialog,
   Switch,
-  Slider
+  Slider,
+  IconToggle
 }

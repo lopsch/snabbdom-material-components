@@ -10,7 +10,8 @@ import {
   Icon,
   Dialog,
   Switch,
-  Slider
+  Slider,
+  IconToggle
 } from './components'
 
 export {
@@ -25,5 +26,6 @@ export {
   Icon,
   Dialog,
   Switch,
-  Slider
+  Slider,
+  IconToggle
 }
