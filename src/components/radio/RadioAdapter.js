@@ -1,12 +1,10 @@
 import { MDCRadio } from '@material/radio/dist/mdc.radio.min'
 import { SMCAdapter } from '../base'
-import { FormFieldDecorator } from '../form-field'
 
 export default class RadioAdapter extends SMCAdapter {
   constructor ({ sel, elm, data }) {
     super(sel, new MDCRadio(elm))
     this.radio = this.component
-    this.formField = new FormFieldDecorator(elm, this.radio)
 
     this.update_ = (oldVnode, vnode) => {
       this.updateProps_(vnode.data.props)

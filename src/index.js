@@ -1,7 +1,7 @@
 import {
   Checkbox,
   Button,
-  FAB,
+  Fab,
   FormField,
   Card,
   LinearProgress,
@@ -15,7 +15,7 @@ import {
 export {
   Checkbox,
   Button,
-  FAB,
+  Fab,
   FormField,
   Card,
   LinearProgress,

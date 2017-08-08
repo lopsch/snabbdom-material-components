@@ -56,7 +56,7 @@ export function makeHooks (Adapter) {
     vnode.data.material = material
   }
 
-  hooks.postpatch = function postpatch (oldVnode, vnode) {
+  hooks.update = function update (oldVnode, vnode) {
     vnode.data.material = oldVnode.data.material
     callHook(vnode.data.material.update, ...arguments)
   }

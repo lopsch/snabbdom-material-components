@@ -1,12 +1,10 @@
 import { MDCCheckbox } from '@material/checkbox/dist/mdc.checkbox.min'
 import { SMCAdapter } from '../base'
-import { FormFieldDecorator } from '../form-field'
 
 export default class CheckboxAdapter extends SMCAdapter {
   constructor ({ sel, elm, data }) {
     super(sel, new MDCCheckbox(elm))
     this.checkbox = this.component
-    this.formField = new FormFieldDecorator(elm, this.checkbox)
 
     this.update_ = (oldVnode, vnode) => {
       this.updateProps_(vnode.data.props)

@@ -2,7 +2,7 @@
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import {
-  STYLE_SWITCHES,
+  // STYLE_SWITCHES,
   SW_CLASS,
   SW_NC_CLASS,
   SW_BG_CLASS,
@@ -14,7 +14,7 @@ import Input from '../input'
 
 export default class Switch extends Input {
   constructor (props_ = {}, children_ = []) {
-    super(props_, children_, STYLE_SWITCHES)
+    super(props_, children_ /*, STYLE_SWITCHES */)
 
     this.hooks = this.utils.makeHooks(SwitchAdapter)
     const { label, ...otherProps } = this.props

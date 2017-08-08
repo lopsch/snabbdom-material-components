@@ -1,4 +1,4 @@
-export const STYLE_SWITCHES = { accent: 'mdc-switch--accent' }
+// export const STYLE_SWITCHES = { accent: 'mdc-switch--accent' }
 
 export const SW_DISABLED = 'mdc-switch--disabled'
 

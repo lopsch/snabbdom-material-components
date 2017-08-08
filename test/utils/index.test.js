@@ -100,8 +100,6 @@ describe('makeHooks()', () => {
     expect(vnode).with.deep.nested
       .property('data.hook.destroy')
       .to.be.function()
-    expect(vnode).with.deep.nested
-      .property('data.hook.postpatch')
-      .to.be.function()
+    expect(vnode).with.deep.nested.property('data.hook.update').to.be.function()
   })
 })

@@ -98,7 +98,8 @@ describe('Button()', () => {
         primary: true,
         accent: true,
         disabled: true,
-        name: 'name'
+        name: 'name',
+        id_: 'id'
       },
       on: {
         click: fn
@@ -116,7 +117,7 @@ describe('Button()', () => {
     expect(vnode.data.on).to.deep.equal(_props.on)
     expect(vnode.data.hook.insert).to.be.function()
     expect(vnode.data.hook.destroy).to.be.function()
-    expect(vnode.data.hook.postpatch).to.be.function()
+    expect(vnode.data.hook.update).to.be.function()
 
     const container = document.getElementById('container')
     patch(container, vnode)
@@ -235,7 +236,8 @@ describe('LinkButton()', () => {
         compact: true,
         primary: true,
         accent: true,
-        href: 'http://www.google.de/'
+        href: 'http://www.google.de/',
+        id_: 'id'
       },
       on: {
         click: fn
@@ -251,7 +253,7 @@ describe('LinkButton()', () => {
     expect(vnode.data.class).to.deep.equal(_props.class)
     expect(vnode.data.hook.insert).to.be.function()
     expect(vnode.data.hook.destroy).to.be.function()
-    expect(vnode.data.hook.postpatch).to.be.function()
+    expect(vnode.data.hook.update).to.be.function()
 
     const container = document.getElementById('container')
     patch(container, vnode)

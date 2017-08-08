@@ -1,7 +1,7 @@
 import { STYLE_SWITCHES, FAB_CLASS } from './styles'
 import Button from '../button'
 
-export default class FAB extends Button {
+export default class Fab extends Button {
   constructor (props_ = {}, children_ = []) {
     super(props_, children_, STYLE_SWITCHES)
   }
