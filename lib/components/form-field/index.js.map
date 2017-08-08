@@ -1,1 +1,1 @@
-{"version":3,"sources":["../../../src/components/form-field/index.js"],"names":["FormField","FormFieldDecorator"],"mappings":"wHAAA,0M,gFAGSA,S,6BAAWC,kB","file":"index.js","sourcesContent":["import FormField from './FormField'\nimport FormFieldDecorator from './FormFieldDecorator'\n\nexport { FormField, FormFieldDecorator }\n"]}
+{"version":3,"sources":["../../../src/components/form-field/index.js"],"names":[],"mappings":"oEAAA,qF","file":"index.js","sourcesContent":["import FormField from './FormField'\n\nexport default FormField\n"]}

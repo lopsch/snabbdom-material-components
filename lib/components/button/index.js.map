@@ -1,1 +1,1 @@
-{"version":3,"sources":["../../../src/components/button/index.js"],"names":["Button","LinkButton"],"mappings":"6GAAA,8J,gFAGSA,M,0BAAQC,U","file":"index.js","sourcesContent":["import Button from './Button'\nimport LinkButton from './LinkButton'\n\nexport { Button, LinkButton }\n"]}
+{"version":3,"sources":["../../../src/components/button/index.js"],"names":[],"mappings":"oEAAA,yE","file":"index.js","sourcesContent":["import Button from './Button'\n\nexport default Button\n"]}
