@@ -2,10 +2,10 @@
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import { STYLE_SWITCHES_BODY, BODY_CLASS } from './styles'
-import { MaterialComponent } from '../base'
+import { SMCComponent } from '../base'
 
-export default class Body extends MaterialComponent {
-  constructor (props_, children_) {
+export default class Body extends SMCComponent {
+  constructor (props_ = {}, children_ = []) {
     super(props_, children_, STYLE_SWITCHES_BODY)
   }
 

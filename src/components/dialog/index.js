@@ -1,16 +1,16 @@
 import Dialog_ from './Dialog'
-import Accept from './Accept'
+import FooterAccept from './FooterAccept'
 import Body from './Body'
-import Cancel from './Cancel'
+import FooterCancel from './FooterCancel'
 import Footer from './Footer'
 import Header from './Header'
 import Title from './Title'
 
 const Dialog = {
   Dialog: Dialog_,
-  Accept: Accept,
+  FooterAccept: FooterAccept,
   Body: Body,
-  Cancel: Cancel,
+  FooterCancel: FooterCancel,
   Footer: Footer,
   Header: Header,
   Title: Title

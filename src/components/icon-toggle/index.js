@@ -1,9 +1,9 @@
-import MaterialIcon from './MaterialIcon'
-import FontAwesomeIcon from './FontAwesomeIcon'
+import Material from './Material'
+import FontAwesome from './FontAwesome'
 
 const IconToggle = {
-  MaterialIcon: MaterialIcon,
-  FontAwesomeIcon: FontAwesomeIcon
+  Material: Material,
+  FontAwesome: FontAwesome
 }
 
 export default IconToggle

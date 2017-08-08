@@ -1,7 +1,7 @@
 import { MDCSlider } from '@material/slider/dist/mdc.slider.min'
-import { MaterialAdapter } from '../base'
+import { SMCAdapter } from '../base'
 
-export default class SliderAdapter extends MaterialAdapter {
+export default class SliderAdapter extends SMCAdapter {
   constructor ({ sel, elm, data }) {
     super(sel, new MDCSlider(elm))
     this.slider = this.component

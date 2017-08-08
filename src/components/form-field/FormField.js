@@ -2,10 +2,10 @@
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import { FF_CLASS } from './styles'
-import { MaterialComponent } from '../base'
+import { SMCComponent } from '../base'
 
-export default class FormField extends MaterialComponent {
-  constructor (props_, children_) {
+export default class FormField extends SMCComponent {
+  constructor (props_ = {}, children_ = []) {
     super(props_, children_)
 
     const { forId, label, ...otherProps } = this.props

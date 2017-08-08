@@ -6,5 +6,3 @@ export const STYLE_SWITCHES = {
 export const ICON_CLASS = 'mdc-icon-toggle'
 
 export const MAT_ICON_CLASS = [ICON_CLASS, 'material-icons']
-
-export const FA_CLASS = 'fa'

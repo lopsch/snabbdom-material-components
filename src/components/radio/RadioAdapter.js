@@ -1,8 +1,8 @@
 import { MDCRadio } from '@material/radio/dist/mdc.radio.min'
-import { MaterialAdapter } from '../base'
+import { SMCAdapter } from '../base'
 import { FormFieldDecorator } from '../form-field'
 
-export default class RadioAdapter extends MaterialAdapter {
+export default class RadioAdapter extends SMCAdapter {
   constructor ({ sel, elm, data }) {
     super(sel, new MDCRadio(elm))
     this.radio = this.component

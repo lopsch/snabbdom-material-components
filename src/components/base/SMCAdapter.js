@@ -1,4 +1,4 @@
-export default class MaterialAdapter {
+export default class SMCAdapter {
   constructor (sel_, component_) {
     this.sel = sel_
     this.component = component_
@@ -15,6 +15,8 @@ export default class MaterialAdapter {
 
         this.component.destroy()
       }
+
+      this.destroy_()
     }
 
     this.update = (oldVnode, vnode) => {
@@ -25,6 +27,7 @@ export default class MaterialAdapter {
       this.update_(oldVnode, vnode)
     }
 
+    this.destroy_ = () => {}
     this.update_ = (oldVnode, vnode) => {}
   }
 }

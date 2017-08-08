@@ -1,19 +1,22 @@
 /* eslint-disable no-unused-vars */
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
-import { MEDIA_CLASS } from './styles'
+import { ICON_CLASS } from './styles'
 import { SMCComponent } from '../base'
+import { FontAwesome as Icon } from '../icon'
 
-export default class Media extends SMCComponent {
+export default class FontAwesome extends SMCComponent {
   render () {
     return (
-      <section
+      <span
         {...this.selector}
-        classNames={MEDIA_CLASS}
+        classNames={ICON_CLASS}
         class={this.classes}
         {...this.props}>
-        {this.children}
-      </section>
+        <Icon>
+          {this.children}
+        </Icon>
+      </span>
     )
   }
 }

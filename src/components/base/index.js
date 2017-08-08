@@ -1,4 +1,4 @@
-import MaterialAdapter from './MaterialAdapter'
-import MaterialComponent from './MaterialComponent'
+import SMCAdapter from './SMCAdapter'
+import SMCComponent from './SMCComponent'
 
-export { MaterialAdapter, MaterialComponent }
+export { SMCAdapter, SMCComponent }

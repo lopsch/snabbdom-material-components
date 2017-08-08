@@ -1,7 +1,7 @@
 import { MDCLinearProgress } from '@material/linear-progress/dist/mdc.linearProgress.min'
-import { MaterialAdapter } from '../base'
+import { SMCAdapter } from '../base'
 
-export default class LinearProgressAdapter extends MaterialAdapter {
+export default class LinearProgressAdapter extends SMCAdapter {
   constructor ({ sel, elm, data }) {
     super(sel, new MDCLinearProgress(elm))
     this.linearProgress = this.component

@@ -2,10 +2,10 @@
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import { STYLE_SWITCHES_TITLE, TITLE_CLASS } from './styles'
-import { MaterialComponent } from '../base'
+import { SMCComponent } from '../base'
 
-export default class Title extends MaterialComponent {
-  constructor (props_, children_) {
+export default class Title extends SMCComponent {
+  constructor (props_ = {}, children_ = []) {
     super(props_, children_, STYLE_SWITCHES_TITLE)
   }
 

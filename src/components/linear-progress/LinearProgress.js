@@ -11,11 +11,11 @@ import {
   SECONDARY_CLASS,
   INNER_CLASS
 } from './styles'
-import { MaterialComponent } from '../base'
+import { SMCComponent } from '../base'
 import LinearProgressAdapter from './LinearProgressAdapter'
 
-export default class LinearProgress extends MaterialComponent {
-  constructor (props_, children_) {
+export default class LinearProgress extends SMCComponent {
+  constructor (props_ = {}, children_ = []) {
     super(props_, children_, STYLE_SWITCHES)
 
     this.hooks = this.utils.makeHooks(LinearProgressAdapter)

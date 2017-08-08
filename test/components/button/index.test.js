@@ -14,7 +14,7 @@ import attrsModule from 'snabbdom/modules/attributes'
 import styleModule from 'snabbdom/modules/style'
 import datasetModule from 'snabbdom/modules/dataset'
 import eventlistenersModule from 'snabbdom/modules/eventlisteners'
-import { Button, LinkButton } from '../../../src'
+import { Button } from '../../../src'
 console.info = function () {}
 
 chai.use(assertarrays)
@@ -242,7 +242,7 @@ describe('LinkButton()', () => {
       }
     }
     const child = 'http://www.google.de/'
-    const vnode = new LinkButton(props, child).render()
+    const vnode = new Button(props, child).render()
 
     expect(vnode.key).to.equal('linkbutton')
     expect(vnode.sel).to.equal('a#id.mdc-button')
@@ -283,7 +283,7 @@ describe('LinkButton()', () => {
       href: 'http://www.google.com/'
     }
     const updatedChild = 'http://www.google.com/'
-    const updatedVnode = new LinkButton(updatedProps, updatedChild).render()
+    const updatedVnode = new Button(updatedProps, updatedChild).render()
     patch(vnode, updatedVnode)
     button = document.getElementById('id')
     text = button.textContent || button.innerText
@@ -323,7 +323,7 @@ describe('LinkButton()', () => {
     }
     const props = { id: 'id', onClick: fn }
     const child = 'http://www.google.de/'
-    const vnode = new LinkButton(props, child).render()
+    const vnode = new Button(props, child).render()
     const container = document.getElementById('container')
     patch(container, vnode)
     const button = document.getElementById('id')

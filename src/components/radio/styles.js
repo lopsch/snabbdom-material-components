@@ -1,3 +1,5 @@
+export const STYLE_SWITCHES = { accent: 'mdc-radio--accent' }
+
 export const RADIO_CLASS = 'mdc-radio'
 
 export const RADIO_NC_CLASS = 'mdc-radio__native-control'

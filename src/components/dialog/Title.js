@@ -2,9 +2,9 @@
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import { TITLE_CLASS } from './styles'
-import { MaterialComponent } from '../base'
+import { SMCComponent } from '../base'
 
-export default class Title extends MaterialComponent {
+export default class Title extends SMCComponent {
   render () {
     return (
       <h2

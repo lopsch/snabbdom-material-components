@@ -1,7 +1,7 @@
 import { SW_NC_CLASS, SW_DISABLED } from './styles'
-import { MaterialAdapter } from '../base'
+import { SMCAdapter } from '../base'
 
-export default class SwitchAdapter extends MaterialAdapter {
+export default class SwitchAdapter extends SMCAdapter {
   constructor ({ sel, elm, data }) {
     super(sel, new MDCSwitch(elm))
     this.switch = this.component
@@ -46,8 +46,8 @@ export default class SwitchAdapter extends MaterialAdapter {
 }
 
 class MDCSwitch {
-  constructor (elm) {
-    this.root = elm
+  constructor (elm_) {
+    this.root = elm_
   }
 
   get checked () {

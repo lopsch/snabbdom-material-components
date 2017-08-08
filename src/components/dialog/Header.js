@@ -2,9 +2,9 @@
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import { HEADER_CLASS } from './styles'
-import { MaterialComponent } from '../base'
+import { SMCComponent } from '../base'
 
-export default class Header extends MaterialComponent {
+export default class Header extends SMCComponent {
   render () {
     return (
       <header

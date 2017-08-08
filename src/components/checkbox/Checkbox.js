@@ -2,6 +2,7 @@
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import {
+  STYLE_SWITCHES,
   CB_CLASS,
   CB_NC_CLASS,
   CB_BG_CLASS,
@@ -10,15 +11,21 @@ import {
   CB_CMP_CLASS
 } from './styles'
 import CheckboxAdapter from './CheckboxAdapter'
-import InputComponent from '../input'
+import Input from '../input'
 
-export default class Checkbox extends InputComponent {
-  constructor (props_, children_) {
-    super(props_, children_)
+export default class Checkbox extends Input {
+  constructor (props_ = {}, children_ = []) {
+    super(props_, children_, STYLE_SWITCHES)
 
     this.hooks = this.utils.makeHooks(CheckboxAdapter)
-    this.classNames = CB_NC_CLASS
-    this.type = 'checkbox'
+  }
+
+  classNames_ () {
+    return CB_NC_CLASS
+  }
+
+  type_ () {
+    return 'checkbox'
   }
 
   render () {

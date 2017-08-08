@@ -1,10 +1,13 @@
+import { STYLE_SWITCHES } from '../button/styles'
+
 export const STYLE_SWITCHES_BODY = {
   scrollable: 'mdc-dialog__body--scrollable'
 }
 
 export const STYLE_SWITCHES_FOOTER_BTN = {
   cancel: 'mdc-dialog__footer__button--cancel',
-  accept: 'mdc-dialog__footer__button--accept'
+  accept: 'mdc-dialog__footer__button--accept',
+  ...STYLE_SWITCHES
 }
 
 export const DIALOG_CLASS = 'mdc-dialog'

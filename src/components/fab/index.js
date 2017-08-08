@@ -1,11 +1,11 @@
 import FAB_ from './FAB'
-import MaterialIcon from './MaterialIcon'
-import FontAwesomeIcon from './FontAwesomeIcon'
+import Material from './Material'
+import FontAwesome from './FontAwesome'
 
 const FAB = {
   FAB: FAB_,
-  MaterialIcon: MaterialIcon,
-  FontAwesomeIcon: FontAwesomeIcon
+  Material: Material,
+  FontAwesome: FontAwesome
 }
 
 export default FAB

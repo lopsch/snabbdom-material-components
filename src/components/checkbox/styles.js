@@ -1,3 +1,5 @@
+export const STYLE_SWITCHES = { accent: 'mdc-checkbox--accent' }
+
 export const CB_CLASS = 'mdc-checkbox'
 
 export const CB_NC_CLASS = 'mdc-checkbox__native-control'

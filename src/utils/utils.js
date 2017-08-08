@@ -1,10 +1,10 @@
 import { style as css } from 'typestyle'
 import { tryFlatten } from 'snabbdom-jsx-pragma'
 
-export function delayInit (elm, callback, delay = 100) {
+export function delayInit (elm, callback, position, delay = 100) {
   let pos = window.getComputedStyle(elm).position
 
-  if (pos === 'relative') {
+  if (pos === position) {
     callback()
   } else {
     let pollId = 0
@@ -12,7 +12,7 @@ export function delayInit (elm, callback, delay = 100) {
     pollId = window.setInterval(function poll () {
       pos = window.getComputedStyle(elm).position
 
-      if (pos === 'relative') {
+      if (pos === position) {
         window.clearInterval(pollId)
         callback()
       }
@@ -83,9 +83,9 @@ export function makeKeyValue (key, value) {
 }
 
 export class PropsNormalizer {
-  constructor (props_, switches_) {
-    const props = props_ || {}
-    const switches = switches_ || {}
+  constructor (props_ = {}, switches_ = {}) {
+    const props = props_
+    const switches = switches_
 
     const fromClassNames = props['classNames']
       ? this.classes_(this.fromClassNames_([props['classNames']]))

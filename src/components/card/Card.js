@@ -2,9 +2,9 @@
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import { CARD_CLASS } from './styles'
-import { MaterialComponent } from '../base'
+import { SMCComponent } from '../base'
 
-export default class Card extends MaterialComponent {
+export default class Card extends SMCComponent {
   render () {
     return (
       <div

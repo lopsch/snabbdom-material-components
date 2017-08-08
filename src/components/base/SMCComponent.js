@@ -1,10 +1,10 @@
 import { SnabbdomComponent } from 'snabbdom-jsx-pragma'
 import * as utils from '../../utils'
 
-export default class MaterialComponent extends SnabbdomComponent {
-  constructor (props_, children_, switches_) {
+export default class SMCComponent extends SnabbdomComponent {
+  constructor (props_ = {}, children_ = [], switches_ = {}) {
     super(props_, children_)
-    this.switches = switches_ || []
+    this.switches = switches_
     this.utils = utils
     const { id, ...otherProps } = this.props
 

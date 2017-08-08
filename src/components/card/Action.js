@@ -1,12 +1,13 @@
-import { BTN_CLASS, STYLE_SWITCHES } from '../button/styles'
+import { BTN_CLASS } from '../button/styles'
 import { ACTION_CLASS } from './styles'
-import { ButtonAdapter, ButtonComponent } from '../button'
+import Button from '../button'
 
-export default class Action extends ButtonComponent {
-  constructor (props_, children_) {
-    super({ ...props_, compact: true }, children_, STYLE_SWITCHES)
+export default class Action extends Button {
+  constructor (props_ = {}, children_ = []) {
+    super({ ...props_, compact: true }, children_)
+  }
 
-    this.hooks = this.utils.makeHooks(ButtonAdapter)
-    this.classNames = [BTN_CLASS, ACTION_CLASS]
+  classNames_ () {
+    return [BTN_CLASS, ACTION_CLASS]
   }
 }

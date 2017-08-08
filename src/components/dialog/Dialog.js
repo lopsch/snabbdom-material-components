@@ -3,14 +3,14 @@ import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import { DIALOG_CLASS, SURFACE_CLASS, BACKDROP_CLASS } from './styles'
 import DialogAdapter from './DialogAdapter'
-import { MaterialComponent } from '../base'
+import { SMCComponent } from '../base'
 
-export default class Dialog extends MaterialComponent {
-  constructor (props_, children_) {
+export default class Dialog extends SMCComponent {
+  constructor (props_ = {}, children_ = []) {
     super(props_, children_)
 
     const {
-      labeledBy,
+      labelledBy,
       describedBy,
       onAccept,
       onCancel,
@@ -22,7 +22,7 @@ export default class Dialog extends MaterialComponent {
     if (typeof onCancel === 'function') this.ons['MDCDialog:cancel'] = onCancel
     this.attrs = {
       role: 'alertdialog',
-      ...this.utils.makeKeyValue('aria-labelledby', labeledBy),
+      ...this.utils.makeKeyValue('aria-labelledby', labelledBy),
       ...this.utils.makeKeyValue('aria-describedby', describedBy)
     }
     this.props = otherProps

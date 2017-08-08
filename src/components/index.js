@@ -1,5 +1,5 @@
 import Checkbox from './checkbox'
-import { Button, LinkButton } from './button'
+import Button from './button'
 import FAB from './fab'
 import { FormField } from './form-field'
 import Card from './card'
@@ -13,7 +13,6 @@ import IconToggle from './icon-toggle'
 export {
   Checkbox,
   Button,
-  LinkButton,
   FAB,
   FormField,
   Card,

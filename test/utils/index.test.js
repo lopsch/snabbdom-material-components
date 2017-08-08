@@ -8,7 +8,7 @@ import {
   uuid,
   makeHooks
 } from '../../src/utils'
-import { MaterialAdapter } from '../../src/components/base'
+import { SMCAdapter } from '../../src/components/base'
 
 chai.use(asserttype)
 
@@ -88,7 +88,7 @@ describe('uuid()', () => {
 
 describe('makeHooks()', () => {
   it("should make hook 'object'", () => {
-    const MyAdapter = class MyAdapter extends MaterialAdapter {
+    const MyAdapter = class MyAdapter extends SMCAdapter {
       constructor ({ sel }) {
         super(sel)
       }

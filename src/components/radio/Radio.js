@@ -2,6 +2,7 @@
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import {
+  STYLE_SWITCHES,
   RADIO_CLASS,
   RADIO_NC_CLASS,
   RADIO_BG_CLASS,
@@ -9,15 +10,21 @@ import {
   RADIO_INNER
 } from './styles'
 import RadioAdapter from './RadioAdapter'
-import InputComponent from '../input'
+import Input from '../input'
 
-export default class Radio extends InputComponent {
-  constructor (props_, children_) {
-    super(props_, children_)
+export default class Radio extends Input {
+  constructor (props_ = {}, children_ = []) {
+    super(props_, children_, STYLE_SWITCHES)
 
     this.hooks = this.utils.makeHooks(RadioAdapter)
-    this.classNames = RADIO_NC_CLASS
-    this.type = 'radio'
+  }
+
+  classNames_ () {
+    return RADIO_NC_CLASS
+  }
+
+  type_ () {
+    return 'radio'
   }
 
   render () {

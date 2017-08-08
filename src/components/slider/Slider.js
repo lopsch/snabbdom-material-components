@@ -14,17 +14,23 @@ import {
   RING_CLASS
 } from './styles'
 import SliderAdapter from './SliderAdapter'
-import { MaterialComponent } from '../base'
+import { SMCComponent } from '../base'
 
-export default class Slider extends MaterialComponent {
-  constructor (props_, children_) {
+export default class Slider extends SMCComponent {
+  constructor (props_ = {}, children_ = []) {
     super(props_, children_, STYLE_SWITCHES)
 
-    const { labelBy, onChange, tabIndex, onInput, ...otherProps } = this.props
+    const {
+      labelledBy,
+      onChange,
+      tabIndex,
+      onInput,
+      ...otherProps
+    } = this.props
     this.attrs = {
       role: 'slider',
       ...this.utils.makeKeyValue('tabindex', tabIndex),
-      ...this.utils.makeKeyValue('aria-labelledby', labelBy)
+      ...this.utils.makeKeyValue('aria-labelledby', labelledBy)
     }
     this.hooks = this.utils.makeHooks(SliderAdapter)
     this.props = otherProps

@@ -2,9 +2,9 @@
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import { PRIMARY_CLASS } from './styles'
-import { MaterialComponent } from '../base'
+import { SMCComponent } from '../base'
 
-export default class Primary extends MaterialComponent {
+export default class Primary extends SMCComponent {
   render () {
     return (
       <section

@@ -2,22 +2,18 @@
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import { MAT_ICON_CLASS } from './styles'
-import IconToggle from './IconToggle'
+import { SMCComponent } from '../base'
 
-export default class MaterialIcon extends IconToggle {
+export default class Material extends SMCComponent {
   render () {
     return (
-      <i
+      <span
         {...this.selector}
         classNames={MAT_ICON_CLASS}
         class={this.classes}
-        hook={this.hooks}
-        on={this.ons}
-        attrs={this.attrs}
-        dataset={this.dataset}
         {...this.props}>
         {this.children}
-      </i>
+      </span>
     )
   }
 }

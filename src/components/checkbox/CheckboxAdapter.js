@@ -1,8 +1,8 @@
 import { MDCCheckbox } from '@material/checkbox/dist/mdc.checkbox.min'
-import { MaterialAdapter } from '../base'
+import { SMCAdapter } from '../base'
 import { FormFieldDecorator } from '../form-field'
 
-export default class CheckboxAdapter extends MaterialAdapter {
+export default class CheckboxAdapter extends SMCAdapter {
   constructor ({ sel, elm, data }) {
     super(sel, new MDCCheckbox(elm))
     this.checkbox = this.component
