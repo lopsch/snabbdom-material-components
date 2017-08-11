@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../src/components/ripple/index.js"],"names":[],"mappings":"oEAAA,6G","file":"index.js","sourcesContent":["import RippleDecorator from './RippleDecorator'\n\nexport default RippleDecorator\n"]}

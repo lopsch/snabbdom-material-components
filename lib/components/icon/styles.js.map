@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../src/components/icon/styles.js"],"names":["FA_CLASS"],"mappings":"oEAAO,GAAMA,2BAAW,IAAjB","file":"styles.js","sourcesContent":["export const FA_CLASS = 'fa'\n"]}

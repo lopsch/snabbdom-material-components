@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../src/components/checkbox/index.js"],"names":[],"mappings":"oEAAA,iF","file":"index.js","sourcesContent":["import Checkbox from './Checkbox'\n\nexport default Checkbox\n"]}

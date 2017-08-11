@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../src/components/base/index.js"],"names":["SMCAdapter","SMCComponent"],"mappings":"mHAAA,sL,gFAGSA,U,8BAAYC,Y","file":"index.js","sourcesContent":["import SMCAdapter from './SMCAdapter'\nimport SMCComponent from './SMCComponent'\n\nexport { SMCAdapter, SMCComponent }\n"]}
