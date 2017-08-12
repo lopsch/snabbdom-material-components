@@ -2,7 +2,7 @@
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import { FOOTER_CLASS } from './styles'
-import { SMCComponent } from '../base'
+import SMCComponent from '../base/SMCComponent'
 
 export default class Footer extends SMCComponent {
   render () {

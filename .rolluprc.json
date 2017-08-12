@@ -1,0 +1,39 @@
+{
+  "babelConfig": {
+    "babelrc": false,
+    "exclude": "node_modules/**",
+    "presets": [
+      "es2015-rollup"
+    ],
+    "plugins": [
+      "syntax-jsx",
+      [
+        "transform-react-jsx",
+        {
+          "pragma": "html"
+        }
+      ],
+      "transform-object-rest-spread"
+    ],
+    "env": {
+      "coverage": {
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    }
+  },
+  "entryConfig": "src/index.js",
+  "externalConfig": [
+    "snabbdom-jsx-pragma",
+    "@material/checkbox",
+    "@material/dialog",
+    "@material/form-field",
+    "@material/icon-toggle",
+    "@material/linear-progress",
+    "@material/radio",
+    "@material/ripple",
+    "@material/slider",
+    "typestyle"
+  ]
+}

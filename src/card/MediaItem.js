@@ -2,7 +2,7 @@
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import { MEDIA_ITEM_CLASS, STYLE_SWITCHES_MEDIA_ITEM } from './styles'
-import { SMCComponent } from '../base'
+import SMCComponent from '../base/SMCComponent'
 
 export default class MediaItem extends SMCComponent {
   constructor (props_ = {}, children_ = []) {

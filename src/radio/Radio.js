@@ -10,7 +10,7 @@ import {
   RADIO_INNER
 } from './styles'
 import RadioAdapter from './RadioAdapter'
-import Input from '../input'
+import Input from '../input/Input'
 
 export default class Radio extends Input {
   constructor (props_ = {}, children_ = []) {

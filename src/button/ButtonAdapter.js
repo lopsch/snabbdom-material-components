@@ -1,5 +1,5 @@
-import { SMCAdapter } from '../base'
-import RippleDecorator from '../ripple'
+import SMCAdapter from '../base/SMCAdapter'
+import RippleDecorator from '../ripple/RippleDecorator'
 
 export default class ButtonAdapter extends SMCAdapter {
   constructor ({ sel, elm, data }) {

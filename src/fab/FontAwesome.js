@@ -2,8 +2,8 @@
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import { ICON_CLASS } from './styles'
-import { SMCComponent } from '../base'
-import { FontAwesome as Icon } from '../icon'
+import SMCComponent from '../base/SMCComponent'
+import Icon from '../icon/FontAwesome'
 
 export default class FontAwesome extends SMCComponent {
   render () {

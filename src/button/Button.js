@@ -3,7 +3,7 @@ import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import { STYLE_SWITCHES, BTN_CLASS } from './styles'
 import ButtonAdapter from './ButtonAdapter'
-import { SMCComponent } from '../base'
+import SMCComponent from '../base/SMCComponent'
 
 export default class Button extends SMCComponent {
   constructor (props_ = {}, children_ = [], switches_ = STYLE_SWITCHES) {

@@ -3,7 +3,7 @@ import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import { ICON_CLASS } from './styles'
 import { FA_CLASS } from '../icon/styles'
-import { FontAwesome as Icon } from '../icon'
+import Icon from '../icon/FontAwesome'
 import IconToggle from './IconToggle'
 
 export default class FontAwesome extends IconToggle {

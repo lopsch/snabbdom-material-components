@@ -1,5 +1,5 @@
-import { MDCRadio } from '@material/radio/dist/mdc.radio.min'
-import { SMCAdapter } from '../base'
+import { MDCRadio } from '@material/radio'
+import SMCAdapter from '../base/SMCAdapter'
 
 export default class RadioAdapter extends SMCAdapter {
   constructor ({ sel, elm, data }) {

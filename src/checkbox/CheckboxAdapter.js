@@ -1,5 +1,5 @@
-import { MDCCheckbox } from '@material/checkbox/dist/mdc.checkbox.min'
-import { SMCAdapter } from '../base'
+import { MDCCheckbox } from '@material/checkbox'
+import SMCAdapter from '../base/SMCAdapter'
 
 export default class CheckboxAdapter extends SMCAdapter {
   constructor ({ sel, elm, data }) {

@@ -1,7 +1,9 @@
 import { STYLE_SWITCHES, FAB_CLASS } from './styles'
-import Button from '../button'
+import Button from '../button/Button'
+import Material from './Material'
+import FontAwesome from './FontAwesome'
 
-export default class Fab extends Button {
+class Fab extends Button {
   constructor (props_ = {}, children_ = []) {
     super(props_, children_, STYLE_SWITCHES)
   }
@@ -20,3 +22,8 @@ export default class Fab extends Button {
     return this.utils.makeKeyValue('aria-label', this.label)
   }
 }
+
+Fab.Material = Material
+Fab.FontAwesome = FontAwesome
+
+export default Fab

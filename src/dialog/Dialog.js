@@ -3,9 +3,15 @@ import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import { DIALOG_CLASS, SURFACE_CLASS, BACKDROP_CLASS } from './styles'
 import DialogAdapter from './DialogAdapter'
-import { SMCComponent } from '../base'
+import SMCComponent from '../base/SMCComponent'
+import FooterAccept from './FooterAccept'
+import Body from './Body'
+import FooterCancel from './FooterCancel'
+import Footer from './Footer'
+import Header from './Header'
+import Title from './Title'
 
-export default class Dialog extends SMCComponent {
+class Dialog extends SMCComponent {
   constructor (props_ = {}, children_ = []) {
     super(props_, children_)
 
@@ -46,3 +52,12 @@ export default class Dialog extends SMCComponent {
     )
   }
 }
+
+Dialog.FooterAccept = FooterAccept
+Dialog.Body = Body
+Dialog.FooterCancel = FooterCancel
+Dialog.Footer = Footer
+Dialog.Header = Header
+Dialog.Title = Title
+
+export default Dialog

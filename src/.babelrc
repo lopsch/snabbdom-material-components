@@ -1,6 +1,7 @@
 {
+  "babelrc": false,
   "presets": [
-    "es2015"
+    "es2015-rollup"
   ],
   "plugins": [
     "syntax-jsx",
@@ -11,5 +12,12 @@
       }
     ],
     "transform-object-rest-spread"
-  ]
+  ],
+  "env": {
+    "coverage": {
+      "plugins": [
+        "istanbul"
+      ]
+    }
+  }
 }

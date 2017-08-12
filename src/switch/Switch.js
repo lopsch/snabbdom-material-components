@@ -10,7 +10,7 @@ import {
   SW_LABEL_CLASS
 } from './styles'
 import SwitchAdapter from './SwitchAdapter'
-import Input from '../input'
+import Input from '../input/Input'
 
 export default class Switch extends Input {
   constructor (props_ = {}, children_ = []) {

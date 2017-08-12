@@ -14,7 +14,7 @@ import {
   RING_CLASS
 } from './styles'
 import SliderAdapter from './SliderAdapter'
-import { SMCComponent } from '../base'
+import SMCComponent from '../base/SMCComponent'
 
 export default class Slider extends SMCComponent {
   constructor (props_ = {}, children_ = []) {

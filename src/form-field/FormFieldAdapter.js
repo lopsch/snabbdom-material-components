@@ -1,5 +1,5 @@
-import { MDCFormField } from '@material/form-field/dist/mdc.formField.min'
-import { SMCAdapter } from '../base'
+import { MDCFormField } from '@material/form-field'
+import SMCAdapter from '../base/SMCAdapter'
 
 export default class FormFieldAdapter extends SMCAdapter {
   constructor ({ sel, elm, children }) {

@@ -1,5 +1,5 @@
 import { SnabbdomComponent } from 'snabbdom-jsx-pragma'
-import * as utils from '../utils'
+import * as utils from '../utils/utils'
 
 export default class SMCComponent extends SnabbdomComponent {
   constructor (props_ = {}, children_ = [], switches_ = {}) {

@@ -1,5 +1,5 @@
 import { SW_NC_CLASS, SW_DISABLED } from './styles'
-import { SMCAdapter } from '../base'
+import SMCAdapter from '../base/SMCAdapter'
 
 export default class SwitchAdapter extends SMCAdapter {
   constructor ({ sel, elm, data }) {

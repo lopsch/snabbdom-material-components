@@ -11,7 +11,7 @@ import {
   CB_CMP_CLASS
 } from './styles'
 import CheckboxAdapter from './CheckboxAdapter'
-import Input from '../input'
+import Input from '../input/Input'
 
 export default class Checkbox extends Input {
   constructor (props_ = {}, children_ = []) {

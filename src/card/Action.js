@@ -1,6 +1,6 @@
 import { BTN_CLASS } from '../button/styles'
 import { ACTION_CLASS } from './styles'
-import Button from '../button'
+import Button from '../button/Button'
 
 export default class Action extends Button {
   constructor (props_ = {}, children_ = []) {

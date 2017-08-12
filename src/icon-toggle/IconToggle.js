@@ -2,10 +2,12 @@
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import { STYLE_SWITCHES } from './styles'
-import { SMCComponent } from '../base'
+import SMCComponent from '../base/SMCComponent'
 import IconToggleAdapter from './IconToggleAdapter'
+import Material from './Material'
+import FontAwesome from './FontAwesome'
 
-export default class IconToggle extends SMCComponent {
+class IconToggle extends SMCComponent {
   constructor (props_ = {}, children_ = []) {
     super(props_, children_, STYLE_SWITCHES)
 
@@ -40,3 +42,8 @@ export default class IconToggle extends SMCComponent {
       : JSON.stringify({})
   }
 }
+
+IconToggle.Material = Material
+IconToggle.FontAwesome = FontAwesome
+
+export default IconToggle

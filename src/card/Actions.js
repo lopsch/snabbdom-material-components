@@ -2,7 +2,7 @@
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import { STLYE_SWITCHES_ACTIONS, ACTIONS_CLASS } from './styles'
-import { SMCComponent } from '../base'
+import SMCComponent from '../base/SMCComponent'
 
 export default class Actions extends SMCComponent {
   constructor (props_ = {}, children_ = []) {

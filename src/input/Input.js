@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
-import { SMCComponent } from '../base'
+import SMCComponent from '../base/SMCComponent'
 
 export default class Input extends SMCComponent {
   constructor (props_ = {}, children_ = [], switches_ = {}) {

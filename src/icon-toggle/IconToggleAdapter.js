@@ -1,5 +1,5 @@
-import { MDCIconToggle } from '@material/icon-toggle/dist/mdc.iconToggle.min'
-import { SMCAdapter } from '../base'
+import { MDCIconToggle } from '@material/icon-toggle'
+import SMCAdapter from '../base/SMCAdapter'
 
 export default class IconToggleAdapter extends SMCAdapter {
   constructor ({ sel, elm, data }) {

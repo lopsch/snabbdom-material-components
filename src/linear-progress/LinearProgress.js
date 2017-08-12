@@ -11,7 +11,7 @@ import {
   SECONDARY_CLASS,
   INNER_CLASS
 } from './styles'
-import { SMCComponent } from '../base'
+import SMCComponent from '../base/SMCComponent'
 import LinearProgressAdapter from './LinearProgressAdapter'
 
 export default class LinearProgress extends SMCComponent {
