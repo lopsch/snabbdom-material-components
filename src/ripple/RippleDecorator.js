@@ -1,5 +1,5 @@
 import { MDCRipple } from '@material/ripple/dist/mdc.ripple.min'
-import { delayInit } from '../../utils'
+import { delayInit } from '../utils'
 
 export default class RippleDecorator {
   constructor (elm_, position_) {
