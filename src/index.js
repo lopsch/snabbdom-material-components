@@ -9,6 +9,17 @@ import Dialog from './dialog/Dialog'
 import Switch from './switch/Switch'
 import Slider from './slider/Slider'
 import IconToggle from './icon-toggle/IconToggle'
+import SMCAdapter from './base/SMCAdapter'
+import SMCComponent from './base/SMCComponent'
+
+import {
+  delayInit,
+  uuid,
+  makeHooks,
+  makeSelector,
+  makeKeyValue,
+  PropsNormalizer
+} from './utils/utils'
 
 export {
   Checkbox,
@@ -21,5 +32,13 @@ export {
   Dialog,
   Switch,
   Slider,
-  IconToggle
+  IconToggle,
+  delayInit,
+  uuid,
+  makeHooks,
+  makeSelector,
+  makeKeyValue,
+  PropsNormalizer,
+  SMCAdapter,
+  SMCComponent
 }
