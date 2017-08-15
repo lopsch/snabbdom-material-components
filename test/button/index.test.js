@@ -14,7 +14,7 @@ import attrsModule from 'snabbdom/modules/attributes'
 import styleModule from 'snabbdom/modules/style'
 import datasetModule from 'snabbdom/modules/dataset'
 import eventlistenersModule from 'snabbdom/modules/eventlisteners'
-import { Button } from '../../../src'
+import Button from '../../src/button/Button'
 console.info = function () {}
 
 chai.use(assertarrays)
