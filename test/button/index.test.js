@@ -1,25 +1,20 @@
 /* eslint-env mocha */
-require('babel-register')({
-  ignore: function (filename) {
-    return !filename.includes('@material')
-  }
-})
-const chai = require('chai')
-const expect = chai.expect
-const asserttype = require('chai-asserttype')
-const assertarrays = require('chai-arrays')
+import chai, { expect } from 'chai'
+// import chalk from 'chalk'
+import assertarrays from 'chai-arrays'
+import asserttype from 'chai-asserttype'
 /* eslint-disable no-unused-vars */
-const html = require('snabbdom-jsx-pragma').html
+import html, { SnabbdomComponent } from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
-const JSDOM = require('jsdom').JSDOM
-const init = require('snabbdom').init
-const classModule = require('snabbdom/modules/class')
-const propsModule = require('snabbdom/modules/props')
-const attrsModule = require('snabbdom/modules/attributes')
-const styleModule = require('snabbdom/modules/style')
-const datasetModule = require('snabbdom/modules/dataset')
-const eventlistenersModule = require('snabbdom/modules/eventlisteners')
-const Button = require('../../lib').Button
+import { JSDOM } from 'jsdom'
+import { init } from 'snabbdom'
+import classModule from 'snabbdom/modules/class'
+import propsModule from 'snabbdom/modules/props'
+import attrsModule from 'snabbdom/modules/attributes'
+import styleModule from 'snabbdom/modules/style'
+import datasetModule from 'snabbdom/modules/dataset'
+import eventlistenersModule from 'snabbdom/modules/eventlisteners'
+import { Button } from '../../lib'
 console.info = function () {}
 
 chai.use(assertarrays)

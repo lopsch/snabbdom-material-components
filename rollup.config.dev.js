@@ -1,5 +1,7 @@
 import pkg from './package.json'
 import babel from 'rollup-plugin-babel'
+import resolve from 'rollup-plugin-node-resolve'
+import commonjs from 'rollup-plugin-commonjs'
 import progress from 'rollup-plugin-progress'
 import eslint from 'rollup-plugin-eslint'
 import rolluprc from './.rolluprc.json'
@@ -12,9 +14,10 @@ export default [
     plugins: [
       progress({ clearLine: false }),
       eslint({ throwOnError: true, throwOnWarning: true }),
+      resolve(),
+      commonjs(),
       babel(rolluprc.babelConfig)
     ],
-    sourceMap: false,
-    external: id => rolluprc.externalConfig.includes(id)
+    sourceMap: false
   }
 ]

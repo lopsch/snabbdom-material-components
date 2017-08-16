@@ -1,15 +1,14 @@
 /* eslint-env mocha */
-require('babel-register')
-const chai = require('chai')
-const expect = chai.expect
-const asserttype = require('chai-asserttype')
-const material = require('../../lib')
-const PropsNormalizer = material.PropsNormalizer
-const makeSelector = material.makeSelector
-const makeKeyValue = material.makeKeyValue
-const uuid = material.uuid
-const makeHooks = material.makeHooks
-const SMCAdapter = material.SMCAdapter
+import chai, { expect } from 'chai'
+import asserttype from 'chai-asserttype'
+import {
+  PropsNormalizer,
+  makeSelector,
+  makeKeyValue,
+  uuid,
+  makeHooks,
+  SMCAdapter
+} from '../../lib'
 
 chai.use(asserttype)
 

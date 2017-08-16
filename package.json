@@ -1,6 +1,6 @@
 {
   "name": "snabbdom-material-components",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "author": "Daniel Lopes <lopsch@googlemail.com>",
   "description": "Material Components for the web for Snabbdom Virtual DOM",
   "main": "lib/index.js",
@@ -21,10 +21,10 @@
     "babel-plugin-istanbul": "4.1.4",
     "babel-plugin-transform-object-rest-spread": "6.23.0",
     "babel-plugin-transform-react-jsx": "6.24.1",
-    "babel-preset-babili": "0.1.4",
     "babel-preset-env": "1.6.0",
     "babel-preset-es2015": "6.24.1",
     "babel-preset-es2015-rollup": "3.0.0",
+    "babel-preset-minify": "0.2.0",
     "babel-register": "6.24.1",
     "benchmark": "2.1.4",
     "chai": "4.1.1",
@@ -49,9 +49,11 @@
     "nyc": "11.1.0",
     "prettier": "1.5.3",
     "rollup": "0.47.4",
-    "rollup-plugin-babel": "3.0.1",
+    "rollup-plugin-babel": "3.0.2",
+    "rollup-plugin-commonjs": "8.1.0",
     "rollup-plugin-eslint": "4.0.0",
-    "rollup-plugin-execute": "1.0.0",
+    "rollup-plugin-multi-entry": "2.0.1",
+    "rollup-plugin-node-resolve": "3.0.0",
     "rollup-plugin-progress": "0.4.0",
     "rollup-watch": "4.3.1",
     "snabbdom": "0.7.0",
@@ -70,13 +72,13 @@
     "@material/radio": "0.2.9",
     "@material/slider": "0.2.2",
     "@material/switch": "0.1.11",
-    "snabbdom-jsx-pragma": "0.2.1",
-    "typestyle": "1.3.7"
+    "snabbdom-jsx-pragma": "0.2.2",
+    "typestyle": "1.3.8"
   },
   "scripts": {
-    "test:dev": "mocha --colors --watch test/**/*.js",
-    "test:cover": "nyc mocha --colors --reporter mochawesome --reporter-options reportFilename=index,reportDir=mochawesome,quiet=false,enableCode=false test/**/*.js",
-    "test": "mocha --colors test/**/*.js",
+    "test:dev": "mocha --colors --require babel-register --watch test/**/*.js",
+    "test:cover": "nyc mocha --colors --require babel-register --reporter mochawesome --reporter-options reportFilename=index,reportDir=mochawesome,quiet=false,enableCode=false test/**/*.js",
+    "test": "mocha --colors --require babel-register test/**/*.js",
     "cover": "rm -rf istanbul mochawesome && npm run build:cover && npm run test:cover && npm run cover:check",
     "cover:check": "nyc check-coverage --lines 0 --functions 0 --branches 0 --statements 0",
     "doc": "rm -rf jsdoc && jsdoc -d jsdoc -r src",
@@ -85,9 +87,10 @@
     "build:dev": "rm -rf lib && export NODE_ENV=development && rollup -c rollup.config.dev.js -w",
     "build:ci": "npm run clean && npm run cover && npm run build && npm run doc",
     "build:modules": "babel src --out-dir lib",
-    "build": "rm -rf lib stats && mkdir stats && export NODE_ENV=production && rollup -c rollup.config.prod.js",
+    "build:prod": "rollup -c rollup.config.prod.js",
+    "build": "rm -rf lib && export NODE_ENV=production && export BABEL_ENV=production && npm run build:modules && npm run build:prod",
     "fix": "prettier --write --print-width 80 --tab-width 2 --no-semi --single-quote --trailing-comma none --jsx-bracket-same-line --parser babylon src/**/*.js test/**/*.js && eslint --fix src/**/*.js test/**/*.js",
     "perf": "npm run build:perf && babel-node perf/index.perf.js",
-    "clean": "rm -rf istanbul jsdoc lib mochawesome stats"
+    "clean": "rm -rf istanbul jsdoc lib mochawesome"
   }
 }

@@ -1,5 +1,5 @@
 import Benchmark from 'benchmark'
-import { PropsNormalizer } from '../src/utils'
+import { PropsNormalizer } from '../lib'
 
 const _props = {
   style: {
