@@ -1,7 +1,7 @@
-import { STYLE_SWITCHES, FAB_CLASS } from './styles'
+import { STYLE_SWITCHES, FAB_CLASS, ICON_CLASS, MAT_ICON_CLASS } from './styles'
 import Button from '../button/Button'
-import Material from './Material'
-import FontAwesome from './FontAwesome'
+import SMCComponent from '../base/SMCComponent'
+import Icon from '../icon/FontAwesome'
 
 class Fab extends Button {
   constructor (props_ = {}, children_ = []) {
@@ -20,6 +20,36 @@ class Fab extends Button {
     }
 
     return this.utils.makeKeyValue('aria-label', this.label)
+  }
+}
+
+class FontAwesome extends SMCComponent {
+  render () {
+    return (
+      <span
+        {...this.selector}
+        classNames={ICON_CLASS}
+        class={this.classes}
+        {...this.props}>
+        <Icon>
+          {this.children}
+        </Icon>
+      </span>
+    )
+  }
+}
+
+class Material extends SMCComponent {
+  render () {
+    return (
+      <span
+        {...this.selector}
+        classNames={MAT_ICON_CLASS}
+        class={this.classes}
+        {...this.props}>
+        {this.children}
+      </span>
+    )
   }
 }
 

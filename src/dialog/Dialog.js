@@ -1,15 +1,22 @@
 /* eslint-disable no-unused-vars */
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
-import { DIALOG_CLASS, SURFACE_CLASS, BACKDROP_CLASS } from './styles'
+import {
+  DIALOG_CLASS,
+  SURFACE_CLASS,
+  BACKDROP_CLASS,
+  STYLE_SWITCHES_BODY,
+  BODY_CLASS,
+  FOOTER_CLASS,
+  FOOTER_BTN_CLASS,
+  STYLE_SWITCHES_FOOTER_BTN,
+  HEADER_CLASS,
+  TITLE_CLASS
+} from './styles'
+import { BTN_CLASS } from '../button/styles'
+import Button from '../button/Button'
 import DialogAdapter from './DialogAdapter'
 import SMCComponent from '../base/SMCComponent'
-import FooterAccept from './FooterAccept'
-import Body from './Body'
-import FooterCancel from './FooterCancel'
-import Footer from './Footer'
-import Header from './Header'
-import Title from './Title'
 
 class Dialog extends SMCComponent {
   constructor (props_ = {}, children_ = []) {
@@ -49,6 +56,92 @@ class Dialog extends SMCComponent {
         </div>
         <div classNames={BACKDROP_CLASS} />
       </aside>
+    )
+  }
+}
+
+class Body extends SMCComponent {
+  constructor (props_ = {}, children_ = []) {
+    super(props_, children_, STYLE_SWITCHES_BODY)
+  }
+
+  render () {
+    return (
+      <section
+        {...this.selector}
+        classNames={BODY_CLASS}
+        class={this.classes}
+        {...this.props}>
+        {this.children}
+      </section>
+    )
+  }
+}
+
+class Footer extends SMCComponent {
+  render () {
+    return (
+      <footer
+        {...this.selector}
+        classNames={FOOTER_CLASS}
+        class={this.classes}
+        {...this.props}>
+        {this.children}
+      </footer>
+    )
+  }
+}
+
+class FooterAction extends Button {
+  constructor (props_ = {}, children_ = []) {
+    super(props_, children_, STYLE_SWITCHES_FOOTER_BTN)
+  }
+
+  classNames_ () {
+    return [BTN_CLASS, FOOTER_BTN_CLASS]
+  }
+
+  hooks_ () {
+    return {}
+  }
+}
+
+class FooterAccept extends FooterAction {
+  constructor (props_ = {}, children_ = []) {
+    super({ ...props_, accept: true }, children_)
+  }
+}
+
+class FooterCancel extends FooterAction {
+  constructor (props_ = {}, children_ = []) {
+    super({ ...props_, cancel: true }, children_)
+  }
+}
+
+class Header extends SMCComponent {
+  render () {
+    return (
+      <header
+        {...this.selector}
+        classNames={HEADER_CLASS}
+        class={this.classes}
+        {...this.props}>
+        {this.children}
+      </header>
+    )
+  }
+}
+
+class Title extends SMCComponent {
+  render () {
+    return (
+      <h2
+        {...this.selector}
+        classNames={TITLE_CLASS}
+        class={this.classes}
+        {...this.props}>
+        {this.children}
+      </h2>
     )
   }
 }

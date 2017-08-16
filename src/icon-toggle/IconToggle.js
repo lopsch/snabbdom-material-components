@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
-import { STYLE_SWITCHES } from './styles'
+import { STYLE_SWITCHES, ICON_CLASS, MAT_ICON_CLASS } from './styles'
 import SMCComponent from '../base/SMCComponent'
+import { FA_CLASS } from '../icon/styles'
+import Icon from '../icon/FontAwesome'
 import IconToggleAdapter from './IconToggleAdapter'
-import Material from './Material'
-import FontAwesome from './FontAwesome'
 
 class IconToggle extends SMCComponent {
   constructor (props_ = {}, children_ = []) {
@@ -40,6 +40,53 @@ class IconToggle extends SMCComponent {
     return typeof toggle === 'object'
       ? JSON.stringify(toggle)
       : JSON.stringify({})
+  }
+}
+
+class FontAwesome extends IconToggle {
+  constructor (props_ = {}, children_ = []) {
+    super(props_, children_)
+
+    this.dataset = {
+      ...this.dataset,
+      ...this.utils.makeKeyValue('iconInnerSelector', `.${FA_CLASS}`)
+    }
+  }
+
+  render () {
+    return (
+      <span
+        {...this.selector}
+        classNames={ICON_CLASS}
+        class={this.classes}
+        hook={this.hooks}
+        on={this.ons}
+        attrs={this.attrs}
+        dataset={this.dataset}
+        {...this.props}>
+        <Icon>
+          {this.children}
+        </Icon>
+      </span>
+    )
+  }
+}
+
+class Material extends IconToggle {
+  render () {
+    return (
+      <i
+        {...this.selector}
+        classNames={MAT_ICON_CLASS}
+        class={this.classes}
+        hook={this.hooks}
+        on={this.ons}
+        attrs={this.attrs}
+        dataset={this.dataset}
+        {...this.props}>
+        {this.children}
+      </i>
+    )
   }
 }
 

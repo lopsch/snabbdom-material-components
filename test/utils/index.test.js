@@ -1,27 +1,15 @@
 /* eslint-env mocha */
-// require('babel-register')({ ignore: [] })
-// const chai = require('chai')
-// const expect = chai.expect
-// const asserttype = require('chai-asserttype')
-// const material = require('../../lib')
-// const PropsNormalizer = material.PropsNormalizer
-// const makeSelector = material.makeSelector
-// const makeKeyValue = material.makeKeyValue
-// const uuid = material.uuid
-// const makeHooks = material.makeHooks
-// const SMCAdapter = material.SMCAdapter
-
-// move to ES6 when babel-register can be configured via .babelrc
-import chai, { expect } from 'chai'
-import asserttype from 'chai-asserttype'
-import {
-  PropsNormalizer,
-  makeSelector,
-  makeKeyValue,
-  uuid,
-  makeHooks,
-  SMCAdapter
-} from '../../lib'
+require('babel-register')
+const chai = require('chai')
+const expect = chai.expect
+const asserttype = require('chai-asserttype')
+const material = require('../../lib')
+const PropsNormalizer = material.PropsNormalizer
+const makeSelector = material.makeSelector
+const makeKeyValue = material.makeKeyValue
+const uuid = material.uuid
+const makeHooks = material.makeHooks
+const SMCAdapter = material.SMCAdapter
 
 chai.use(asserttype)
 
