@@ -2,8 +2,8 @@
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import { FF_CLASS } from './styles'
-import SMCComponent from '../base/SMCComponent'
-import FormFieldAdapter from './FormFieldAdapter'
+import { SMCComponent } from '../base'
+import FormFieldAdapter from './adapter'
 
 export default class FormField extends SMCComponent {
   constructor (props_ = {}, children_ = []) {

@@ -2,10 +2,10 @@
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import { STYLE_SWITCHES, ICON_CLASS, MAT_ICON_CLASS } from './styles'
-import SMCComponent from '../base/SMCComponent'
+import { SMCComponent } from '../base'
 import { FA_CLASS } from '../icon/styles'
-import Icon from '../icon/FontAwesome'
-import IconToggleAdapter from './IconToggleAdapter'
+import Icon from '../icon'
+import IconToggleAdapter from './adapter'
 
 class IconToggle extends SMCComponent {
   constructor (props_ = {}, children_ = []) {

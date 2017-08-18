@@ -1,5 +1,5 @@
 import { MDCDialog } from '@material/dialog'
-import SMCAdapter from '../base/SMCAdapter'
+import { SMCAdapter } from '../base'
 
 export default class DialogAdapter extends SMCAdapter {
   constructor ({ sel, elm, data }) {

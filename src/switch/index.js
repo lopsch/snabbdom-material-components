@@ -9,8 +9,8 @@ import {
   SW_KNOB_CLASS,
   SW_LABEL_CLASS
 } from './styles'
-import SwitchAdapter from './SwitchAdapter'
-import Input from '../input/Input'
+import SwitchAdapter from './adapter'
+import Input from '../input'
 
 export default class Switch extends Input {
   constructor (props_ = {}, children_ = []) {

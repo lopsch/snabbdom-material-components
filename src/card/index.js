@@ -16,9 +16,9 @@ import {
   STYLE_SWITCHES_TITLE,
   TITLE_CLASS
 } from './styles'
-import SMCComponent from '../base/SMCComponent'
+import { SMCComponent } from '../base'
 import { BTN_CLASS } from '../button/styles'
-import Button from '../button/Button'
+import Button from '../button'
 
 class Card extends SMCComponent {
   render () {

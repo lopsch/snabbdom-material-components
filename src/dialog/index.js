@@ -14,9 +14,9 @@ import {
   TITLE_CLASS
 } from './styles'
 import { BTN_CLASS } from '../button/styles'
-import Button from '../button/Button'
-import DialogAdapter from './DialogAdapter'
-import SMCComponent from '../base/SMCComponent'
+import Button from '../button'
+import DialogAdapter from './adapter'
+import { SMCComponent } from '../base'
 
 class Dialog extends SMCComponent {
   constructor (props_ = {}, children_ = []) {

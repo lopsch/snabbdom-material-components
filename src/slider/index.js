@@ -13,8 +13,8 @@ import {
   THUMB_CLASS,
   RING_CLASS
 } from './styles'
-import SliderAdapter from './SliderAdapter'
-import SMCComponent from '../base/SMCComponent'
+import SliderAdapter from './adapter'
+import { SMCComponent } from '../base'
 
 export default class Slider extends SMCComponent {
   constructor (props_ = {}, children_ = []) {

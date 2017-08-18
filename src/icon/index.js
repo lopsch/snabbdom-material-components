@@ -2,7 +2,7 @@
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import { FA_CLASS } from './styles'
-import SMCComponent from '../base/SMCComponent'
+import { SMCComponent } from '../base'
 
 export default class FontAwesome extends SMCComponent {
   constructor (props_ = {}, children_ = []) {

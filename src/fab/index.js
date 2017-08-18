@@ -2,9 +2,9 @@
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import { STYLE_SWITCHES, FAB_CLASS, ICON_CLASS, MAT_ICON_CLASS } from './styles'
-import Button from '../button/Button'
-import SMCComponent from '../base/SMCComponent'
-import Icon from '../icon/FontAwesome'
+import Button from '../button'
+import { SMCComponent } from '../base'
+import Icon from '../icon'
 
 class Fab extends Button {
   constructor (props_ = {}, children_ = []) {

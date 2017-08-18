@@ -1,5 +1,5 @@
 import { MDCSlider } from '@material/slider'
-import SMCAdapter from '../base/SMCAdapter'
+import { SMCAdapter } from '../base'
 
 export default class SliderAdapter extends SMCAdapter {
   constructor ({ sel, elm, data }) {
