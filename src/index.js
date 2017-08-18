@@ -9,8 +9,7 @@ import Dialog from './dialog/Dialog'
 import Switch from './switch/Switch'
 import Slider from './slider/Slider'
 import IconToggle from './icon-toggle/IconToggle'
-import SMCAdapter from './base/SMCAdapter'
-import SMCComponent from './base/SMCComponent'
+import { SMCAdapter, SMCComponent } from './base'
 
 import {
   delayInit,
