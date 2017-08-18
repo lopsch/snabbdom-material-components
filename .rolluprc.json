@@ -20,11 +20,6 @@
         "plugins": [
           "istanbul"
         ]
-      },
-      "production": {
-        "presets": [
-          "minify"
-        ]
       }
     }
   },
