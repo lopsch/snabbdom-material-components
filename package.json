@@ -77,9 +77,9 @@
     "typestyle": "1.3.8"
   },
   "scripts": {
-    "test:dev": "mocha --colors --require babel-register --watch test/**/*.js",
-    "test:cover": "nyc mocha --colors --require babel-register --reporter mochawesome --reporter-options reportFilename=index,reportDir=mochawesome,quiet=false,enableCode=false test/**/*.js",
-    "test": "mocha --colors --require babel-register test/**/*.js",
+    "test:dev": "mocha --colors --require babel-register --watch test/*.js",
+    "test:cover": "nyc mocha --colors --require babel-register --reporter mochawesome --reporter-options reportFilename=index,reportDir=mochawesome,quiet=false,enableCode=false test/*.js",
+    "test": "mocha --colors --require babel-register test/*.js",
     "cover": "rm -rf istanbul mochawesome && npm run build:cover && npm run test:cover && npm run cover:check",
     "cover:check": "nyc check-coverage --lines 0 --functions 0 --branches 0 --statements 0",
     "doc": "rm -rf jsdoc && jsdoc -d jsdoc -r src",
