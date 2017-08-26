@@ -18,6 +18,7 @@ export default function test (expect, patch) {
         primary: true,
         accent: true,
         disabled: true,
+        unelevated: true,
         style: { 'margin-top': '50px' },
         classNames: ['class1'],
         class: { red: true },
@@ -31,6 +32,7 @@ export default function test (expect, patch) {
           'mdc-button--compact': true,
           'mdc-button--primary': true,
           'mdc-button--accent': true,
+          'mdc-button--unelevated': true,
           red: true,
           f1cotxbe: true // first typestyle id
         },
@@ -41,6 +43,7 @@ export default function test (expect, patch) {
           primary: true,
           accent: true,
           disabled: true,
+          unelevated: true,
           name: 'name',
           id_: 'id'
         },
@@ -78,6 +81,7 @@ export default function test (expect, patch) {
         'mdc-button--compact',
         'mdc-button--primary',
         'mdc-button--accent',
+        'mdc-button--unelevated',
         'red',
         'mdc-button',
         'f1cotxbe'
@@ -110,6 +114,7 @@ export default function test (expect, patch) {
         'mdc-button--dense',
         'mdc-button--compact',
         'mdc-button--primary',
+        'mdc-button--unelevated',
         'red',
         'mdc-button',
         'f1cotxbe'
@@ -159,6 +164,7 @@ export default function test (expect, patch) {
         compact: true,
         primary: true,
         accent: true,
+        unelevated: true,
         style: { 'margin-top': '50px' },
         classNames: ['class1'],
         class: { red: true },
@@ -172,6 +178,7 @@ export default function test (expect, patch) {
           'mdc-button--compact': true,
           'mdc-button--primary': true,
           'mdc-button--accent': true,
+          'mdc-button--unelevated': true,
           red: true,
           f1cotxbe: true // first typestyle id
         },
@@ -181,6 +188,7 @@ export default function test (expect, patch) {
           compact: true,
           primary: true,
           accent: true,
+          unelevated: true,
           href: 'http://www.google.de/',
           id_: 'id'
         },
@@ -237,6 +245,7 @@ export default function test (expect, patch) {
         'mdc-button--dense',
         'mdc-button--compact',
         'mdc-button--primary',
+        'mdc-button--unelevated',
         'red',
         'mdc-button',
         'f1cotxbe'
