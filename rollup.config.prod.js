@@ -23,6 +23,24 @@ export default [
       eslint({ throwOnError: true, throwOnWarning: true }),
       resolve(),
       commonjs(),
+      babel(rolluprc.babelConfig)
+    ]
+  },
+  {
+    input: rolluprc.entryConfig,
+    output: [
+      {
+        file: pkg.min,
+        format: 'umd',
+        name: 'snabbdom-material-components',
+        sourcemap: true
+      }
+    ],
+    plugins: [
+      progress({ clearLine: false }),
+      eslint({ throwOnError: true, throwOnWarning: true }),
+      resolve(),
+      commonjs(),
       babel(rolluprc.babelConfig),
       minify()
     ]
@@ -37,8 +55,7 @@ export default [
       progress({ clearLine: false }),
       eslint({ throwOnError: true, throwOnWarning: true }),
       resolve(),
-      babel(rolluprc.babelConfig),
-      minify()
+      babel(rolluprc.babelConfig)
     ],
     external: id => rolluprc.externalConfig.includes(id)
   }
