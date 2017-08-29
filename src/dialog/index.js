@@ -100,10 +100,6 @@ class FooterAction extends Button {
   classNames_ () {
     return [BTN_CLASS, FOOTER_BTN_CLASS]
   }
-
-  hooks_ () {
-    return {}
-  }
 }
 
 class FooterAccept extends FooterAction {

@@ -4,11 +4,6 @@ import { SMCAdapter } from '../base'
 export default class SliderAdapter extends SMCAdapter {
   constructor ({ sel, elm, data }) {
     super(sel, new MDCSlider(elm))
-    this.slider = this.component
-
-    this.update_ = (oldVnode, vnode) => {
-      this.updateProps_(vnode.data.props)
-    }
 
     this.updateDisabled_ = props => {
       this.updateBoolean_(props, 'disabled')
@@ -23,42 +18,14 @@ export default class SliderAdapter extends SMCAdapter {
     }
 
     this.updateStep_ = props => {
-      const wanted = props && props.step
-      const active = this.slider.step
-
-      if (typeof wanted === 'number' && wanted >= 0 && wanted !== active) {
-        this.slider.step = wanted
-      }
+      this.updateNumber_(props, 'step', true)
     }
 
     this.updateValue_ = props => {
-      const wanted = props && props.value
-      const active = this.slider.value
-
-      if (typeof wanted === 'number' && wanted !== active) {
-        this.slider.value = wanted
-      }
+      this.updateNumber_(props, 'value')
     }
 
-    this.updateBoolean_ = (props, prop) => {
-      const wanted = props && props[prop]
-      const active = this.slider[prop]
-      if (typeof wanted === 'boolean' && wanted !== active) {
-        this.slider[prop] = wanted
-      }
-    }
-
-    this.updateNumber_ = (props, prop) => {
-      if (
-        props &&
-        typeof props[prop] === 'number' &&
-        props[prop] !== this.slider[prop]
-      ) {
-        this.slider[prop] = props[prop]
-      }
-    }
-
-    this.updateProps_ = props => {
+    this.update_ = props => {
       this.updateDisabled_(props)
       this.updateMin_(props)
       this.updateMax_(props)
@@ -66,9 +33,9 @@ export default class SliderAdapter extends SMCAdapter {
       this.updateStep_(props)
     }
 
-    this.updateProps_(data.props)
+    this.update_(data.props)
     window.setTimeout(() => {
-      this.slider.layout()
+      this.component.layout()
     }, 0)
   }
 }

@@ -4,7 +4,7 @@ import { SMCAdapter } from '../base'
 export default class FormFieldAdapter extends SMCAdapter {
   constructor ({ sel, elm, children }) {
     super(sel, new MDCFormField(elm))
-    this.formField = this.component
+
     const input_ =
       Array.isArray(children) &&
       children.length > 0 &&
@@ -15,18 +15,18 @@ export default class FormFieldAdapter extends SMCAdapter {
         : undefined
 
     if (input_) {
-      this.formField.input = input_
+      this.component.input = input_
     }
 
     this.destroy_ = () => {
       if (
-        this.formField.input &&
-        typeof this.formField.input.destroy === 'function'
+        this.component.input &&
+        typeof this.component.input.destroy === 'function'
       ) {
         if (process.env.NODE_ENV !== 'production') {
           console.info(this.sel, '-> input.destroy()')
         }
-        this.formField.input.destroy()
+        this.component.input.destroy()
       }
     }
   }
