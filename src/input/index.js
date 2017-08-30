@@ -24,7 +24,8 @@ export default class Input extends SMCComponent {
         classNames={this.classNames}
         on={this.ons}
         type={this.type}
-        {...this.name} />
+        {...this.name}
+        {...this.props} />
     )
   }
 

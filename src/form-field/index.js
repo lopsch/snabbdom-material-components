@@ -9,18 +9,15 @@ export default class FormField extends SMCComponent {
   constructor (props_ = {}, children_ = []) {
     super(props_, children_)
 
-    const { label, ...otherProps } = this.props
-    this.label = label ? ` ${label}` : ''
-    const for_ =
+    this.hooks =
       Array.isArray(children_) &&
       children_.length > 0 &&
       typeof children_[0] === 'object' &&
-      children_[0].data.props
-        ? children_[0].data.props.id_
-        : ''
-    this.attrs = this.utils.makeKeyValue('for', for_)
-    this.hooks = this.utils.makeHooks(FormFieldAdapter)
-    this.props = otherProps
+      children_[0].data.material &&
+      children_[0].data.material.component &&
+      children_[0].data.material.component.ripple
+        ? this.utils.makeHooks(FormFieldAdapter)
+        : {}
   }
 
   render () {
@@ -32,9 +29,6 @@ export default class FormField extends SMCComponent {
         hook={this.hooks}
         {...this.props}>
         {this.children}
-        <label attrs={this.attrs}>
-          {this.label}
-        </label>
       </div>
     )
   }

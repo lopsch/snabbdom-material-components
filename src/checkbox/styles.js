@@ -1,4 +1,4 @@
-// export const STYLE_SWITCHES = { accent: 'mdc-checkbox--accent' }
+export const STYLE_SWITCHES = { disabled: 'mdc-checkbox--disabled' }
 
 export const CB_CLASS = 'mdc-checkbox'
 
