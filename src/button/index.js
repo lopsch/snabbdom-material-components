@@ -11,7 +11,10 @@ export default class Button extends SMCComponent {
 
     const { name, href, onClick, ...otherProps } = this.props
     this.name = this.utils.makeKeyValue('name', name)
-    this.hooks = this.hooks_()
+    this.hooks =
+      typeof otherProps.ripple === 'boolean' && otherProps.ripple
+        ? this.utils.makeHooks(ButtonAdapter)
+        : {}
     this.classNames = this.classNames_()
 
     this.ons = {}
@@ -24,10 +27,6 @@ export default class Button extends SMCComponent {
 
     this.props = otherProps
     this.attrs = this.attrs_()
-  }
-
-  hooks_ () {
-    return this.utils.makeHooks(ButtonAdapter)
   }
 
   attrs_ () {
