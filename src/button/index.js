@@ -9,10 +9,10 @@ export default class Button extends SMCComponent {
   constructor (props_ = {}, children_ = [], switches_ = STYLE_SWITCHES) {
     super(props_, children_, switches_)
 
-    const { name, href, onClick, ...otherProps } = this.props
+    const { ripple, name, href, onClick, ...otherProps } = this.props
     this.name = this.utils.makeKeyValue('name', name)
     this.hooks =
-      typeof otherProps.ripple === 'boolean' && otherProps.ripple
+      typeof ripple === 'boolean' && ripple
         ? this.utils.makeHooks(ButtonAdapter)
         : {}
     this.classNames = this.classNames_()

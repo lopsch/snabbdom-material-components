@@ -9,15 +9,7 @@ export default class FormField extends SMCComponent {
   constructor (props_ = {}, children_ = []) {
     super(props_, children_)
 
-    this.hooks =
-      Array.isArray(children_) &&
-      children_.length > 0 &&
-      typeof children_[0] === 'object' &&
-      children_[0].data.material &&
-      children_[0].data.material.component &&
-      children_[0].data.material.component.ripple
-        ? this.utils.makeHooks(FormFieldAdapter)
-        : {}
+    this.hooks = this.utils.makeHooks(FormFieldAdapter)
   }
 
   render () {

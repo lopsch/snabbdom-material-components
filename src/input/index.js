@@ -7,13 +7,14 @@ export default class Input extends SMCComponent {
   constructor (props_ = {}, children_ = [], switches_ = {}) {
     super(props_, children_, switches_)
 
-    const { name, onChange, onClick, ...otherProps } = this.props
+    const { ripple, name, onChange, onClick, ...otherProps } = this.props
     this.name = this.utils.makeKeyValue('name', name)
     this.classNames = this.classNames_()
     this.type = this.type_()
     this.ons = {}
     if (typeof onChange === 'function') this.ons.change = onChange
     if (typeof onClick === 'function') this.ons.click = onClick
+    this.ripple = typeof ripple === 'boolean' && ripple
     this.props = otherProps
   }
 
@@ -25,7 +26,7 @@ export default class Input extends SMCComponent {
         on={this.ons}
         type={this.type}
         {...this.name}
-        {...this.props} />
+        {...(this.ripple ? {} : this.props)} />
     )
   }
 

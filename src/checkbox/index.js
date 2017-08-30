@@ -17,10 +17,7 @@ export default class Checkbox extends Input {
   constructor (props_ = {}, children_ = []) {
     super(props_, children_, STYLE_SWITCHES)
 
-    this.hooks =
-      this.props.ripple === 'boolean' && this.props.ripple
-        ? this.utils.makeHooks(CheckboxAdapter)
-        : {}
+    this.hooks = this.ripple ? this.utils.makeHooks(CheckboxAdapter) : {}
   }
 
   classNames_ () {

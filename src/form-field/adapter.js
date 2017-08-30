@@ -5,7 +5,16 @@ export default class FormFieldAdapter extends SMCAdapter {
   constructor ({ sel, elm, children }) {
     super(sel, new MDCFormField(elm))
 
-    this.component.input = children[0].data.material.component
+    if (
+      Array.isArray(children) &&
+      children.length > 0 &&
+      typeof children[0] === 'object' &&
+      children[0].data.material &&
+      children[0].data.material.component &&
+      children[0].data.material.component.ripple
+    ) {
+      this.component.input = children[0].data.material.component
+    }
 
     this.destroy_ = () => {
       if (
