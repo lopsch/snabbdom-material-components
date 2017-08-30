@@ -4,7 +4,8 @@ export const STYLE_SWITCHES = {
   compact: 'mdc-button--compact',
   primary: 'mdc-button--primary',
   accent: 'mdc-button--accent',
-  unelevated: 'mdc-button--unelevated'
+  unelevated: 'mdc-button--unelevated',
+  stroked: 'mdc-button--stroked'
 }
 
 export const BTN_CLASS = 'mdc-button'
