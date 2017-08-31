@@ -1,4 +1,4 @@
-// export const STYLE_SWITCHES = { accent: 'mdc-radio--accent' }
+export const STYLE_SWITCHES = { disabled: 'mdc-radio--disabled' }
 
 export const RADIO_CLASS = 'mdc-radio'
 
