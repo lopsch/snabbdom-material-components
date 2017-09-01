@@ -16,6 +16,7 @@ export default function test (expect, patch) {
         mini: true,
         plain: true,
         disabled: true,
+        ripple: true,
         style: { 'margin-top': '50px' },
         classNames: ['class1'],
         class: { red: true },

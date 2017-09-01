@@ -19,6 +19,8 @@ export default function test (expect, patch) {
         accent: true,
         disabled: true,
         unelevated: true,
+        stroked: true,
+        ripple: true,
         style: { 'margin-top': '50px' },
         classNames: ['class1'],
         class: { red: true },
@@ -33,6 +35,7 @@ export default function test (expect, patch) {
           'mdc-button--primary': true,
           'mdc-button--accent': true,
           'mdc-button--unelevated': true,
+          'mdc-button--stroked': true,
           red: true,
           f1cotxbe: true // first typestyle id
         },
@@ -44,6 +47,7 @@ export default function test (expect, patch) {
           accent: true,
           disabled: true,
           unelevated: true,
+          stroked: true,
           name: 'name',
           id_: 'id'
         },
@@ -115,6 +119,7 @@ export default function test (expect, patch) {
         'mdc-button--compact',
         'mdc-button--primary',
         'mdc-button--unelevated',
+        'mdc-button--stroked',
         'red',
         'mdc-button',
         'f1cotxbe'
@@ -165,6 +170,8 @@ export default function test (expect, patch) {
         primary: true,
         accent: true,
         unelevated: true,
+        stroked: true,
+        ripple: true,
         style: { 'margin-top': '50px' },
         classNames: ['class1'],
         class: { red: true },
@@ -179,6 +186,7 @@ export default function test (expect, patch) {
           'mdc-button--primary': true,
           'mdc-button--accent': true,
           'mdc-button--unelevated': true,
+          'mdc-button--stroked': true,
           red: true,
           f1cotxbe: true // first typestyle id
         },
@@ -189,6 +197,7 @@ export default function test (expect, patch) {
           primary: true,
           accent: true,
           unelevated: true,
+          stroked: true,
           href: 'http://www.google.de/',
           id_: 'id'
         },
@@ -246,6 +255,7 @@ export default function test (expect, patch) {
         'mdc-button--compact',
         'mdc-button--primary',
         'mdc-button--unelevated',
+        'mdc-button--stroked',
         'red',
         'mdc-button',
         'f1cotxbe'
