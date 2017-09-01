@@ -1,7 +1,6 @@
 export const STYLE_SWITCHES = {
   discrete: 'mdc-slider--discrete',
   markers: 'mdc-slider--display-markers'
-  // accent: 'mdc-slider--accent'
 }
 
 export const SLIDER_CLASS = 'mdc-slider'

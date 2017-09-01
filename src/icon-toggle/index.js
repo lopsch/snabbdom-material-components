@@ -73,6 +73,17 @@ class FontAwesome extends IconToggle {
 }
 
 class Material extends IconToggle {
+  constructor (props_ = {}, children_ = []) {
+    super(props_, children_)
+
+    this.icon =
+      Array.isArray(children_) &&
+      children_.length > 0 &&
+      typeof children_[0] === 'string'
+        ? children_[0]
+        : ''
+  }
+
   render () {
     return (
       <i
@@ -84,7 +95,7 @@ class Material extends IconToggle {
         attrs={this.attrs}
         dataset={this.dataset}
         {...this.props}>
-        {this.children}
+        {this.icon}
       </i>
     )
   }

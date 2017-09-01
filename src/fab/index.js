@@ -43,6 +43,17 @@ class FontAwesome extends SMCComponent {
 }
 
 class Material extends SMCComponent {
+  constructor (props_ = {}, children_ = []) {
+    super(props_, children_)
+
+    this.icon =
+      Array.isArray(children_) &&
+      children_.length > 0 &&
+      typeof children_[0] === 'string'
+        ? children_[0]
+        : ''
+  }
+
   render () {
     return (
       <span
@@ -50,7 +61,7 @@ class Material extends SMCComponent {
         classNames={MAT_ICON_CLASS}
         class={this.classes}
         {...this.props}>
-        {this.children}
+        {this.icon}
       </span>
     )
   }
