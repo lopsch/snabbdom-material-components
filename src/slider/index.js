@@ -51,7 +51,7 @@ export default class Slider extends SMCComponent {
         {...this.props}>
         <div classNames={TRACK_CNT_CLASS}>
           <div classNames={TRACK_CLASS} />
-          {!!this.props.markers && !!this.props.discrete
+          {this.props.markers === true && this.props.discrete === true
             ? <div classNames={TRACK_MARKER_CLASS} />
             : []}
         </div>

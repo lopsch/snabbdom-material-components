@@ -5,8 +5,7 @@ export default class ButtonAdapter extends SMCAdapter {
   constructor ({ sel, elm, data }) {
     super(sel)
 
-    const fixed =
-      data.props && data.props.fixed && typeof data.props.fixed === 'boolean'
+    const fixed = data.props && data.props.fixed === true
     this.ripple = new RippleDecorator(elm, (fixed && 'fixed') || 'relative')
 
     this.destroy_ = () => {

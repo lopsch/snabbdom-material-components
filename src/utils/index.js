@@ -121,7 +121,7 @@ export class PropsNormalizer {
     const map = {}
 
     for (let switch_ in switches) {
-      map[switches[switch_]] = !!props[switch_]
+      map[switches[switch_]] = props[switch_] === true
     }
 
     return map
