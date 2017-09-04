@@ -1,18 +1,21 @@
+import propOr from 'ramda/es/propOr'
+import pathSatisfies from 'ramda/es/pathSatisfies'
+import path from 'ramda/es/path'
+import is from 'ramda/es/is'
+import isNil from 'ramda/es/isNil'
+import { log } from '../utils'
+
 export default class SMCAdapter {
-  constructor (sel_, component_, mappings_ = {}) {
+  constructor (sel_ = '', component_ = {}, mappings_ = {}) {
     this.sel = sel_
     this.component = component_
     this.mappings = mappings_
 
-    if (process.env.NODE_ENV !== 'production') {
-      console.info(this.sel, '-> init()')
-    }
+    log(this.sel, '-> init()')
 
     this.destroy = () => {
-      if (this.component && typeof this.component.destroy === 'function') {
-        if (process.env.NODE_ENV !== 'production') {
-          console.info(this.sel, '-> destroy()')
-        }
+      if (pathSatisfies(is(Function), ['destroy'], this.component)) {
+        log(this.sel, '-> destroy()')
 
         this.component.destroy()
       }
@@ -21,9 +24,7 @@ export default class SMCAdapter {
     }
 
     this.update = (oldVnode, vnode) => {
-      if (process.env.NODE_ENV !== 'production') {
-        console.info(this.sel, '-> update()')
-      }
+      log(this.sel, '-> update()')
 
       this.update_(vnode.data.props)
     }
@@ -32,33 +33,39 @@ export default class SMCAdapter {
     this.update_ = props => {}
 
     this.mapped_ = prop => {
-      return this.mappings[prop] || prop
+      return propOr(prop, [prop], this.mappings)
     }
 
-    this.updateBoolean_ = (props, prop) => {
-      this.updateProp_(props, prop, wanted => typeof wanted === 'boolean')
+    this.updateBool_ = (props, prop) => {
+      this.updateProp_(props, prop, isBool)
     }
 
-    this.updateOther_ = (props, prop) => {
-      this.updateProp_(props, prop, wanted => wanted || false)
+    this.updateVal_ = (props, prop) => {
+      this.updateProp_(props, prop, isNil)
     }
 
-    this.updateNumber_ = (props, prop, positive = false) => {
-      this.updateProp_(
-        props,
-        prop,
-        wanted => typeof wanted === 'number' && (!positive || wanted >= 0)
-      )
+    this.updateNum_ = (props, prop, positive = false) => {
+      this.updateProp_(props, prop, positive ? isPosNum : isNum)
     }
 
-    this.updateProp_ = (props, prop, condition) => {
-      const wanted = props && props[prop]
-      const mapped = this.mapped_(prop)
-      const active = this.component[mapped]
+    this.updateProp_ = (props, prop, checkNewVal) => {
+      if (!isNil(this.component)) {
+        const newVal = path([prop], props)
+        const mappedProp = this.mapped_(prop)
+        const oldVal = this.component[mappedProp]
 
-      if (condition(wanted) && wanted !== active) {
-        this.component[mapped] = wanted
+        if (checkNewVal(newVal) && newVal !== oldVal) {
+          this.component[mappedProp] = newVal
+        }
       }
     }
   }
+}
+
+const isBool = is(Boolean)
+
+const isNum = is(Number)
+
+const isPosNum = function (prop) {
+  return isNum(prop) && prop >= 0
 }

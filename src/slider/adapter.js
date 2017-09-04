@@ -6,23 +6,23 @@ export default class SliderAdapter extends SMCAdapter {
     super(sel, new MDCSlider(elm))
 
     this.updateDisabled_ = props => {
-      this.updateBoolean_(props, 'disabled')
+      this.updateBool_(props, 'disabled')
     }
 
     this.updateMin_ = props => {
-      this.updateNumber_(props, 'min')
+      this.updateNum_(props, 'min')
     }
 
     this.updateMax_ = props => {
-      this.updateNumber_(props, 'max')
+      this.updateNum_(props, 'max')
     }
 
     this.updateStep_ = props => {
-      this.updateNumber_(props, 'step', true)
+      this.updateNum_(props, 'step', true)
     }
 
     this.updateValue_ = props => {
-      this.updateNumber_(props, 'value')
+      this.updateNum_(props, 'value')
     }
 
     this.update_ = props => {

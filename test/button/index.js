@@ -48,8 +48,7 @@ export default function test (expect, patch) {
           disabled: true,
           unelevated: true,
           stroked: true,
-          name: 'name',
-          id_: 'id'
+          name: 'name'
         },
         on: {
           click: fn
@@ -57,11 +56,7 @@ export default function test (expect, patch) {
       }
 
       const child = 'button'
-      const vnode = (
-        <Button {...props}>
-          {child}
-        </Button>
-      )
+      const vnode = <Button {...props}>{child}</Button>
 
       expect(vnode.key).to.equal('button')
       expect(vnode.sel).to.equal('button#id.mdc-button')
@@ -103,11 +98,7 @@ export default function test (expect, patch) {
         disabled: false
       }
       const updatedChild = 'button updated'
-      const updatedVnode = (
-        <Button {...updatedProps}>
-          {updatedChild}
-        </Button>
-      )
+      const updatedVnode = <Button {...updatedProps}>{updatedChild}</Button>
       patch(vnode, updatedVnode)
       button = document.getElementById('id')
       text = button.textContent || button.innerText
@@ -147,11 +138,7 @@ export default function test (expect, patch) {
       }
       const props = { id: 'id', onClick: fn }
       const child = 'button'
-      const vnode = (
-        <Button {...props}>
-          {child}
-        </Button>
-      )
+      const vnode = <Button {...props}>{child}</Button>
       const container = document.getElementById('container')
       patch(container, vnode)
       const button = document.getElementById('id')
@@ -198,19 +185,14 @@ export default function test (expect, patch) {
           accent: true,
           unelevated: true,
           stroked: true,
-          href: 'http://www.google.de/',
-          id_: 'id'
+          href: 'http://www.google.de/'
         },
         on: {
           click: fn
         }
       }
       const child = 'http://www.google.de/'
-      const vnode = (
-        <Button {...props}>
-          {child}
-        </Button>
-      )
+      const vnode = <Button {...props}>{child}</Button>
 
       expect(vnode.key).to.equal('link')
       expect(vnode.sel).to.equal('a#id.mdc-button')
@@ -239,11 +221,7 @@ export default function test (expect, patch) {
         href: 'http://www.google.com/'
       }
       const updatedChild = 'http://www.google.com/'
-      const updatedVnode = (
-        <Button {...updatedProps}>
-          {updatedChild}
-        </Button>
-      )
+      const updatedVnode = <Button {...updatedProps}>{updatedChild}</Button>
       patch(vnode, updatedVnode)
       link = document.getElementById('id')
       text = link.textContent || link.innerText
@@ -282,11 +260,7 @@ export default function test (expect, patch) {
       }
       const props = { id: 'id', onClick: fn, href: 'http://www.google.de/' }
       const child = 'http://www.google.de/'
-      const vnode = (
-        <Button {...props}>
-          {child}
-        </Button>
-      )
+      const vnode = <Button {...props}>{child}</Button>
       const container = document.getElementById('container')
       patch(container, vnode)
       const button = document.getElementById('id')

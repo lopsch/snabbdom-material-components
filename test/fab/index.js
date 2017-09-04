@@ -34,8 +34,7 @@ export default function test (expect, patch) {
           mini: true,
           plain: true,
           disabled: true,
-          name: 'name',
-          id_: 'id'
+          name: 'name'
         },
         attrs: {
           'aria-label': 'fab'
@@ -46,11 +45,7 @@ export default function test (expect, patch) {
       }
 
       const child = 'fab'
-      const vnode = (
-        <Fab {...props}>
-          {child}
-        </Fab>
-      )
+      const vnode = <Fab {...props}>{child}</Fab>
 
       expect(vnode.key).to.equal('fab')
       expect(vnode.sel).to.equal('button#id.mdc-fab')
@@ -89,11 +84,7 @@ export default function test (expect, patch) {
         disabled: false
       }
       const updatedChild = 'fab updated'
-      const updatedVnode = (
-        <Fab {...updatedProps}>
-          {updatedChild}
-        </Fab>
-      )
+      const updatedVnode = <Fab {...updatedProps}>{updatedChild}</Fab>
       patch(vnode, updatedVnode)
       fab = document.getElementById('id')
       text = fab.textContent || fab.innerText

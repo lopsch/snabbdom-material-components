@@ -14,7 +14,12 @@ export default class SMCComponent extends SnabbdomComponent {
     ).normalized
 
     this.id = id
-    this.props = { ...props, id_: id }
+    this.props = {
+      ...props,
+      class: classes
+    }
+
+    this.props = props
     this.classes = classes
     this.selector = this.utils.makeSelector(id)
   }

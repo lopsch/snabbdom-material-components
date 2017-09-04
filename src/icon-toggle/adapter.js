@@ -6,11 +6,11 @@ export default class IconToggleAdapter extends SMCAdapter {
     super(sel, new MDCIconToggle(elm), { toggled: 'on' })
 
     this.updateDisabled_ = props => {
-      this.updateBoolean_(props, 'disabled')
+      this.updateBool_(props, 'disabled')
     }
 
     this.updateOn_ = props => {
-      this.updateBoolean_(props, 'toggled')
+      this.updateBool_(props, 'toggled')
     }
 
     this.update_ = props => {

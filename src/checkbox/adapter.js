@@ -6,19 +6,19 @@ export default class CheckboxAdapter extends SMCAdapter {
     super(sel, new MDCCheckbox(elm))
 
     this.updateDisabled_ = props => {
-      this.updateBoolean_(props, 'disabled')
+      this.updateBool_(props, 'disabled')
     }
 
     this.updateIndeterminate_ = props => {
-      this.updateBoolean_(props, 'indeterminate')
+      this.updateBool_(props, 'indeterminate')
     }
 
     this.updateChecked_ = props => {
-      this.updateBoolean_(props, 'checked')
+      this.updateBool_(props, 'checked')
     }
 
     this.updateValue_ = props => {
-      this.updateOther_(props, 'value')
+      this.updateVal_(props, 'value')
     }
 
     this.update_ = props => {

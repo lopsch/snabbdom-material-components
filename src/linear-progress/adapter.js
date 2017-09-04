@@ -6,23 +6,23 @@ export default class LinearProgressAdapter extends SMCAdapter {
     super(sel, new MDCLinearProgress(elm))
 
     this.updateBuffer_ = props => {
-      this.updateNumber_(props, 'buffer')
+      this.updateNum_(props, 'buffer')
     }
 
     this.updateProgress_ = props => {
-      this.updateNumber_(props, 'progress')
+      this.updateNum_(props, 'progress')
     }
 
     this.updateReverse_ = props => {
-      this.updateBoolean_(props, 'reverse')
+      this.updateBool_(props, 'reverse')
     }
 
     this.updateDeterminate_ = props => {
       const wanted = props && props.determinate
-      if (wanted === undefined || (typeof wanted === 'boolean' && !wanted)) {
+      if (wanted == null || wanted === false) {
         this.component.determinate = false
       } else {
-        this.updateBoolean_(props, 'determinate')
+        this.updateBool_(props, 'determinate')
       }
     }
 
