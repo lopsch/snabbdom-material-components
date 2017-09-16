@@ -8,6 +8,7 @@ export default function test (expect, patch) {
   describe('class Button()', () => {
     it("should build an 'mdc-button'", () => {
       const fn = function () {}
+
       const props = {
         key: 'button',
         id: 'id',
@@ -26,9 +27,9 @@ export default function test (expect, patch) {
         class: { red: true },
         onClick: fn
       }
+
       const _props = {
         class: {
-          class1: true,
           'mdc-button--raised': true,
           'mdc-button--dense': true,
           'mdc-button--compact': true,
@@ -36,20 +37,13 @@ export default function test (expect, patch) {
           'mdc-button--accent': true,
           'mdc-button--unelevated': true,
           'mdc-button--stroked': true,
-          red: true,
-          f1cotxbe: true // first typestyle id
+          red: true
         },
         props: {
-          raised: true,
-          dense: true,
-          compact: true,
-          primary: true,
-          accent: true,
           disabled: true,
-          unelevated: true,
-          stroked: true,
           name: 'name'
         },
+        style: { 'margin-top': '50px' },
         on: {
           click: fn
         }
@@ -59,7 +53,7 @@ export default function test (expect, patch) {
       const vnode = <Button {...props}>{child}</Button>
 
       expect(vnode.key).to.equal('button')
-      expect(vnode.sel).to.equal('button#id.mdc-button')
+      expect(vnode.sel).to.equal('button#id.class1.mdc-button')
       expect(vnode.children[0]).to.deep.equal({ text: 'button' })
       expect(vnode.data.props).to.deep.equal(_props.props)
       expect(vnode.data.class).to.deep.equal(_props.class)
@@ -70,6 +64,7 @@ export default function test (expect, patch) {
 
       const container = document.getElementById('container')
       patch(container, vnode)
+
       let button = document.getElementById('id')
       let text = button.textContent || button.innerText
       let classList = button.classList
@@ -81,15 +76,17 @@ export default function test (expect, patch) {
         'mdc-button--primary',
         'mdc-button--accent',
         'mdc-button--unelevated',
+        'mdc-button--stroked',
         'red',
-        'mdc-button',
-        'f1cotxbe'
+        'mdc-button'
       ]
+
       classes.forEach(clazz => expect(classList.contains(clazz)).to.equal(true))
       expect(button.id).to.equal('id')
       expect(button.name).to.equal('name')
       expect(button.disabled).to.equal(true)
       expect(text).to.equal('button')
+      expect(button.style['margin-top']).to.equal('50px')
       expect(button.tagName.toLowerCase()).to.equal('button')
 
       const updatedProps = {
@@ -100,6 +97,7 @@ export default function test (expect, patch) {
       const updatedChild = 'button updated'
       const updatedVnode = <Button {...updatedProps}>{updatedChild}</Button>
       patch(vnode, updatedVnode)
+
       button = document.getElementById('id')
       text = button.textContent || button.innerText
       classList = button.classList
@@ -112,14 +110,16 @@ export default function test (expect, patch) {
         'mdc-button--unelevated',
         'mdc-button--stroked',
         'red',
-        'mdc-button',
-        'f1cotxbe'
+        'mdc-button'
       ]
+
       classes.forEach(clazz => expect(classList.contains(clazz)).to.equal(true))
       expect(button.id).to.equal('id')
       expect(button.name).to.equal('name')
       expect(button.disabled).to.equal(false)
       expect(text).to.equal('button updated')
+      expect(button.style['margin-top']).to.equal('50px')
+      expect(button.tagName.toLowerCase()).to.equal('button')
 
       const emptyVnode = {
         sel: undefined,
@@ -128,6 +128,7 @@ export default function test (expect, patch) {
         text: undefined
       }
       patch(vnode, emptyVnode)
+
       button = document.getElementById('id')
       expect(button).to.equal(null)
     })
@@ -141,12 +142,14 @@ export default function test (expect, patch) {
       const vnode = <Button {...props}>{child}</Button>
       const container = document.getElementById('container')
       patch(container, vnode)
+
       const button = document.getElementById('id')
       button.click()
     })
 
     it("should build an 'mdc-button' with href", () => {
       const fn = function () {}
+
       const props = {
         key: 'link',
         id: 'id',
@@ -164,9 +167,9 @@ export default function test (expect, patch) {
         class: { red: true },
         onClick: fn
       }
+
       const _props = {
         class: {
-          class1: true,
           'mdc-button--raised': true,
           'mdc-button--dense': true,
           'mdc-button--compact': true,
@@ -174,28 +177,22 @@ export default function test (expect, patch) {
           'mdc-button--accent': true,
           'mdc-button--unelevated': true,
           'mdc-button--stroked': true,
-          red: true,
-          f1cotxbe: true // first typestyle id
+          red: true
         },
         props: {
-          raised: true,
-          dense: true,
-          compact: true,
-          primary: true,
-          accent: true,
-          unelevated: true,
-          stroked: true,
           href: 'http://www.google.de/'
         },
+        style: { 'margin-top': '50px' },
         on: {
           click: fn
         }
       }
+
       const child = 'http://www.google.de/'
       const vnode = <Button {...props}>{child}</Button>
 
       expect(vnode.key).to.equal('link')
-      expect(vnode.sel).to.equal('a#id.mdc-button')
+      expect(vnode.sel).to.equal('a#id.class1.mdc-button')
       expect(vnode.children[0]).to.deep.equal({ text: 'http://www.google.de/' })
       expect(vnode.data.props).to.deep.equal(_props.props)
       expect(vnode.data.class).to.deep.equal(_props.class)
@@ -205,14 +202,28 @@ export default function test (expect, patch) {
 
       const container = document.getElementById('container')
       patch(container, vnode)
+
       let link = document.getElementById('id')
       let text = link.textContent || link.innerText
       let classList = link.classList
-      let classes = ['class1', 'red', 'mdc-button', 'f1cotxbe']
+      let classes = [
+        'class1',
+        'mdc-button--raised',
+        'mdc-button--dense',
+        'mdc-button--compact',
+        'mdc-button--primary',
+        'mdc-button--accent',
+        'mdc-button--unelevated',
+        'mdc-button--stroked',
+        'red',
+        'mdc-button'
+      ]
+
       classes.forEach(clazz => expect(classList.contains(clazz)).to.equal(true))
       expect(link.id).to.equal('id')
       expect(link.href).to.equal('http://www.google.de/')
       expect(text).to.equal('http://www.google.de/')
+      expect(link.style['margin-top']).to.equal('50px')
       expect(link.tagName.toLowerCase()).to.equal('a')
 
       const updatedProps = {
@@ -223,6 +234,7 @@ export default function test (expect, patch) {
       const updatedChild = 'http://www.google.com/'
       const updatedVnode = <Button {...updatedProps}>{updatedChild}</Button>
       patch(vnode, updatedVnode)
+
       link = document.getElementById('id')
       text = link.textContent || link.innerText
       classList = link.classList
@@ -235,13 +247,15 @@ export default function test (expect, patch) {
         'mdc-button--unelevated',
         'mdc-button--stroked',
         'red',
-        'mdc-button',
-        'f1cotxbe'
+        'mdc-button'
       ]
+
       classes.forEach(clazz => expect(classList.contains(clazz)).to.equal(true))
       expect(link.id).to.equal('id')
       expect(link.href).to.equal('http://www.google.com/')
       expect(text).to.equal('http://www.google.com/')
+      expect(link.style['margin-top']).to.equal('50px')
+      expect(link.tagName.toLowerCase()).to.equal('a')
 
       const emptyVnode = {
         sel: undefined,
@@ -250,6 +264,7 @@ export default function test (expect, patch) {
         text: undefined
       }
       patch(vnode, emptyVnode)
+
       link = document.getElementById('id')
       expect(link).to.equal(null)
     })
@@ -263,6 +278,7 @@ export default function test (expect, patch) {
       const vnode = <Button {...props}>{child}</Button>
       const container = document.getElementById('container')
       patch(container, vnode)
+
       const button = document.getElementById('id')
       button.click()
     })

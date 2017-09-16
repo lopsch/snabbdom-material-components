@@ -1,9 +1,10 @@
-import { style as css } from 'typestyle'
+import is from 'ramda/es/is'
+import isEmpty from 'ramda/es/isEmpty'
 import { tryFlatten } from 'snabbdom-jsx-pragma'
 
 export function log (...args) {
   if (process.env.NODE_ENV !== 'production') {
-    console.log(...args)
+    console.info(...args)
   }
 }
 
@@ -39,14 +40,16 @@ function uuid_ (
     (a ^ // unless b is 8,
         ((Math.random() * // in which case
           16) >> // a random number from
-          (a / 4))) // 8 to 11
+          (a / 4))
+    ) // 8 to 11
       .toString(16) // in hexadecimal
     : // or otherwise a concatenated string:
     ([1e7] + // 10000000 +
       -1e3 + // -1000 +
       -4e3 + // -4000 +
       -8e3 + // -80000000 +
-        -1e11) // -100000000000,
+        -1e11
+    ) // -100000000000,
       .replace(
         // replacing
         /[018]/g, // zeroes, ones, and eights with
@@ -74,36 +77,53 @@ export function makeHooks (Adapter) {
   return hooks
 
   function callHook (hook) {
-    if (typeof hook === 'function') {
+    if (isFn(hook)) {
       hook(...Array.prototype.slice.call(arguments, 1))
     }
   }
 }
 
-export function makeSelector (id) {
-  return id ? { selector: `#${id}` } : {}
+export function isBool (prop) {
+  return is(Boolean, prop)
 }
 
-export function makeKeyValue (key, value) {
-  return value ? { [key]: value } : {}
+export function isNum (prop) {
+  return is(Number, prop)
 }
 
-export class PropsNormalizer {
+export function isObj (prop) {
+  return is(Object, prop)
+}
+
+export function isPosNum (prop) {
+  return isNum(prop) && prop >= 0
+}
+
+export function isStr (prop) {
+  return is(String, prop) && !isEmpty(prop)
+}
+
+export function isFn (prop) {
+  return is(Function, prop)
+}
+
+export function isArr (prop) {
+  return is(Array, prop) && !isEmpty(prop)
+}
+
+export class ClassesExtractor {
   constructor (props_ = {}, switches_ = {}) {
-    const props = props_
-    const switches = switches_
+    this.props = props_
+    this.switches = switches_
 
-    const fromClassNames = props['classNames']
-      ? this.classes_(this.fromClassNames_([props['classNames']]))
-      : {}
-    const fromStyle = props['style']
-      ? this.classes_(this.fromClassNames_([css(props['style'])]))
-      : {}
-    const fromProps = props['class'] ? props['class'] : {}
-    const fromSwitches = this.fromSwitches_(switches, props)
-
-    const allClasses_ = [fromClassNames, fromStyle, fromProps, fromSwitches]
+    this.extractedClassNames = []
     this.extractedClasses = {}
+
+    const fromClassNames = this.fromClassNames_()
+    const fromClass = this.fromClass_()
+    const fromSwitches = this.fromSwitches_()
+
+    const allClasses_ = [fromClass, fromSwitches]
 
     for (let i = 0; i < allClasses_.length; i++) {
       const classes_ = allClasses_[i]
@@ -113,41 +133,47 @@ export class PropsNormalizer {
       }
     }
 
-    this.normalizedProps = props
-    delete this.normalizedProps['classNames']
-    delete this.normalizedProps['style']
-    delete this.normalizedProps['class']
+    const allClassNames_ = [fromClassNames]
+
+    for (let i = 0; i < allClassNames_.length; i++) {
+      const classNames_ = allClassNames_[i]
+
+      for (let j = 0; j < classNames_.length; j++) {
+        this.extractedClassNames.push(classNames_[j])
+      }
+    }
   }
 
-  get normalized () {
-    return { classes: this.extractedClasses, props: this.normalizedProps }
+  get extracted () {
+    return {
+      classes: this.extractedClasses,
+      classNames: this.extractedClassNames
+    }
   }
 
-  fromSwitches_ (switches, props) {
+  fromSwitches_ () {
     const map = {}
 
-    for (let switch_ in switches) {
-      map[switches[switch_]] = props[switch_] === true
+    for (let switch_ in this.switches) {
+      map[this.switches[switch_]] = this.props[switch_] === true
     }
 
     return map
   }
 
-  classes_ (classes) {
-    const map = {}
-
-    for (let i = 0; i < classes.length; i++) {
-      map[classes[i]] = true
-    }
-
-    return map
+  fromClass_ () {
+    return (this.props['class'] && this.props['class']) || {}
   }
 
-  fromClassNames_ (classNames) {
-    return tryFlatten(
-      tryFlatten(classNames).map(className =>
-        className.replace(/\s+/g, '_§§§_').split('_§§§_')
-      )
+  fromClassNames_ () {
+    return (
+      (this.props['classNames'] &&
+        tryFlatten(
+          tryFlatten([this.props['classNames']]).map(className =>
+            className.replace(/\s+/g, '_§§§_').split('_§§§_')
+          )
+        )) ||
+      []
     )
   }
 }

@@ -42,7 +42,7 @@ export default [
       babel(rolluprc.babelConfig),
       resolve(),
       commonjs(),
-      minify()
+      minify({ comments: false, removeConsole: true, removeDebugger: true })
     ]
   },
   {
@@ -57,6 +57,6 @@ export default [
       babel(rolluprc.babelConfig),
       resolve()
     ],
-    external: id => rolluprc.externalConfig.includes(id)
+    external: id => rolluprc.externalConfig.find(ext => id.includes(ext))
   }
 ]

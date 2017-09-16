@@ -3,7 +3,7 @@ import pathSatisfies from 'ramda/es/pathSatisfies'
 import path from 'ramda/es/path'
 import is from 'ramda/es/is'
 import isNil from 'ramda/es/isNil'
-import { log } from '../utils'
+import { log, isBool, isNum, isPosNum } from '../utils'
 
 export default class SMCAdapter {
   constructor (sel_ = '', component_ = {}, mappings_ = {}) {
@@ -41,7 +41,7 @@ export default class SMCAdapter {
     }
 
     this.updateVal_ = (props, prop) => {
-      this.updateProp_(props, prop, isNil)
+      this.updateProp_(props, prop, newVal => !isNil(newVal))
     }
 
     this.updateNum_ = (props, prop, positive = false) => {
@@ -60,12 +60,4 @@ export default class SMCAdapter {
       }
     }
   }
-}
-
-const isBool = is(Boolean)
-
-const isNum = is(Number)
-
-const isPosNum = function (prop) {
-  return isNum(prop) && prop >= 0
 }

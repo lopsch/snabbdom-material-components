@@ -1,44 +1,39 @@
 /* eslint-disable no-unused-vars */
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
+import isNil from 'ramda/es/isNil'
 import { SMCComponent } from '../base'
+import { isStr, isBool, isFn } from '../utils'
 
 export default class Input extends SMCComponent {
-  constructor (props_ = {}, children_ = [], switches_ = {}) {
-    super(props_, children_, switches_)
+  on_ (props) {
+    const { onChange, onClick, onInput } = props
 
-    const { ripple, name, onChange, onClick, ...otherProps } = this.props
-    this.name = this.utils.makeKeyValue('name', name)
-    this.classNames = this.classNames_()
-    this.type = this.type_()
-    this.ons = {}
-    if (typeof onChange === 'function') this.ons.change = onChange
-    if (typeof onClick === 'function') this.ons.click = onClick
-    this.ripple = typeof ripple === 'boolean' && ripple
-    this.props = otherProps
+    return {
+      ...(isFn(onChange) ? { change: onChange } : {}),
+      ...(isFn(onClick) ? { click: onClick } : {}),
+      ...(isFn(onInput) ? { input: onInput } : {})
+    }
   }
 
-  get input () {
-    return (
-      <input
-        {...this.selector}
-        classNames={this.classNames}
-        on={this.ons}
-        type={this.type}
-        {...this.name}
-        {...(this.ripple ? {} : this.props)} />
-    )
+  props_ (props) {
+    const { name, type, disabled, indeterminate, checked, value } = props
+
+    return {
+      ...(isStr(type) ? { type } : {}),
+      ...(isStr(name) ? { name } : {}),
+      ...(this.ripple
+        ? {}
+        : {
+          ...(isBool(disabled) ? { disabled } : {}),
+          ...(isBool(indeterminate) ? { indeterminate } : {}),
+          ...(isBool(checked) ? { checked } : {}),
+          ...(!isNil(value) ? { value } : {})
+        })
+    }
   }
 
-  classNames_ () {
-    throw new Error(
-      "Subclasses must override 'classNames_' to return a properly configured 'class Input'."
-    )
-  }
-
-  type_ () {
-    throw new Error(
-      "Subclasses must override 'type_' to return a properly configured 'class Input'."
-    )
+  render () {
+    return <input {...this.props} />
   }
 }

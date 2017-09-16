@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
+import isNil from 'ramda/es/isNil'
 import {
   STYLE_SWITCHES,
   CB_CLASS,
@@ -12,30 +13,47 @@ import {
 } from './styles'
 import CheckboxAdapter from './adapter'
 import Input from '../input'
+import { SMCComponent } from '../base'
+import { makeHooks, isBool } from '../utils'
 
-export default class Checkbox extends Input {
-  constructor (props_ = {}, children_ = []) {
+export default class Checkbox extends SMCComponent {
+  constructor (props_ = {}, children_) {
     super(props_, children_, STYLE_SWITCHES)
 
-    this.hooks = this.ripple ? this.utils.makeHooks(CheckboxAdapter) : {}
+    this.inputProps = {
+      classNames: CB_NC_CLASS,
+      type: 'checkbox',
+      ...props_
+    }
+
+    // managed by <Input>
+    const { id, ...otherProps } = this.props
+    this.props = otherProps
   }
 
-  classNames_ () {
-    return CB_NC_CLASS
+  hook_ (props) {
+    return this.ripple ? makeHooks(CheckboxAdapter) : {}
   }
 
-  type_ () {
-    return 'checkbox'
+  classNames_ (classNames) {
+    return classNames.concat(CB_CLASS)
+  }
+
+  props_ (props) {
+    const { disabled, indeterminate, checked, value } = props
+
+    return {
+      ...(isBool(disabled) ? { disabled } : {}),
+      ...(isBool(indeterminate) ? { indeterminate } : {}),
+      ...(isBool(checked) ? { checked } : {}),
+      ...(!isNil(value) ? { value } : {})
+    }
   }
 
   render () {
     return (
-      <div
-        classNames={CB_CLASS}
-        class={this.classes}
-        hook={this.hooks}
-        {...this.props}>
-        {this.input}
+      <div {...this.props}>
+        <Input {...this.inputProps} />
         <div classNames={CB_BG_CLASS}>
           <svg classNames={CB_CM_CLASS} viewBox='0 0 24 24'>
             <path

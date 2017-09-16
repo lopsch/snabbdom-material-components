@@ -34,7 +34,6 @@
     "@material/radio",
     "@material/ripple",
     "@material/slider",
-    "typestyle",
-    "ramda"
+    "ramda/es"
   ]
 }

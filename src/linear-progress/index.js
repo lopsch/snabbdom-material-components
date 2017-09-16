@@ -13,24 +13,39 @@ import {
 } from './styles'
 import { SMCComponent } from '../base'
 import LinearProgressAdapter from './adapter'
+import { makeHooks, isNum, isBool } from '../utils'
 
 export default class LinearProgress extends SMCComponent {
-  constructor (props_ = {}, children_ = []) {
+  constructor (props_, children_) {
     super(props_, children_, STYLE_SWITCHES)
+  }
 
-    this.hooks = this.utils.makeHooks(LinearProgressAdapter)
-    this.attrs = { role: 'progressbar' }
+  attrs_ (props) {
+    return { role: 'progressbar' }
+  }
+
+  hook_ (props) {
+    return makeHooks(LinearProgressAdapter)
+  }
+
+  classNames_ (classNames) {
+    return classNames.concat(LP_CLASS)
+  }
+
+  props_ (props) {
+    const { buffer, progress, reverse, determinate } = props
+
+    return {
+      ...(isNum(buffer) ? { buffer } : {}),
+      ...(isNum(progress) ? { progress } : {}),
+      ...(isBool(reverse) ? { reverse } : {}),
+      ...(isBool(determinate) ? { determinate } : {})
+    }
   }
 
   render () {
     return (
-      <div
-        {...this.selector}
-        attrs={this.attrs}
-        classNames={LP_CLASS}
-        class={this.classes}
-        hook={this.hooks}
-        {...this.props}>
+      <div {...this.props}>
         <div classNames={BUF_DOTS_CLASS} />
         <div classNames={BUF_CLASS} />
         <div classNames={[BAR_CLASS, PRIMARY_CLASS]}>

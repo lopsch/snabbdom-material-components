@@ -1,29 +1,28 @@
+import pathSatisfies from 'ramda/es/pathSatisfies'
+import isNil from 'ramda/es/isNil'
 import { MDCFormField } from '@material/form-field'
 import { SMCAdapter } from '../base'
+import { log, isArr, isFn } from '../utils'
 
 export default class FormFieldAdapter extends SMCAdapter {
   constructor ({ sel, elm, children }) {
     super(sel, new MDCFormField(elm))
 
     if (
-      Array.isArray(children) &&
-      children.length > 0 &&
-      typeof children[0] === 'object' &&
-      children[0].data.material &&
-      children[0].data.material.component &&
-      children[0].data.material.component.ripple
+      isArr(children) &&
+      pathSatisfies(
+        child => !isNil(child),
+        ['data', 'material', 'component', 'ripple'],
+        children[0]
+      )
     ) {
       this.component.input = children[0].data.material.component
     }
 
     this.destroy_ = () => {
-      if (
-        this.component.input &&
-        typeof this.component.input.destroy === 'function'
-      ) {
-        if (process.env.NODE_ENV !== 'production') {
-          console.info(this.sel, '-> input.destroy()')
-        }
+      if (pathSatisfies(isFn, ['input', 'destroy'], this.component)) {
+        log(this.sel, '-> input.destroy()')
+
         this.component.input.destroy()
       }
     }

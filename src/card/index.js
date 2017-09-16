@@ -19,157 +19,123 @@ import {
 import { SMCComponent } from '../base'
 import { BTN_CLASS } from '../button/styles'
 import Button from '../button'
+import { isStr } from '../utils'
 
 class Card extends SMCComponent {
+  classNames_ (classNames) {
+    return classNames.concat(CARD_CLASS)
+  }
+
   render () {
-    return (
-      <div
-        {...this.selector}
-        classNames={CARD_CLASS}
-        class={this.classes}
-        {...this.props}>
-        {this.children}
-      </div>
-    )
+    return <div {...this.props}>{this.children}</div>
   }
 }
 
 class Action extends Button {
-  constructor (props_ = {}, children_ = []) {
+  constructor (props_ = {}, children_) {
     super({ ...props_, compact: true }, children_)
   }
 
-  classNames_ () {
-    return [BTN_CLASS, ACTION_CLASS]
+  classNames_ (classNames) {
+    return classNames.concat(BTN_CLASS, ACTION_CLASS)
   }
 }
 
 class Actions extends SMCComponent {
-  constructor (props_ = {}, children_ = []) {
+  constructor (props_, children_) {
     super(props_, children_, STLYE_SWITCHES_ACTIONS)
   }
 
+  classNames_ (classNames) {
+    return classNames.concat(ACTIONS_CLASS)
+  }
+
   render () {
-    return (
-      <section
-        {...this.selector}
-        classNames={ACTIONS_CLASS}
-        class={this.classes}
-        {...this.props}>
-        {this.children}
-      </section>
-    )
+    return <section {...this.props}>{this.children}</section>
   }
 }
 
 class HorizontalBlock extends SMCComponent {
+  classNames_ (classNames) {
+    return classNames.concat(HB_CLASS)
+  }
+
   render () {
-    return (
-      <div
-        {...this.selector}
-        classNames={HB_CLASS}
-        class={this.classes}
-        {...this.props}>
-        {this.children}
-      </div>
-    )
+    return <div {...this.props}>{this.children}</div>
   }
 }
 
 class Media extends SMCComponent {
+  classNames_ (classNames) {
+    return classNames.concat(MEDIA_CLASS)
+  }
+
   render () {
-    return (
-      <section
-        {...this.selector}
-        classNames={MEDIA_CLASS}
-        class={this.classes}
-        {...this.props}>
-        {this.children}
-      </section>
-    )
+    return <section {...this.props}>{this.children}</section>
   }
 }
 
 class MediaItem extends SMCComponent {
-  constructor (props_ = {}, children_ = []) {
+  constructor (props_, children_) {
     super(props_, children_, STYLE_SWITCHES_MEDIA_ITEM)
+  }
 
-    const { src, ...otherProps } = this.props
-    this.src = this.utils.makeKeyValue('src', src)
-    this.props = otherProps
+  classNames_ (classNames) {
+    return classNames.concat(MEDIA_ITEM_CLASS)
+  }
+
+  props_ (props) {
+    const { src } = props
+
+    return isStr(src) ? { src } : {}
   }
 
   render () {
-    return (
-      <img
-        {...this.selector}
-        classNames={MEDIA_ITEM_CLASS}
-        class={this.classes}
-        {...this.src}
-        {...this.props}>
-        {this.children}
-      </img>
-    )
+    return <img {...this.props}>{this.children}</img>
   }
 }
 
 class Primary extends SMCComponent {
+  classNames_ (classNames) {
+    return classNames.concat(PRIMARY_CLASS)
+  }
+
   render () {
-    return (
-      <section
-        {...this.selector}
-        classNames={PRIMARY_CLASS}
-        class={this.classes}
-        {...this.props}>
-        {this.children}
-      </section>
-    )
+    return <section {...this.props}>{this.children}</section>
   }
 }
 
 class Subtitle extends SMCComponent {
+  classNames_ (classNames) {
+    return classNames.concat(SUBTITLE_CLASS)
+  }
+
   render () {
-    return (
-      <h2
-        {...this.selector}
-        classNames={SUBTITLE_CLASS}
-        class={this.classes}
-        {...this.props}>
-        {this.children}
-      </h2>
-    )
+    return <h2 {...this.props}>{this.children}</h2>
   }
 }
 
 class SupportingText extends SMCComponent {
+  classNames_ (classNames) {
+    return classNames.concat(ST_CLASS)
+  }
+
   render () {
-    return (
-      <section
-        {...this.selector}
-        classNames={ST_CLASS}
-        class={this.classes}
-        {...this.props}>
-        {this.children}
-      </section>
-    )
+    return <section {...this.props}>{this.children}</section>
   }
 }
 
 class Title extends SMCComponent {
-  constructor (props_ = {}, children_ = []) {
+  constructor (props_, children_) {
     super(props_, children_, STYLE_SWITCHES_TITLE)
   }
 
+  classNames_ (classNames) {
+    return classNames.concat(TITLE_CLASS)
+  }
+
   render () {
-    return (
-      <h1
-        {...this.selector}
-        classNames={TITLE_CLASS}
-        class={this.classes}
-        {...this.props}>
-        {this.children}
-      </h1>
-    )
+    return <h1 {...this.props}>{this.children}</h1>
   }
 }
 

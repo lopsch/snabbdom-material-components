@@ -1,26 +1,59 @@
 import { SnabbdomComponent } from 'snabbdom-jsx-pragma'
-import * as utils from '../utils'
+import { ClassesExtractor } from '../utils'
 
 export default class SMCComponent extends SnabbdomComponent {
   constructor (props_ = {}, children_ = [], switches_ = {}) {
     super(props_, children_)
-    this.switches = switches_
-    this.utils = utils
-    const { id, ...otherProps } = this.props
 
-    const { classes, props } = new this.utils.PropsNormalizer(
-      otherProps,
-      this.switches
-    ).normalized
+    this.ripple = props_.ripple === true
 
-    this.id = id
+    const { classes, classNames } = new ClassesExtractor(
+      props_,
+      switches_
+    ).extracted
+
+    const { key, id, sel, style } = props_
+
     this.props = {
-      ...props,
-      class: classes
+      class: classes,
+      attrs: this.attrs_(props_),
+      on: this.on_(props_),
+      hook: this.hook_(props_),
+      dataset: this.dataset_(props_),
+      classNames: this.classNames_(classNames),
+      style: this.style_(style),
+      key,
+      id,
+      sel,
+      ...this.props_(props_)
     }
+  }
 
-    this.props = props
-    this.classes = classes
-    this.selector = this.utils.makeSelector(id)
+  style_ (style) {
+    return style
+  }
+
+  attrs_ (props) {
+    return {}
+  }
+
+  on_ (props) {
+    return {}
+  }
+
+  hook_ (props) {
+    return {}
+  }
+
+  dataset_ (props) {
+    return {}
+  }
+
+  classNames_ (classNames) {
+    return classNames
+  }
+
+  props_ (props) {
+    return {}
   }
 }

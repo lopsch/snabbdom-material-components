@@ -5,38 +5,39 @@ import { STYLE_SWITCHES, FAB_CLASS, ICON_CLASS, MAT_ICON_CLASS } from './styles'
 import Button from '../button'
 import { SMCComponent } from '../base'
 import Icon from '../icon'
+import { isStr, isBool, isArr } from '../utils'
 
 class Fab extends Button {
-  constructor (props_ = {}, children_ = []) {
+  constructor (props_, children_) {
     super(props_, children_, STYLE_SWITCHES)
   }
 
-  classNames_ () {
-    return FAB_CLASS
+  attrs_ (props) {
+    const { label } = props
+
+    return isStr(label) ? { 'aria-label': label } : {}
   }
 
-  attrs_ () {
-    if (!this.label) {
-      const { label, ...otherProps } = this.props
-      this.label = label
-      this.props = otherProps
-    }
+  classNames_ (classNames) {
+    return classNames.concat(FAB_CLASS)
+  }
 
-    return this.utils.makeKeyValue('aria-label', this.label)
+  additionalProps_ (props) {
+    const { fixed } = props
+
+    return isBool(fixed) ? { fixed } : {}
   }
 }
 
 class FontAwesome extends SMCComponent {
+  classNames_ (classNames) {
+    return classNames.concat(ICON_CLASS)
+  }
+
   render () {
     return (
-      <span
-        {...this.selector}
-        classNames={ICON_CLASS}
-        class={this.classes}
-        {...this.props}>
-        <Icon>
-          {this.children}
-        </Icon>
+      <span {...this.props}>
+        <Icon>{this.children}</Icon>
       </span>
     )
   }
@@ -46,24 +47,15 @@ class Material extends SMCComponent {
   constructor (props_ = {}, children_ = []) {
     super(props_, children_)
 
-    this.icon =
-      Array.isArray(children_) &&
-      children_.length > 0 &&
-      typeof children_[0] === 'string'
-        ? children_[0]
-        : ''
+    this.icon = isArr(children_) && isStr(children_[0]) ? children_[0] : ''
+  }
+
+  classNames_ (classNames) {
+    return classNames.concat(ICON_CLASS, MAT_ICON_CLASS)
   }
 
   render () {
-    return (
-      <span
-        {...this.selector}
-        classNames={MAT_ICON_CLASS}
-        class={this.classes}
-        {...this.props}>
-        {this.icon}
-      </span>
-    )
+    return <span {...this.props}>{this.icon}</span>
   }
 }
 

@@ -17,43 +17,46 @@ import { BTN_CLASS } from '../button/styles'
 import Button from '../button'
 import DialogAdapter from './adapter'
 import { SMCComponent } from '../base'
+import { makeHooks, isStr, isFn, isBool } from '../utils'
 
 class Dialog extends SMCComponent {
-  constructor (props_ = {}, children_ = []) {
-    super(props_, children_)
+  attrs_ (props) {
+    const { labelledBy, describedBy } = props
 
-    const {
-      labelledBy,
-      describedBy,
-      onAccept,
-      onCancel,
-      ...otherProps
-    } = this.props
-    this.hooks = this.utils.makeHooks(DialogAdapter)
-    this.ons = {}
-    if (typeof onAccept === 'function') this.ons['MDCDialog:accept'] = onAccept
-    if (typeof onCancel === 'function') this.ons['MDCDialog:cancel'] = onCancel
-    this.attrs = {
+    return {
       role: 'alertdialog',
-      ...this.utils.makeKeyValue('aria-labelledby', labelledBy),
-      ...this.utils.makeKeyValue('aria-describedby', describedBy)
+      ...(isStr(labelledBy) ? { 'aria-labelledby': labelledBy } : {}),
+      ...(isStr(describedBy) ? { 'aria-describedby': describedBy } : {})
     }
-    this.props = otherProps
+  }
+
+  on_ (props) {
+    const { onAccept, onCancel } = props
+
+    return {
+      ...(isFn(onAccept) ? { 'MDCDialog:accept': onAccept } : {}),
+      ...(isFn(onCancel) ? { 'MDCDialog:cancel': onCancel } : {})
+    }
+  }
+
+  hook_ (props) {
+    return makeHooks(DialogAdapter)
+  }
+
+  classNames_ (classNames) {
+    return classNames.concat(DIALOG_CLASS)
+  }
+
+  props_ (props) {
+    const { show } = props
+
+    return isBool(show) ? { show } : {}
   }
 
   render () {
     return (
-      <aside
-        {...this.selector}
-        classNames={DIALOG_CLASS}
-        class={this.classes}
-        hook={this.hooks}
-        on={this.ons}
-        attrs={this.attrs}
-        {...this.props}>
-        <div classNames={SURFACE_CLASS}>
-          {this.children}
-        </div>
+      <aside {...this.props}>
+        <div classNames={SURFACE_CLASS}>{this.children}</div>
         <div classNames={BACKDROP_CLASS} />
       </aside>
     )
@@ -61,84 +64,68 @@ class Dialog extends SMCComponent {
 }
 
 class Body extends SMCComponent {
-  constructor (props_ = {}, children_ = []) {
+  constructor (props_, children_) {
     super(props_, children_, STYLE_SWITCHES_BODY)
   }
 
+  classNames_ (classNames) {
+    return classNames.concat(BODY_CLASS)
+  }
+
   render () {
-    return (
-      <section
-        {...this.selector}
-        classNames={BODY_CLASS}
-        class={this.classes}
-        {...this.props}>
-        {this.children}
-      </section>
-    )
+    return <section {...this.props}>{this.children}</section>
   }
 }
 
 class Footer extends SMCComponent {
+  classNames_ (classNames) {
+    return classNames.concat(FOOTER_CLASS)
+  }
+
   render () {
-    return (
-      <footer
-        {...this.selector}
-        classNames={FOOTER_CLASS}
-        class={this.classes}
-        {...this.props}>
-        {this.children}
-      </footer>
-    )
+    return <footer {...this.props}>{this.children}</footer>
   }
 }
 
 class FooterAction extends Button {
-  constructor (props_ = {}, children_ = []) {
+  constructor (props_, children_) {
     super(props_, children_, STYLE_SWITCHES_FOOTER_BTN)
   }
 
-  classNames_ () {
-    return [BTN_CLASS, FOOTER_BTN_CLASS]
+  classNames_ (classNames) {
+    return classNames.concat(BTN_CLASS, FOOTER_BTN_CLASS)
   }
 }
 
 class FooterAccept extends FooterAction {
-  constructor (props_ = {}, children_ = []) {
+  constructor (props_ = {}, children_) {
     super({ ...props_, accept: true }, children_)
   }
 }
 
 class FooterCancel extends FooterAction {
-  constructor (props_ = {}, children_ = []) {
+  constructor (props_ = {}, children_) {
     super({ ...props_, cancel: true }, children_)
   }
 }
 
 class Header extends SMCComponent {
+  classNames_ (classNames) {
+    return classNames.concat(HEADER_CLASS)
+  }
+
   render () {
-    return (
-      <header
-        {...this.selector}
-        classNames={HEADER_CLASS}
-        class={this.classes}
-        {...this.props}>
-        {this.children}
-      </header>
-    )
+    return <header {...this.props}>{this.children}</header>
   }
 }
 
 class Title extends SMCComponent {
+  classNames_ (classNames) {
+    return classNames.concat(TITLE_CLASS)
+  }
+
   render () {
-    return (
-      <h2
-        {...this.selector}
-        classNames={TITLE_CLASS}
-        class={this.classes}
-        {...this.props}>
-        {this.children}
-      </h2>
-    )
+    return <h2 {...this.props}>{this.children}</h2>
   }
 }
 

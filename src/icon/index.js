@@ -3,22 +3,24 @@ import html from 'snabbdom-jsx-pragma'
 /* eslint-enable no-unused-vars */
 import { FA_CLASS } from './styles'
 import { SMCComponent } from '../base'
+import { isArr, isStr } from '../utils'
 
 export default class FontAwesome extends SMCComponent {
-  constructor (props_ = {}, children_ = []) {
+  constructor (props_, children_) {
     super(props_, children_)
 
-    this.faIcon =
-      Array.isArray(children_) &&
-      children_.length > 0 &&
-      typeof children_[0] === 'string'
-        ? children_[0]
-        : ''
+    this.faIcon = isArr(children_) && isStr(children_[0]) ? children_[0] : ''
+  }
+
+  attrs_ (props) {
+    return { 'aria-hidden': true }
+  }
+
+  classNames_ (classNames) {
+    return classNames.concat(FA_CLASS, this.faIcon)
   }
 
   render () {
-    return (
-      <i classNames={[FA_CLASS, this.faIcon]} attrs={{ 'aria-hidden': true }} />
-    )
+    return <i {...this.props} />
   }
 }

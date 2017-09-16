@@ -1,3 +1,4 @@
+import path from 'ramda/es/path'
 import { MDCDialog } from '@material/dialog'
 import { SMCAdapter } from '../base'
 
@@ -6,7 +7,7 @@ export default class DialogAdapter extends SMCAdapter {
     super(sel, new MDCDialog(elm))
 
     this.update_ = props => {
-      const show = props && typeof props.show === 'boolean' && props.show
+      const show = path(['show'], props) === true
       const open = this.component.open
 
       if (show && !open) {

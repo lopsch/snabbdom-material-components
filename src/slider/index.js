@@ -15,45 +15,60 @@ import {
 } from './styles'
 import SliderAdapter from './adapter'
 import { SMCComponent } from '../base'
+import { makeHooks, isBool, isNum, isPosNum, isStr, isFn } from '../utils'
 
 export default class Slider extends SMCComponent {
-  constructor (props_ = {}, children_ = []) {
+  constructor (props_ = {}, children_) {
     super(props_, children_, STYLE_SWITCHES)
 
-    const {
-      labelledBy,
-      onChange,
-      tabIndex,
-      onInput,
-      ...otherProps
-    } = this.props
-    this.attrs = {
+    this.markers = props_.markers === true && props_.discrete === true
+  }
+
+  attrs_ (props) {
+    const { tabIndex, labelledBy } = props
+
+    return {
       role: 'slider',
-      ...this.utils.makeKeyValue('tabindex', tabIndex),
-      ...this.utils.makeKeyValue('aria-labelledby', labelledBy)
+      ...(isNum(tabIndex) ? { tabindex: tabIndex } : {}),
+      ...(isStr(labelledBy) ? { 'aria-labelledby': labelledBy } : {})
     }
-    this.hooks = this.utils.makeHooks(SliderAdapter)
-    this.props = otherProps
-    this.ons = {}
-    if (typeof onChange === 'function') this.ons['MDCSlider:change'] = onChange
-    if (typeof onInput === 'function') this.ons['MDCSlider:input'] = onInput
+  }
+
+  on_ (props) {
+    const { onChange, onInput } = props
+
+    return {
+      ...(isFn(onChange) ? { 'MDCSlider:change': onChange } : {}),
+      ...(isFn(onInput) ? { 'MDCSlider:input': onInput } : {})
+    }
+  }
+
+  hook_ (props) {
+    return makeHooks(SliderAdapter)
+  }
+
+  classNames_ (classNames) {
+    return classNames.concat(SLIDER_CLASS)
+  }
+
+  props_ (props) {
+    const { disabled, min, max, step, value } = props
+
+    return {
+      ...(isBool(disabled) ? { disabled } : {}),
+      ...(isNum(min) ? { min } : {}),
+      ...(isNum(max) ? { max } : {}),
+      ...(isPosNum(step) ? { step } : {}),
+      ...(isNum(value) ? { value } : {})
+    }
   }
 
   render () {
     return (
-      <div
-        {...this.selector}
-        classNames={SLIDER_CLASS}
-        class={this.classes}
-        hook={this.hooks}
-        on={this.ons}
-        attrs={this.attrs}
-        {...this.props}>
+      <div {...this.props}>
         <div classNames={TRACK_CNT_CLASS}>
           <div classNames={TRACK_CLASS} />
-          {this.props.markers === true && this.props.discrete === true
-            ? <div classNames={TRACK_MARKER_CLASS} />
-            : []}
+          {this.markers ? <div classNames={TRACK_MARKER_CLASS} /> : []}
         </div>
         <div classNames={THUMB_CNT_CLASS}>
           <div classNames={PIN_CLASS}>

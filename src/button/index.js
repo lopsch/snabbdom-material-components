@@ -4,62 +4,48 @@ import html from 'snabbdom-jsx-pragma'
 import { STYLE_SWITCHES, BTN_CLASS } from './styles'
 import ButtonAdapter from './adapter'
 import { SMCComponent } from '../base'
+import { makeHooks, isFn, isStr, isBool } from '../utils'
 
 export default class Button extends SMCComponent {
-  constructor (props_ = {}, children_ = [], switches_ = STYLE_SWITCHES) {
+  constructor (props_, children_, switches_ = STYLE_SWITCHES) {
     super(props_, children_, switches_)
-
-    const { ripple, name, href, onClick, ...otherProps } = this.props
-    this.name = this.utils.makeKeyValue('name', name)
-    this.hooks =
-      typeof ripple === 'boolean' && ripple
-        ? this.utils.makeHooks(ButtonAdapter)
-        : {}
-    this.classNames = this.classNames_()
-
-    this.ons = {}
-    if (typeof onClick === 'function') this.ons.click = onClick
-
-    if (href) {
-      this.link = true
-      this.href = this.utils.makeKeyValue('href', href)
-    }
-
-    this.props = otherProps
-    this.attrs = this.attrs_()
   }
 
-  attrs_ () {
+  on_ (props) {
+    const { onClick } = props
+
+    return isFn(onClick) ? { click: onClick } : {}
+  }
+
+  hook_ (props) {
+    return this.ripple ? makeHooks(ButtonAdapter) : {}
+  }
+
+  classNames_ (classNames) {
+    return classNames.concat(BTN_CLASS)
+  }
+
+  props_ (props) {
+    const { name, href, disabled } = props
+    this.link = isStr(href)
+
+    return {
+      ...(isBool(disabled) ? { disabled } : {}),
+      ...(isStr(name) ? { name } : {}),
+      ...(this.link ? { href } : {}),
+      ...this.additionalProps_(props)
+    }
+  }
+
+  additionalProps_ (props) {
     return {}
   }
 
-  classNames_ () {
-    return BTN_CLASS
-  }
-
   render () {
-    return this.link
-      ? <a
-        {...this.selector}
-        classNames={this.classNames}
-        class={this.classes}
-        hook={this.hooks}
-        on={this.ons}
-        {...this.name}
-        {...this.href}
-        {...this.props}>
-        {this.children}
-      </a>
-      : <button
-        {...this.selector}
-        classNames={this.classNames}
-        class={this.classes}
-        hook={this.hooks}
-        on={this.ons}
-        {...this.name}
-        attrs={this.attrs}
-        {...this.props}>
-        {this.children}
-      </button>
+    return this.link ? (
+      <a {...this.props}>{this.children}</a>
+    ) : (
+      <button {...this.props}>{this.children}</button>
+    )
   }
 }

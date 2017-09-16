@@ -4,24 +4,22 @@ import html from 'snabbdom-jsx-pragma'
 import { STYLE_SWITCHES, FF_CLASS } from './styles'
 import { SMCComponent } from '../base'
 import FormFieldAdapter from './adapter'
+import { makeHooks } from '../utils'
 
 export default class FormField extends SMCComponent {
-  constructor (props_ = {}, children_ = []) {
+  constructor (props_, children_) {
     super(props_, children_, STYLE_SWITCHES)
+  }
 
-    this.hooks = this.utils.makeHooks(FormFieldAdapter)
+  hook_ (props) {
+    return makeHooks(FormFieldAdapter)
+  }
+
+  classNames_ (classNames) {
+    return classNames.concat(FF_CLASS)
   }
 
   render () {
-    return (
-      <div
-        {...this.selector}
-        classNames={FF_CLASS}
-        class={this.classes}
-        hook={this.hooks}
-        {...this.props}>
-        {this.children}
-      </div>
-    )
+    return <div {...this.props}>{this.children}</div>
   }
 }
